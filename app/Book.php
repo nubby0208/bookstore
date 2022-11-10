@@ -32,6 +32,10 @@ class Book extends Model
     {
         return $this->hasMany('App\Review');
     }
+    public function readstates()
+    {
+        return $this->hasMany('App\ReadState');
+    }
 
 
     public function scopeLatestFirst($query)

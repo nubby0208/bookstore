@@ -6,7 +6,7 @@ use App\Book;
 use App\Http\Requests\BooksCreateRequest;
 use App\Http\Requests\BooksUpdateRequest;
 use App\Image;
-use App\Pdf_file;
+use App\PdfFile;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Intervention\Image\ImageManagerStatic as Photo;
@@ -47,7 +47,7 @@ class AdminBooksController extends AdminBaseController
         {
             $pdf_name = $pdf_file->getClientOriginalName();
             $pdf_name = 'assets/pdf/'.$pdf_name;
-            $pdf = Pdf_file::create(['pdf_file'=>$pdf_name]);
+            $pdf = PdfFile::create(['pdf_file'=>$pdf_name]);
             $input['pdf_id'] = $pdf->id;
         }
 
@@ -87,7 +87,7 @@ class AdminBooksController extends AdminBaseController
         {
             $pdf_name = $pdf_file->getClientOriginalName();
             $pdf_name = 'assets/pdf/'.$pdf_name;
-            $pdf = Pdf_file::create(['pdf_file'=>$pdf_name]);
+            $pdf = PdfFile::create(['pdf_file'=>$pdf_name]);
             $input['pdf_id'] = $pdf->id;
         }
 

@@ -51,6 +51,10 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Review');
     }
+    public function readstates()
+    {
+        return $this->hasMany('App\ReadState');
+    }
 
     /*
     * Image Accessor

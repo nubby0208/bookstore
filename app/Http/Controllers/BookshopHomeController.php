@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Author;
 use GrahamCampbell\Markdown\Facades\Markdown;
 use App\Book;
-use App\Pdf_file;
+use App\PdfFile;
 use App\Category;
 use Illuminate\Http\Request;
 
@@ -80,10 +80,10 @@ class BookshopHomeController extends Controller
         $book = Book::findOrFail($id);
         $book_reviews = $book->reviews()->latest()->get();
         if ($book->pdf_id != 0){
-            $pdf_file_url = Pdf_file::findOrFail($book->pdf_id);
+            $pdf_file_url = PdfFile::findOrFail($book->pdf_id);
         }
         else{
-            $pdf_file_url = Pdf_file::findOrFail(1);
+            $pdf_file_url = PdfFile::findOrFail(1);
         }
         return view('public.book-details' , compact('book', 'book_reviews', 'pdf_file_url'));
     }

@@ -67,7 +67,7 @@ Bookshop - Book details
                                         @include('layouts.includes.flash-message')
 
                                         @if(Auth::check() == false)
-                                        <button class="btn btn-danger btn-lg" >Please login to read book</button>
+                                        <a href="{{url('login')}}" class="btn btn-danger btn-lg" >Please login to read book</a>
                                         @else
                                         <button id="purchase_bt" class="btn btn-danger btn-lg" onclick="select_purchasing_method()">Read this book</button>
                                         @endif

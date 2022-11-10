@@ -26,7 +26,7 @@ class Book extends Model
     }
     public function pdf_file()
     {
-        return $this->belongsTo('App\Pdf_file');
+        return $this->belongsTo('App\PdfFile');
     }
     public function reviews()
     {

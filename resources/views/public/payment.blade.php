@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="payment-area">
-            <h4 class="my-4 bg-dark p-3 text-white">Make your payment</h4>
+            <h4 class="my-4 blue-dark p-3 text-white">Make your payment</h4>
 
             <div class="cart-summary my-3">
                 <div class="card">

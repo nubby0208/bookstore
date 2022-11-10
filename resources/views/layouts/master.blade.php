@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{asset('/')}}assets/css/all.min.css">
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{{asset('/')}}assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('/')}}assets/css/bootstrap4-toggle.css">
     <!-- Your custom styles (optional) -->
     <link rel="stylesheet" href="{{asset('/')}}assets/css/style.css">
 </head>
@@ -19,7 +20,7 @@
     @include('layouts.includes.navbar')
 <!-- NAVBAR END -->
 <!-- HEADER -->
-<section class="header py-2 bg-dark">
+<section class="header py-2 blue-dark">
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -37,14 +38,19 @@
                     </div>
                 </form>
             </div>
-            <div class="col-md-4">
-                <div class="shopping-cart text-right">
-                    <a href="{{route('cart')}}" class="text-danger"><i class="fas fa-shopping-cart fa-2x m-1"></i>
-                        @if(Cart::content()->count())
-                            <span class="count-cart">{{Cart::content()->count()}}</span>
-                        @endif
-                    </a>
+            <div class="col-md-4 row">
+                <div class="col-md-8 text-right">
+                    <input id="galaxy_checkbox" type="checkbox" checked data-toggle="toggle" data-offstyle="dark" data-onstyle="warning" data-style="border" data-on="<i class='fa fa-sun text_white'></i>" data-off="<i class='fa fa-moon text_white'></i>">
+                </div>
+                <div class="col-md-4">
+                    <div class="shopping-cart text-right">
+                        <a href="{{route('cart')}}" class="text-danger"><i class="fas fa-shopping-cart fa-2x m-1"></i>
+                            @if(Cart::content()->count())
+                                <span class="count-cart">{{Cart::content()->count()}}</span>
+                            @endif
+                        </a>
 
+                    </div>
                 </div>
             </div>
         </div>
@@ -84,8 +90,38 @@
 <script type="text/javascript" src="{{asset('/')}}assets/js/popper.min.js"></script>
 <!-- Bootstrap core JavaScript -->
 <script type="text/javascript" src="{{asset('/')}}assets/js/bootstrap.min.js"></script>
+<!-- Bootstrap Toggle JavaScript -->
+<script type="text/javascript" src="{{asset('/')}}assets/js/bootstrap4-toggle.js"></script>
 <!-- Your custom scripts (optional) -->
 <script type="text/javascript" src="{{asset('/')}}assets/js/script.js"></script>
+
+<script type="text/javascript">
+    var is_light_mode = true;
+    toggleMode();
+
+    $('#galaxy_checkbox').on('change', function() {
+        toggleMode();
+    });
+    
+    function toggleMode() {
+        if (is_light_mode) {
+            $('div.bg-light').removeClass('bg-light').addClass('blue-dark');
+            $('.text-black').removeClass('text-black').addClass('text-white');
+            $('body').removeClass('blue-dark').addClass('bg-light');
+            $('footer').removeClass('blue-dark').addClass('bg-light');
+            $('footer').removeClass('text-white').addClass('text-black');
+            $('#galaxy_checkbox').prop('checked', true);
+        } else {
+            $('div.blue-dark').removeClass('blue-dark').addClass('bg-light');
+            $('.text-white').removeClass('text-white').addClass('text-black');
+            $('body').removeClass('bg-light').addClass('blue-dark');
+            $('footer').removeClass('bg-light').addClass('blue-dark');
+            $('footer').removeClass('text-black').addClass('text-white');
+            $('#galaxy_checkbox').prop('checked', false);
+        }
+        is_light_mode = !is_light_mode;
+    }
+</script>
 
 </body>
 </html>

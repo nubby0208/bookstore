@@ -11,7 +11,7 @@ Bookshop - Book details
                 <div class="col-md-8">
                     <div class="content-area">
                         <div class="card my-4">
-                            <div class="card-header bg-dark">
+                            <div class="card-header blue-dark">
                                 <h4 class="text-white">Book Details</h4>
                             </div>
                             <div class="card-body">
@@ -90,7 +90,7 @@ Bookshop - Book details
                                     </div>
                                 </div>
                                 <div class="row justify-content-center mt-4" id="pdf_file">
-                                    <iframe id="pdf_viewer" src="{{asset($pdf_file_url->pdf_file)}}#toolbar=0" width="98%" height="600" allowfullscreen="true">
+                                    <iframe id="pdf_viewer" src="{{asset($pdf_file_url->pdf_file)}}#toolbar=0" width="98%" height="950" allowfullscreen="true">
                                             This browser does not support PDFs. Please download the PDF to view it: <a href="{{asset($pdf_file_url->pdf_file)}}">Download PDF</a>
                                     </iframe>
                                 </div>

@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="container">
-        <div class="my-4 p-3 bg-dark text-white"><h4 class="m-0">Checkout Page</h4></div>
+        <div class="my-4 p-3 blue-dark text-white card-header"><h4 class="m-0">Checkout Page</h4></div>
         <div class="row">
             <div class="col-lg-8">
-                <div class="cart-product">
+                <div class="cart-product blue-dark text-white card-header">
                     <h4><a href="{{route('cart')}}" title="Back to cart" class="text-danger"><i class="fas fa-shopping-basket" ></i></a> Your orders</h4>
-                    <table class="table table-bordered">
+                    <table class="table table-bordered bg-light">
                         <thead>
                         <tr>
                             <th scope="col">Book</th>
@@ -29,7 +29,7 @@
                     </table>
                 </div>
                 <div class="billing-address my-4">
-                    <div class="p-3 bg-light my-4"><h4 class="m-0">Billing address</h4></div>
+                    <div class="p-3 bg-light my-4 text-white"><h4 class="m-0">Billing address</h4></div>
 
                     <form action="{{route('cart.proceed')}}" method="post">
                         @csrf

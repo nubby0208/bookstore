@@ -17,7 +17,7 @@
                             <div class="alert alert-warning my-4">No books available</div>
                         @else
                             <div class="card my-4">
-                                <div class="card-header bg-dark">
+                                <div class="card-header blue-dark">
                                     <h4 class="text-white">All books</h4>
                                 </div>
                                 @if(isset($categoryName))

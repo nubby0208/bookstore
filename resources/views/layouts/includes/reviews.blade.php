@@ -4,7 +4,7 @@
             <h4 class="text-center mb-2"><i class="fas fa-comments"></i> {{$book_reviews->count()}} {{str_plural('Review', $book_reviews->count()) }}</h4>
             @foreach($book_reviews as $review)
             <div class="single-comment my-2">
-                <div class="card card-body bg-light">
+                <div class="card card-body">
                     <div class="author-info mb-2 d-flex flex-row">
                         <div class="comment-user-img mr-3">
                             <img src="{{$review->user->image? $review->user->image_url : $book->default_img}}" alt="" width="60">

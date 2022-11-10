@@ -18,7 +18,7 @@
 
 <body>
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1 border-bottom" id="nav-top">
+<nav class="navbar navbar-expand-lg navbar-dark blue-dark p-1 border-bottom" id="nav-top">
     <div class="container">
         <a href="{{route('bookshop.home')}}" class="logo-img"><img src="{{asset('/')}}assets/img/logo.png" alt=""></a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#nav-collapse">

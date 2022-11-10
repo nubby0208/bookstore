@@ -111,7 +111,7 @@
             <a href="#nav-top" class="text-muted" title="Go to top"><i class="fas fa-angle-double-up"></i></a>
         </div>
         <div class="footer-text">
-            Copyright &copy; Bookshop Management System. All Right Reserved. <span id="year"></span>
+            <span id="year"></span>
         </div>
         <div class="social-icon mt-2">
         <span class="mr-2">

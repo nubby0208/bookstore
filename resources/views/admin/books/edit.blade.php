@@ -115,6 +115,16 @@
                         </div>
 
                         <div class="form-group">
+                            {!! Form::label('pdf_id', 'Pdf file') !!}
+                            {!! Form::file('pdf_id', ['class'=>'form-control '.($errors->has('pdf_id')? 'is-invalid': '')]) !!}
+                            @if($errors->has('pdf_id'))
+                                <span class="invalid-feedback">
+                            <strong>{{$errors->first('pdf_id')}}</strong>
+                        </span>
+                            @endif
+                        </div>
+
+                        <div class="form-group">
                             {!! Form::submit('Update', ['class'=>'btn btn-warning']) !!}
                             {!! Form::reset('Reset', ['class'=>'btn btn-danger']) !!}
                         </div>

@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="headings">
-                    <h3><a href="{{route('bookshop.home')}}" class="text-secondary"><b class="text-danger">Book</b> Shop</a></h3>
+                    <h3><a href="{{route('bookshop.home')}}" class="text-secondary"><b class="text-danger">Paradise</b> EbookShop</a></h3>
                 </div>
             </div>
             <div class="col-md-4">
@@ -60,9 +60,9 @@
             <a href="#nav-top" class="text-muted" title="Go to top"><i class="fas fa-angle-double-up"></i></a>
         </div>
         <div class="footer-text">
-            Copyright &copy; Bookshop Management System. All Right Reserved. <span id="year"></span>
+            <span id="year"></span>
         </div>
-        <div class="social-icon mt-2">
+        <!-- <div class="social-icon mt-2">
         <span class="mr-2">
           <a href="#" class="text-primary"><i class="fab fa-facebook fa-2x"></i></a>
         </span>
@@ -72,7 +72,7 @@
             <span class="mr-2">
           <a href="#" class="text-warning"><i class="fab fa-stack-overflow fa-2x"></i></a>
         </span>
-        </div>
+        </div> -->
     </div>
 </footer>
 

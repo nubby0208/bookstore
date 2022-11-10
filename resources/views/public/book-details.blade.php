@@ -4,6 +4,7 @@
 Bookshop - Book details
 @endsection
 @section('content')
+<link rel="stylesheet" href="{{asset('/')}}assets/css/book-detail.css">
     <section class="main-content">
         <div class="container">
             <div class="row">
@@ -64,6 +65,23 @@ Bookshop - Book details
                                             </div>
                                         </form>
                                         @include('layouts.includes.flash-message')
+
+                                        @if(Auth::check() == false)
+                                        <button class="btn btn-danger btn-lg" >Please login to read book</button>
+                                        @else
+                                        <button id="purchase_bt" class="btn btn-danger btn-lg" onclick="select_purchasing_method()">Read this book</button>
+                                        @endif
+                                        <div class="row" id="hiden_purchasing_method">
+                                            <button id="buy_directly" class="btn btn-danger btn-lg" onclick="buy_directly()">Read directly</button>
+                                            <button id="buy_by_time" class="btn btn-danger btn-lg" onclick="buy_by_time()">Read by time</button>
+                                        </div>
+                                        <div class="row" id="hidden_down_bt">
+                                            <a href="{{asset($pdf_file_url->pdf_file)}}" class="btn btn-outline-danger btn-lg" download><i class="fas fa-download"></i></a>
+                                        </div>
+                                        <div class="row" id="hidden_starting_time_bt">
+                                            <input type="number" value="1" id="duration_time"> minutes
+                                            <button id="duration_apply" class="btn btn-danger btn-sm" onclick="select_duration()">Apply</button>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -71,7 +89,13 @@ Bookshop - Book details
                                         <p>{!! Markdown::convertToHtml(e($book->description)) !!}</p>
                                     </div>
                                 </div>
+                                <div class="row justify-content-center" id="pdf_file">
+                                    <iframe id="pdf_viewer" src="{{asset($pdf_file_url->pdf_file)}}#toolbar=0" width="98%" height="600" allowfullscreen="true">
+                                            This browser does not support PDFs. Please download the PDF to view it: <a href="{{asset($pdf_file_url->pdf_file)}}">Download PDF</a>
+                                    </iframe>
+                                </div>
                             </div>
+                            <div id="time_limit">Registration closes in <span id="time">00:00</span> minutes!</div>
                         </div>
                         <div class="card card-body my-4">
                             <div class="author-description d-flex flex-row">
@@ -101,4 +125,68 @@ Bookshop - Book details
             </div>
         </div>
     </section>
+
+    <script>
+        function select_purchasing_method() {
+            document.getElementById("purchase_bt").style.display = "none";
+            document.getElementById("hiden_purchasing_method").style.display = "block";
+        }
+
+        function buy_by_time() {
+            document.getElementById("hidden_starting_time_bt").style.display = "block";
+            document.getElementById("hiden_purchasing_method").style.display = "none";
+            document.getElementById("hidden_down_bt").style.display = "none";
+        }
+
+        function buy_directly() {
+            document.getElementById("pdf_file").style.display = "block";
+            document.getElementById("hiden_purchasing_method").style.display = "none";
+            document.getElementById("hidden_down_bt").style.display = "block";
+        }
+
+        function select_duration() {
+            var duration_time = 0;
+            var temp_src = document.getElementById("pdf_viewer").src;
+            document.getElementById("pdf_viewer").src = temp_src;
+            if(document.getElementById("duration_time").value == '') {
+                alert("Input empty field!");
+            }
+            else {
+                document.getElementById("hidden_starting_time_bt").style.display = "none";
+                document.getElementById("pdf_file").style.display = "block";           
+                document.getElementById("time_limit").style.display = "block";
+                
+            }
+        }
+        function startTimer(duration, display, ob1, ob2) {
+            // console.log(duration);
+            var flag = 0;
+            var timer = duration, minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = minutes + ":" + seconds;
+                if(flag == 0){
+                    if (--timer < 0) {
+                        flag == 1;
+                        ob1.style.display = "none";
+                        ob2.style.display = "none";
+                    }
+                }
+            }, 1000);
+        }
+        window.onload = function () {
+            var final_sel_time = document.getElementById("duration_time").value;
+            console.log(final_sel_time);
+            var Minutes = 60 * parseInt(final_sel_time),
+                display = document.querySelector('#time'),
+                ob1 = document.querySelector('#pdf_file'),
+                ob2 = document.querySelector('#time_limit');
+            startTimer(Minutes, display, ob1, ob2);
+        };
+    </script>
 @endsection

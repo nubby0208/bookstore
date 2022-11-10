@@ -61,7 +61,7 @@ class User extends Authenticatable
     }
     public function getDefaultImgAttribute($value)
     {
-        return asset('/').'assets/img/'.'user-placeholder 3.png';
+        return asset('/').'assets/img/'.'user-placeholder.png';
     }
 
 

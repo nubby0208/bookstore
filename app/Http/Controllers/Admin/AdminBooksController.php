@@ -6,6 +6,7 @@ use App\Book;
 use App\Http\Requests\BooksCreateRequest;
 use App\Http\Requests\BooksUpdateRequest;
 use App\Image;
+use App\Pdf_file;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Intervention\Image\ImageManagerStatic as Photo;
@@ -14,7 +15,7 @@ class AdminBooksController extends AdminBaseController
 {
     public function index()
     {
-        $books = Book::with('category', 'author', 'image')
+        $books = Book::with('category', 'author', 'image', 'pdf_file')
             ->orderBy('id', 'DESC')
             ->get();
         return view('admin.books.index', compact('books'));
@@ -41,6 +42,13 @@ class AdminBooksController extends AdminBaseController
 
             $image = Image::create(['file'=>$name]);
             $input['image_id'] = $image->id;
+        }
+        if($pdf_file = $request->file('pdf_id'))
+        {
+            $pdf_name = $pdf_file->getClientOriginalName();
+            $pdf_name = 'assets/pdf/'.$pdf_name;
+            $pdf = Pdf_file::create(['pdf_file'=>$pdf_name]);
+            $input['pdf_id'] = $pdf->id;
         }
 
         $create_books = Book::create($input);
@@ -73,6 +81,14 @@ class AdminBooksController extends AdminBaseController
 
             $image = Image::create(['file'=>$name]);
             $input['image_id'] = $image->id;
+        }
+
+        if($pdf_file = $request->file('pdf_id'))
+        {
+            $pdf_name = $pdf_file->getClientOriginalName();
+            $pdf_name = 'assets/pdf/'.$pdf_name;
+            $pdf = Pdf_file::create(['pdf_file'=>$pdf_name]);
+            $input['pdf_id'] = $pdf->id;
         }
 
         $book = Book::findOrFail($id);

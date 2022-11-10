@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Author;
 use GrahamCampbell\Markdown\Facades\Markdown;
 use App\Book;
+use App\Pdf_file;
 use App\Category;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class BookshopHomeController extends Controller
             ->take(8)
             ->latestFirst()
             ->get();
-        $literature_books = Book::with('category', 'author', 'image')
+        $literature_books = Book::with('category', 'author', 'image', 'pdf_file')
             ->whereHas('category', function ($query){
                 $query->where('slug', 'literature'); })
             ->take(4)
@@ -33,7 +34,7 @@ class BookshopHomeController extends Controller
     public function allBooks()
     {
         # ComposerServiceProvider load here
-        $books = Book::with('author', 'image', 'category')
+        $books = Book::with('author', 'image', 'category', 'pdf_file')
                     ->orderBy('id', 'DESC')
                     ->search(request('term')) #...Search Query
                     ->paginate(16);
@@ -43,7 +44,7 @@ class BookshopHomeController extends Controller
     {
         # ComposerServiceProvider load here
         $discountTitle = "All discount books";
-        $books = Book::with('author', 'image', 'category')
+        $books = Book::with('author', 'image', 'category', 'pdf_file')
             ->orderBy('discount_rate', 'DESC')
             ->where('discount_rate', '>', 0)
             ->paginate(16);
@@ -78,6 +79,12 @@ class BookshopHomeController extends Controller
     {
         $book = Book::findOrFail($id);
         $book_reviews = $book->reviews()->latest()->get();
-        return view('public.book-details' , compact('book', 'book_reviews'));
+        if ($book->pdf_id != 0){
+            $pdf_file_url = Pdf_file::findOrFail($book->pdf_id);
+        }
+        else{
+            $pdf_file_url = Pdf_file::findOrFail(1);
+        }
+        return view('public.book-details' , compact('book', 'book_reviews', 'pdf_file_url'));
     }
 }

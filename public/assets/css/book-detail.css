@@ -1,0 +1,33 @@
+#purchase_bt {
+    display: block;
+}
+
+#hiden_purchasing_method {
+    display: none;
+    text-align: center;
+}
+
+.buy_method {
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+#hidden_down_bt {
+    display: none;
+}
+
+#hidden_starting_time_bt {
+    display: none;
+}
+
+#duration_apply {
+    margin-right: 3px;
+}
+
+#pdf_file {
+    display: none;
+}
+
+#time_limit {
+    display: none;
+}

@@ -2,7 +2,7 @@
     <div class="sidebar-items">
         <div class="card my-4">
             <div class="card-header bg-dark text-white">
-                <h4>Books Ctaegories</h4>
+                <h4>Books Categories</h4>
             </div>
             <div class="card-body">
                 <ul class="ctg-list">

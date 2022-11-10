@@ -85,17 +85,17 @@ Bookshop - Book details
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="book-description p-3">
+                                    <div class="book-description p-3" id="book_description">
                                         <p>{!! Markdown::convertToHtml(e($book->description)) !!}</p>
                                     </div>
                                 </div>
-                                <div class="row justify-content-center" id="pdf_file">
+                                <div class="row justify-content-center mt-4" id="pdf_file">
                                     <iframe id="pdf_viewer" src="{{asset($pdf_file_url->pdf_file)}}#toolbar=0" width="98%" height="600" allowfullscreen="true">
                                             This browser does not support PDFs. Please download the PDF to view it: <a href="{{asset($pdf_file_url->pdf_file)}}">Download PDF</a>
                                     </iframe>
                                 </div>
                             </div>
-                            <div id="time_limit">Registration closes in <span id="time">00:00</span> minutes!</div>
+                            <div id="time_limit">Permission closes in <span id="time">00:00</span> minutes!</div>
                         </div>
                         <div class="card card-body my-4">
                             <div class="author-description d-flex flex-row">
@@ -142,9 +142,17 @@ Bookshop - Book details
             document.getElementById("pdf_file").style.display = "block";
             document.getElementById("hiden_purchasing_method").style.display = "none";
             document.getElementById("hidden_down_bt").style.display = "block";
+            document.getElementById("book_description").style.display = "none";
         }
 
         function select_duration() {
+            var final_sel_time = document.getElementById("duration_time").value;
+            // console.log(final_sel_time);
+            var Minutes = 60 * parseInt(final_sel_time),
+                display = document.querySelector('#time'),
+                ob1 = document.querySelector('#pdf_file'),
+                ob2 = document.querySelector('#time_limit');
+                ob3 = document.querySelector('#book_description');
             var duration_time = 0;
             var temp_src = document.getElementById("pdf_viewer").src;
             document.getElementById("pdf_viewer").src = temp_src;
@@ -153,12 +161,13 @@ Bookshop - Book details
             }
             else {
                 document.getElementById("hidden_starting_time_bt").style.display = "none";
-                document.getElementById("pdf_file").style.display = "block";           
+                document.getElementById("pdf_file").style.display = "block";          
                 document.getElementById("time_limit").style.display = "block";
-                
+                document.getElementById("book_description").style.display = "none";
+                startTimer(Minutes, display, ob1, ob2, ob3);
             }
         }
-        function startTimer(duration, display, ob1, ob2) {
+        function startTimer(duration, display, ob1, ob2, ob3) {
             // console.log(duration);
             var flag = 0;
             var timer = duration, minutes, seconds;
@@ -175,18 +184,21 @@ Bookshop - Book details
                         flag == 1;
                         ob1.style.display = "none";
                         ob2.style.display = "none";
+                        ob3.style.display = "block";
+                        window.location.reload();
                     }
                 }
             }, 1000);
         }
-        window.onload = function () {
-            var final_sel_time = document.getElementById("duration_time").value;
-            console.log(final_sel_time);
-            var Minutes = 60 * parseInt(final_sel_time),
-                display = document.querySelector('#time'),
-                ob1 = document.querySelector('#pdf_file'),
-                ob2 = document.querySelector('#time_limit');
-            startTimer(Minutes, display, ob1, ob2);
-        };
+        // window.onload = function () {
+        //     var final_sel_time = document.getElementById("duration_time").value;
+        //     console.log(final_sel_time);
+        //     var Minutes = 60 * parseInt(final_sel_time),
+        //         display = document.querySelector('#time'),
+        //         ob1 = document.querySelector('#pdf_file'),
+        //         ob2 = document.querySelector('#time_limit');
+        //         ob3 = document.querySelector('#book_description');
+        //     startTimer(Minutes, display, ob1, ob2, ob3);
+        // };
     </script>
 @endsection

@@ -47,6 +47,7 @@
                             <th>Discount</th>
                             <th>Price</th>
                             <th>Quantity</th>
+                            <th>Price/min</th>
                         </tr>
                         </thead>
                         <tfoot>
@@ -60,6 +61,7 @@
                             <th>Discount</th>
                             <th>Price</th>
                             <th>Quantity</th>
+                            <th>Price/min</th>
                         </tr>
                         </tfoot>
                         <tbody>
@@ -82,6 +84,7 @@
                             <td>{{$book->discount_rate}}%</td>
                             <td>{{$book->price}}</td>
                             <td>{{$book->quantity}}</td>
+                            <td>{{$book->price_per_min}}</td>
                         </tr>
                         @endforeach
                         </tbody>

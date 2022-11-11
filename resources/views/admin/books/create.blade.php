@@ -96,6 +96,16 @@
                 </div>
 
                 <div class="form-group">
+                    {!! Form::label('price_per_min','Price per minute (unit: $)') !!}
+                    {!! Form::text('price_per_min', null, ['class'=>'form-control '.($errors->has('price_per_min')? 'is-invalid': '')]) !!}
+                    @if($errors->has('price_per_min'))
+                        <span class="invalid-feedback">
+                    <strong>{{$errors->first('price_per_min')}}</strong>
+                </span>
+                    @endif
+                </div>
+
+                <div class="form-group">
                     {!! Form::label('image_id', 'Book Image') !!}
                     {!! Form::file('image_id', ['class'=>'form-control '.($errors->has('image_id')? 'is-invalid': '')]) !!}
                     <small>Max size 1MB</small>

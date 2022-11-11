@@ -90,7 +90,7 @@ Bookshop - Book details
                                             <button id="buy_by_time" class="btn btn-success btn-sm" onclick="buy_by_time()">Read by time</button>
                                         </div>
                                         <div class="row" id="hidden_down_bt">
-                                            <a href="{{asset($pdf_file_url->pdf_file)}}" class="btn btn-outline-danger btn-lg" download><i class="fas fa-download"></i></a>
+                                            <a href="{{asset($pdf_file_url->pdf_file)}}" class="btn btn-success btn-lg" download style="max-width: 130px; width: 100%"><i class="fas fa-download"></i></a>
                                         </div>
                                         <div class="row" id="hidden_starting_time_bt">
                                             <input type="number" value="1" id="duration_time"> minutes
@@ -123,7 +123,7 @@ Bookshop - Book details
                                             <button id="buy_by_time" class="btn btn-success btn-sm" onclick="buy_by_time()">Read by time</button>
                                         </div>
                                         <div class="row" id="hidden_down_bt">
-                                            <a href="{{asset($pdf_file_url->pdf_file)}}" class="btn btn-outline-danger btn-lg" download><i class="fas fa-download"></i></a>
+                                            <a href="{{asset($pdf_file_url->pdf_file)}}" class="btn btn-success btn-lg" download style="max-width: 130px; width: 100%"><i class="fas fa-download"></i></a>
                                         </div>
                                         <div class="row" id="hidden_starting_time_bt">
                                             <input type="number" value="1" id="duration_time"> minutes
@@ -193,6 +193,7 @@ Bookshop - Book details
             document.getElementById("hidden_purchasing_method").style.display = "none";
             document.getElementById("hidden_down_bt").style.display = "block";
             document.getElementById("book_description").style.display = "none";
+            document.getElementById("hidden_down_bt").style.paddingLeft = "13px";
 
             $.ajaxSetup({
                   headers: {

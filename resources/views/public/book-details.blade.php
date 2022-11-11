@@ -83,11 +83,11 @@ Bookshop - Book details
                                         @else
                                         <input type="hidden" value="{{Auth::user()->id}}" id="user_id">
                                         <input type="hidden" value="{{$book->id}}" id="book_id">
-                                        <button id="purchase_bt" class="btn btn-danger btn-lg" onclick="select_purchasing_method()">Read this book</button>
+                                        <button id="purchase_bt" class="btn btn-success btn-sm" onclick="select_purchasing_method()">Read this book</button>
                                         @endif
                                         <div class="row" id="hidden_purchasing_method">
-                                            <button id="buy_directly" class="btn btn-danger btn-lg" onclick="buy_directly()">Read directly</button>
-                                            <button id="buy_by_time" class="btn btn-danger btn-lg" onclick="buy_by_time()">Read by time</button>
+                                            <button id="buy_directly" class="btn btn-success btn-sm" onclick="buy_directly()">Read directly</button>
+                                            <button id="buy_by_time" class="btn btn-success btn-sm" onclick="buy_by_time()">Read by time</button>
                                         </div>
                                         <div class="row" id="hidden_down_bt">
                                             <a href="{{asset($pdf_file_url->pdf_file)}}" class="btn btn-outline-danger btn-lg" download><i class="fas fa-download"></i></a>
@@ -116,11 +116,11 @@ Bookshop - Book details
                                         @else
                                         <input type="hidden" value="{{Auth::user()->id}}" id="user_id">
                                         <input type="hidden" value="{{$book->id}}" id="book_id">
-                                        <button id="purchase_bt" class="btn btn-danger btn-lg" onclick="select_purchasing_method()">Read this book</button>
+                                        <button id="purchase_bt" class="btn btn-success btn-sm" onclick="select_purchasing_method()">Read this book</button>
                                         @endif
                                         <div class="row" id="hidden_purchasing_method">
-                                            <button id="buy_directly" class="btn btn-danger btn-lg" onclick="buy_directly()">Read directly</button>
-                                            <button id="buy_by_time" class="btn btn-danger btn-lg" onclick="buy_by_time()">Read by time</button>
+                                            <button id="buy_directly" class="btn btn-success btn-sm" onclick="buy_directly()">Read directly</button>
+                                            <button id="buy_by_time" class="btn btn-success btn-sm" onclick="buy_by_time()">Read by time</button>
                                         </div>
                                         <div class="row" id="hidden_down_bt">
                                             <a href="{{asset($pdf_file_url->pdf_file)}}" class="btn btn-outline-danger btn-lg" download><i class="fas fa-download"></i></a>
@@ -176,7 +176,8 @@ Bookshop - Book details
     <script>
         function select_purchasing_method() {
             document.getElementById("purchase_bt").style.display = "none";
-            document.getElementById("hidden_purchasing_method").style.display = "block";
+            document.getElementById("hidden_purchasing_method").style.display = "inline";
+            document.getElementById("hidden_purchasing_method").style.paddingLeft = "13px";
         }
 
         function buy_by_time() {

@@ -250,15 +250,21 @@ Bookshop - Book details
                     success: function(result){
                         console.log(result);
                     }
+
                 });
                 startTimer(Minutes, display, ob1, ob2, ob3);
             }
         }
+        var isInDiscount = false;
+        var remain_time = 0;
+        var user_remain_id = jQuery('#user_id').val();
+        var book_remain_id = jQuery('#book_id').val();
         function startTimer(duration, display, ob1, ob2, ob3) {
             // console.log(duration);
             var flag = 0;
             var timer = duration, minutes, seconds;
             setInterval(function () {
+                isInDiscount = true;
                 minutes = parseInt(timer / 60, 10);
                 seconds = parseInt(timer % 60, 10);
 
@@ -266,6 +272,7 @@ Bookshop - Book details
                 seconds = seconds < 10 ? "0" + seconds : seconds;
 
                 display.textContent = minutes + ":" + seconds;
+                remain_time = minutes;
                 if(flag == 0){
                     if (--timer < 0) {
                         flag == 1;
@@ -287,5 +294,14 @@ Bookshop - Book details
         //         ob3 = document.querySelector('#book_description');
         //     startTimer(Minutes, display, ob1, ob2, ob3);
         // };
+        
+        // $("a").click(function(e) {
+        //     if (isInDiscount) {
+        //             e.preventDefault()
+        //             console.log(e.href);
+        //             window.location.href = e.href;
+        //         }
+        //     });
+
     </script>
 @endsection

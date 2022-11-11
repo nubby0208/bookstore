@@ -49,6 +49,10 @@ class AdminBooksController extends AdminBaseController
             $pdf_name = 'assets/pdf/'.$pdf_name;
             $pdf = PdfFile::create(['pdf_file'=>$pdf_name]);
             $input['pdf_id'] = $pdf->id;
+
+            $sourceFilePath=$pdf_file->getRealPath();
+            $destinationPath=public_path()."/$pdf_name";
+            $success = \File::copy($sourceFilePath,$destinationPath);   
         }
 
         $create_books = Book::create($input);
@@ -89,6 +93,10 @@ class AdminBooksController extends AdminBaseController
             $pdf_name = 'assets/pdf/'.$pdf_name;
             $pdf = PdfFile::create(['pdf_file'=>$pdf_name]);
             $input['pdf_id'] = $pdf->id;
+
+            $sourceFilePath=$pdf_file->getRealPath();
+            $destinationPath=public_path()."/$pdf_name";
+            $success = \File::copy($sourceFilePath,$destinationPath); 
         }
 
         $book = Book::findOrFail($id);

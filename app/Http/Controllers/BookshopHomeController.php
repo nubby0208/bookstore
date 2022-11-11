@@ -78,8 +78,10 @@ class BookshopHomeController extends Controller
 
     public function bookDetails($id)
     {
-        $book = Book::findOrFail($id);
+        // $book = Book::findOrFail($id);
+        $book = Book::with('readstates')->findOrFail($id);
         $book_reviews = $book->reviews()->latest()->get();
+        // $state = Book::with('readstates')->get();
         if ($book->pdf_id != 0){
             $pdf_file_url = PdfFile::findOrFail($book->pdf_id);
         }
@@ -91,12 +93,16 @@ class BookshopHomeController extends Controller
 
     public function readDirect(Request $request)
     {
-        $readState = new ReadState;
-        $readState->user_id = $request->user;
-        $readState->book_id = $request->book;
-        $readState->state = $request->state;
-        $readState->save();
-        
-        return response()->json(['success'=>'Data is successfully added']);
+        $temp = ReadState::where('user_id', $request->user)->where('book_id', $request->book)->get();
+        // var_dump($temp);
+        if(count($temp) == 0){
+            $readState = new ReadState;
+            $readState->user_id = $request->user;
+            $readState->book_id = $request->book;
+            $readState->state = $request->state;
+            $readState->save();
+        }
+
+        return response()->json(['success'=>'success']);
     }
 }

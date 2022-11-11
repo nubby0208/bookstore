@@ -183,6 +183,8 @@ Bookshop - Book details
             document.getElementById("hidden_starting_time_bt").style.display = "block";
             document.getElementById("hidden_purchasing_method").style.display = "none";
             document.getElementById("hidden_down_bt").style.display = "none";
+
+           
         }
 
         function buy_directly() {
@@ -213,6 +215,7 @@ Bookshop - Book details
         function select_duration() {
             var final_sel_time = document.getElementById("duration_time").value;
             // console.log(final_sel_time);
+            var final_minutes = parseInt(final_sel_time); 
             var Minutes = 60 * parseInt(final_sel_time),
                 display = document.querySelector('#time'),
                 ob1 = document.querySelector('#pdf_file'),
@@ -229,6 +232,25 @@ Bookshop - Book details
                 document.getElementById("pdf_file").style.display = "block";          
                 document.getElementById("time_limit").style.display = "block";
                 document.getElementById("book_description").style.display = "none";
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    url: "{{ url('/book/duration') }}",
+                    method: 'post',
+                    data: {
+                        user: jQuery('#user_id').val(),
+                        book: jQuery('#book_id').val(),
+                        state: 2,
+                        time: final_minutes
+                    },
+                    success: function(result){
+                        console.log(result);
+                    }
+                });
                 startTimer(Minutes, display, ob1, ob2, ob3);
             }
         }

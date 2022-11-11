@@ -27,6 +27,7 @@ Route::get('/book/{book}', 'BookshopHomeController@bookDetails')->name('book-det
 Route::post('/book/{book}/review', 'ReviewsController@store')->name('book.review');
 
 Route::post('/book/read', 'BookshopHomeController@readDirect');
+Route::post('/book/duration', 'BookshopHomeController@readDuration');
 
 // Cart Route
 Route::post('/cart/add', 'ShoppingCartController@add_to_cart')->name('cart.add');

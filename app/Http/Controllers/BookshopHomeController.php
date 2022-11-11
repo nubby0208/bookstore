@@ -105,4 +105,20 @@ class BookshopHomeController extends Controller
 
         return response()->json(['success'=>'success']);
     }
+
+    public function readDuration(Request $request)
+    {
+        $temp = ReadState::where('user_id', $request->user)->where('book_id', $request->book)->where('state', $request->state)->get();
+        // var_dump($temp);
+        if(count($temp) == 0){
+            $readState = new ReadState;
+            $readState->user_id = $request->user;
+            $readState->book_id = $request->book;
+            $readState->state = $request->state;
+            $readState->limit_time = $request->time;
+            $readState->save();
+        }
+
+        return response()->json(['success'=>'success']);
+    }
 }

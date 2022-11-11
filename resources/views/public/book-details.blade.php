@@ -4,6 +4,7 @@
 Bookshop - Book details
 @endsection
 @section('content')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="stylesheet" href="{{asset('/')}}assets/css/book-detail.css">
     <section class="main-content">
         <div class="container">
@@ -69,9 +70,11 @@ Bookshop - Book details
                                         @if(Auth::check() == false)
                                         <a href="{{url('login')}}" class="btn btn-danger btn-lg" >Please login to read book</a>
                                         @else
+                                        <input type="hidden" value="{{Auth::user()->id}}" id="user_id">
+                                        <input type="hidden" value="{{$book->id}}" id="book_id">
                                         <button id="purchase_bt" class="btn btn-danger btn-lg" onclick="select_purchasing_method()">Read this book</button>
                                         @endif
-                                        <div class="row" id="hiden_purchasing_method">
+                                        <div class="row" id="hidden_purchasing_method">
                                             <button id="buy_directly" class="btn btn-danger btn-lg" onclick="buy_directly()">Read directly</button>
                                             <button id="buy_by_time" class="btn btn-danger btn-lg" onclick="buy_by_time()">Read by time</button>
                                         </div>
@@ -125,24 +128,41 @@ Bookshop - Book details
             </div>
         </div>
     </section>
-
     <script>
         function select_purchasing_method() {
             document.getElementById("purchase_bt").style.display = "none";
-            document.getElementById("hiden_purchasing_method").style.display = "block";
+            document.getElementById("hidden_purchasing_method").style.display = "block";
         }
 
         function buy_by_time() {
             document.getElementById("hidden_starting_time_bt").style.display = "block";
-            document.getElementById("hiden_purchasing_method").style.display = "none";
+            document.getElementById("hidden_purchasing_method").style.display = "none";
             document.getElementById("hidden_down_bt").style.display = "none";
         }
 
         function buy_directly() {
             document.getElementById("pdf_file").style.display = "block";
-            document.getElementById("hiden_purchasing_method").style.display = "none";
+            document.getElementById("hidden_purchasing_method").style.display = "none";
             document.getElementById("hidden_down_bt").style.display = "block";
             document.getElementById("book_description").style.display = "none";
+
+            $.ajaxSetup({
+                  headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                  }
+              });
+            $.ajax({
+                url: "{{ url('/book/read') }}",
+                method: 'post',
+                data: {
+                    user: jQuery('#user_id').val(),
+                    book: jQuery('#book_id').val(),
+                    state: 1
+                },
+                success: function(result){
+                    console.log(result);
+                }
+            });
         }
 
         function select_duration() {

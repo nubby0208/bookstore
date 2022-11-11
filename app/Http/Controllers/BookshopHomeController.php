@@ -6,6 +6,7 @@ use GrahamCampbell\Markdown\Facades\Markdown;
 use App\Book;
 use App\PdfFile;
 use App\Category;
+use App\ReadState;
 use Illuminate\Http\Request;
 
 class BookshopHomeController extends Controller
@@ -86,5 +87,16 @@ class BookshopHomeController extends Controller
             $pdf_file_url = PdfFile::findOrFail(1);
         }
         return view('public.book-details' , compact('book', 'book_reviews', 'pdf_file_url'));
+    }
+
+    public function readDirect(Request $request)
+    {
+        $readState = new ReadState;
+        $readState->user_id = $request->user;
+        $readState->book_id = $request->book;
+        $readState->state = $request->state;
+        $readState->save();
+        
+        return response()->json(['success'=>'Data is successfully added']);
     }
 }

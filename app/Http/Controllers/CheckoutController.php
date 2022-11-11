@@ -86,11 +86,6 @@ class CheckoutController extends Controller
         return redirect()->route('user.orders')
             ->with('success_message', 'Order placed successfully. Wait for confirmation.');
 
-
-
-
-
-
     }
 
     /**

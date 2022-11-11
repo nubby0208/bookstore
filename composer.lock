@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d3837801baf88a91b7eaee720a62c61a",
+    "content-hash": "ed5e1443a53ee75ffa23d950607720dd",
     "packages": [
         {
             "name": "bumbummen99/shoppingcart",
@@ -2367,6 +2367,60 @@
                 }
             ],
             "time": "2021-09-25T23:07:42+00:00"
+        },
+        {
+            "name": "sarfraznawaz2005/loading",
+            "version": "1.3.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sarfraznawaz2005/loading.git",
+                "reference": "07293c1c6bb46457ff8f981e06d0282e21d7b0c3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sarfraznawaz2005/loading/zipball/07293c1c6bb46457ff8f981e06d0282e21d7b0c3",
+                "reference": "07293c1c6bb46457ff8f981e06d0282e21d7b0c3",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5|~6|~7|~8",
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Sarfraznawaz2005\\Loading\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sarfraznawaz2005\\Loading\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sarfraz Ahmed",
+                    "email": "sarfraznawaz2005@gmail.com"
+                }
+            ],
+            "description": "Laravel package to add loading indicator to pages while page is loading.",
+            "keywords": [
+                "indicator",
+                "laravel",
+                "loader",
+                "loading"
+            ],
+            "support": {
+                "issues": "https://github.com/sarfraznawaz2005/loading/issues",
+                "source": "https://github.com/sarfraznawaz2005/loading/tree/1.3.5"
+            },
+            "time": "2021-05-02T18:10:28+00:00"
         },
         {
             "name": "stripe/stripe-php",

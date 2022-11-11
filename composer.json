@@ -16,6 +16,7 @@
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "5.8.*",
+        "sarfraznawaz2005/loading": "^1.3",
         "stripe/stripe-php": "^7.14"
     },
     "require-dev": {

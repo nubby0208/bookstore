@@ -82,13 +82,13 @@ Bookshop - Book details
                                         <input type="hidden" value="{{Auth::user()->id}}" id="user_id">
                                         <input type="hidden" value="{{$book->id}}" id="book_id">
                                         @if(count($book->readstates) == 0)
-                                        <button id="purchase_bt" class="btn btn-danger btn-lg" onclick="select_purchasing_method()">Read this book</button>
+                                        <button id="purchase_bt" class="btn btn-success btn-sm" onclick="select_purchasing_method()">Read this book</button>
                                         <div class="row" id="hidden_purchasing_method">
-                                            <button id="buy_directly" class="btn btn-danger btn-lg" onclick="buy_directly()">Read directly</button>
-                                            <button id="buy_by_time" class="btn btn-danger btn-lg" onclick="buy_by_time()">Read by time</button>
+                                            <button id="buy_directly" class="btn btn-success btn-sm" onclick="buy_directly()">Read directly</button>
+                                            <button id="buy_by_time" class="btn btn-success btn-sm" onclick="buy_by_time()">Read by time</button>
                                         </div>
                                         <div class="row" id="hidden_down_bt">
-                                            <a href="{{asset($pdf_file_url->pdf_file)}}" class="btn btn-outline-danger btn-lg" download><i class="fas fa-download"></i></a>
+                                            <a href="{{asset($pdf_file_url->pdf_file)}}" class="btn btn-success btn-sm" download style="max-width: 130px; width: 100%"><i class="fas fa-download"></i></a>
                                         </div>
                                         <div class="row" id="hidden_starting_time_bt">
                                             <input type="number" value="1" id="duration_time"> minutes
@@ -115,7 +115,7 @@ Bookshop - Book details
                                         
                                         @if($book->readstates[0]->user_id == Auth::user()->id)
                                         <div class="row">
-                                            <a href="{{asset($pdf_file_url->pdf_file)}}" class="btn btn-outline-danger btn-lg" download><i class="fas fa-download"></i></a>
+                                            <a href="{{asset($pdf_file_url->pdf_file)}}" class="btn btn-success btn-sm" download style="max-width: 130px; width: 100%"><i class="fas fa-download"></i></a>
                                         </div>
                                         </div>
                                 </div>
@@ -127,13 +127,13 @@ Bookshop - Book details
                             </div>
                             </div>
                                         @else
-                                        <button id="purchase_bt" class="btn btn-danger btn-lg" onclick="select_purchasing_method()">Read this book</button>
+                                        <button id="purchase_bt" class="btn btn-success btn-sm" onclick="select_purchasing_method()">Read this book</button>
                                         <div class="row" id="hidden_purchasing_method">
-                                            <button id="buy_directly" class="btn btn-danger btn-lg" onclick="buy_directly()">Read directly</button>
-                                            <button id="buy_by_time" class="btn btn-danger btn-lg" onclick="buy_by_time()">Read by time</button>
+                                            <button id="buy_directly" class="btn btn-success btn-sm" onclick="buy_directly()">Read directly</button>
+                                            <button id="buy_by_time" class="btn btn-success btn-sm" onclick="buy_by_time()">Read by time</button>
                                         </div>
                                         <div class="row" id="hidden_down_bt">
-                                            <a href="{{asset($pdf_file_url->pdf_file)}}" class="btn btn-outline-danger btn-lg" download><i class="fas fa-download"></i></a>
+                                            <a href="{{asset($pdf_file_url->pdf_file)}}" class="btn btn-success btn-sm" download style="max-width: 130px; width: 100%"><i class="fas fa-download"></i></a>
                                         </div>
                                         <div class="row" id="hidden_starting_time_bt">
                                             <input type="number" value="1" id="duration_time"> minutes
@@ -157,13 +157,13 @@ Bookshop - Book details
                                         @endif
 
                                         @else
-                                        <button id="purchase_bt" class="btn btn-danger btn-lg" onclick="select_purchasing_method()">Read this book</button>
+                                        <button id="purchase_bt" class="btn btn-success btn-sm" onclick="select_purchasing_method()">Read this book</button>
                                         <div class="row" id="hidden_purchasing_method">
-                                            <button id="buy_directly" class="btn btn-danger btn-lg" onclick="buy_directly()">Read directly</button>
-                                            <button id="buy_by_time" class="btn btn-danger btn-lg" onclick="buy_by_time()">Read by time</button>
+                                            <button id="buy_directly" class="btn btn-success btn-sm" onclick="buy_directly()">Read directly</button>
+                                            <button id="buy_by_time" class="btn btn-success btn-sm" onclick="buy_by_time()">Read by time</button>
                                         </div>
                                         <div class="row" id="hidden_down_bt">
-                                            <a href="{{asset($pdf_file_url->pdf_file)}}" class="btn btn-outline-danger btn-lg" download><i class="fas fa-download"></i></a>
+                                            <a href="{{asset($pdf_file_url->pdf_file)}}" class="btn btn-success btn-sm" download style="max-width: 130px; width: 100%"><i class="fas fa-download"></i></a>
                                         </div>
                                         <div class="row" id="hidden_starting_time_bt">
                                             <input type="number" value="1" id="duration_time"> minutes
@@ -220,8 +220,8 @@ Bookshop - Book details
 
         function select_purchasing_method() {
             document.getElementById("purchase_bt").style.display = "none";
-            document.getElementById("hidden_purchasing_method").style.display = "block";
-            // document.getElementById("hidden_purchasing_method").style.paddingLeft = "13px";
+            document.getElementById("hidden_purchasing_method").style.display = "inline";
+            document.getElementById("hidden_purchasing_method").style.paddingLeft = "13px";
         }
 
         function buy_by_time() {

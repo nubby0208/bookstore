@@ -216,6 +216,8 @@ Bookshop - Book details
         </div>
     </section>
     <script>
+        var other_link_state = false;
+
         function select_purchasing_method() {
             document.getElementById("purchase_bt").style.display = "none";
             document.getElementById("hidden_purchasing_method").style.display = "block";
@@ -237,6 +239,7 @@ Bookshop - Book details
             document.getElementById("book_description").style.display = "none";
             // document.getElementById("hidden_down_bt").style.paddingLeft = "13px";
 
+            // console.log(user_remain_id);
             $.ajaxSetup({
                   headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -296,27 +299,55 @@ Bookshop - Book details
                     }
 
                 });
-                isInDiscount = true;
                 startTimer(Minutes, display, ob1, ob2, ob3);
             }
         }
-        var isInDiscount = false;
-        var remain_time = 0;
-        var user_remain_id = jQuery('#user_id').val();
-        var book_remain_id = jQuery('#book_id').val();
+        
         function startTimer(duration, display, ob1, ob2, ob3) {
+            var limit_time = parseInt(document.getElementById("duration_time").value);
             // console.log(duration);
             var flag = 0;
             var timer = duration, minutes, seconds;
-            setInterval(function () {
+            var remain_time_int;
+            if(other_link_state == false){
+                
+                setInterval(function () {
                 minutes = parseInt(timer / 60, 10);
                 seconds = parseInt(timer % 60, 10);
+                
+                remain_time_int = minutes;
 
                 minutes = minutes < 10 ? "0" + minutes : minutes;
                 seconds = seconds < 10 ? "0" + seconds : seconds;
 
                 display.textContent = minutes + ":" + seconds;
-                remain_time = minutes;
+                // remain_time = minutes;
+                
+                // $("a").click(function(e) {
+                //     e.preventDefault();
+                //     console.log(jQuery('#user_id').val(), jQuery('#book_id').val(), limit_time, remain_time_int);
+                //     $.ajaxSetup({
+                //         headers: {
+                //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                //         }
+                //     });
+                //     $.ajax({
+                //         url: "{{ url('/book/remain') }}",
+                //         method: 'post',
+                //         data: {
+                //             user: jQuery('#user_id').val(),
+                //             book: jQuery('#book_id').val(),
+                //             state: 3,
+                //             limit_time: limit_time,
+                //             remain_time: remain_time_int
+                //         },
+                //         success: function(result){
+                //             console.log(result);
+                //         }
+
+                //     });
+                //     // window.location.href = e.href;
+                // });
                 if(flag == 0){
                     if (--timer < 0) {
                         flag == 1;
@@ -327,6 +358,7 @@ Bookshop - Book details
                     }
                 }
             }, 1000);
+            }            
         }
         // window.onload = function () {
         //     var final_sel_time = document.getElementById("duration_time").value;
@@ -339,13 +371,15 @@ Bookshop - Book details
         //     startTimer(Minutes, display, ob1, ob2, ob3);
         // };
         
-        // $('a').click(function(e) {
-        //     if (isInDiscount) {
+        // $("a").click(function() {
+        //     alert('asdasdasd');
+        //     // if (isInDiscount) {
         //             e.preventDefault()
-        //             console.log("that's right!");
-        //             window.location.href = e.href;
-        //         }
+        //             // console.log("that's right!");
+        //             // window.location.href = e.href;
+        //         // }
         //     });
+        
 
     </script>
 @endsection

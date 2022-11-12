@@ -127,4 +127,23 @@ class BookshopHomeController extends Controller
 
         return response()->json(['success'=>'success']);
     }
+
+    // public function readRemain(Request $request)
+    // {
+    //     $temp = ReadState::where('user_id', $request->user)->where('book_id', $request->book)->where('state', 2)->get();
+    //     if(count($temp) == 0){
+    //         $readState = new ReadState;
+    //         $readState->user_id = $request->user;
+    //         $readState->book_id = $request->book;
+    //         $readState->state = $request->state;
+    //         $readState->limit_time = $request->limit_time;
+    //         $readState->remain_time = $request->remain_time_int;
+    //         $readState->save();
+    //     }
+    //     else{
+    //         ReadState::where('user_id', $request->user)->where('book_id', $request->book)->where('state', 2)->update(array('limit_time'=>$request->limit_time, 'remain_time'=>$request->remain_time_int));
+    //     }
+
+    //     return response()->json(['success'=>'success']);
+    // }
 }

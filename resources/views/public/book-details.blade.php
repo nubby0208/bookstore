@@ -107,7 +107,7 @@ Bookshop - Book details
                                     </iframe>
                                 </div>
                             </div>
-                            <div id="time_limit">Registration closes in <span id="time">00:00</span> minutes!</div>
+                            <div id="time_limit">Permission closes in <span id="time">00:00</span> minutes!</div>
                         </div>
                                         @else
 
@@ -152,7 +152,7 @@ Bookshop - Book details
                                     </iframe>
                                 </div>
                             </div>
-                            <div id="time_limit">Registration closes in <span id="time">00:00</span> minutes!</div>
+                            <div id="time_limit">Permission closes in <span id="time">00:00</span> minutes!</div>
                         </div>
                                         @endif
 
@@ -182,7 +182,7 @@ Bookshop - Book details
                                     </iframe>
                                 </div>
                             </div>
-                            <div id="time_limit">Registration closes in <span id="time">00:00</span> minutes!</div>
+                            <div id="time_limit">Permission closes in <span id="time">00:00</span> minutes!</div>
                         </div>
                                         @endif
                             @endif
@@ -296,6 +296,7 @@ Bookshop - Book details
                     }
 
                 });
+                isInDiscount = true;
                 startTimer(Minutes, display, ob1, ob2, ob3);
             }
         }
@@ -308,7 +309,6 @@ Bookshop - Book details
             var flag = 0;
             var timer = duration, minutes, seconds;
             setInterval(function () {
-                isInDiscount = true;
                 minutes = parseInt(timer / 60, 10);
                 seconds = parseInt(timer % 60, 10);
 
@@ -339,10 +339,10 @@ Bookshop - Book details
         //     startTimer(Minutes, display, ob1, ob2, ob3);
         // };
         
-        // $("a").click(function(e) {
+        // $('a').click(function(e) {
         //     if (isInDiscount) {
         //             e.preventDefault()
-        //             console.log(e.href);
+        //             console.log("that's right!");
         //             window.location.href = e.href;
         //         }
         //     });

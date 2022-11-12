@@ -118,6 +118,9 @@ class BookshopHomeController extends Controller
             $readState->limit_time = $request->time;
             $readState->save();
         }
+        else{
+            ReadState::where('user_id', $request->user)->where('book_id', $request->book)->where('state', $request->state)->update(array('limit_time'=>$request->time));
+        }
 
         return response()->json(['success'=>'success']);
     }

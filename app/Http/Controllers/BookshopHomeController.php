@@ -102,6 +102,9 @@ class BookshopHomeController extends Controller
             $readState->state = $request->state;
             $readState->save();
         }
+        else{
+            ReadState::where('user_id', $request->user)->where('book_id', $request->book)->update(array('state'=>$request->state));
+        }
 
         return response()->json(['success'=>'success']);
     }

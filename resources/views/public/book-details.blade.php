@@ -67,30 +67,28 @@ Bookshop - Book details
                                         </form>
                                         @include('layouts.includes.flash-message')
                                         
-                                        @if(count($book->readstates) != 0)
-
-                                        @if($book->readstates[0]->state == 1)
-                                                </div>
-                                        </div>
-                                        <div class="row justify-content-center mt-4">
-                                            <iframe id="pdf_viewer" src="{{asset($pdf_file_url->pdf_file)}}#toolbar=0" width="98%" height="950" allowfullscreen="true">
-                                                    This browser does not support PDFs. Please download the PDF to view it: <a href="{{asset($pdf_file_url->pdf_file)}}">Download PDF</a>
-                                            </iframe>
-                                        </div>
-                                        @else
                                         @if(Auth::check() == false)
                                         <a href="{{url('login')}}" class="btn btn-danger btn-lg" >Please login to read book</a>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                    <div class="book-description p-3">
+                                        <p>{!! Markdown::convertToHtml(e($book->description)) !!}</p>
+                                    </div>
+                                </div>
+                                </div>
+                                </div>
                                         @else
                                         <input type="hidden" value="{{Auth::user()->id}}" id="user_id">
                                         <input type="hidden" value="{{$book->id}}" id="book_id">
-                                        <button id="purchase_bt" class="btn btn-success btn-sm" onclick="select_purchasing_method()">Read this book</button>
-                                        @endif
+                                        @if(count($book->readstates) == 0)
+                                        <button id="purchase_bt" class="btn btn-danger btn-lg" onclick="select_purchasing_method()">Read this book</button>
                                         <div class="row" id="hidden_purchasing_method">
-                                            <button id="buy_directly" class="btn btn-success btn-sm" onclick="buy_directly()">Read directly</button>
-                                            <button id="buy_by_time" class="btn btn-success btn-sm" onclick="buy_by_time()">Read by time</button>
+                                            <button id="buy_directly" class="btn btn-danger btn-lg" onclick="buy_directly()">Read directly</button>
+                                            <button id="buy_by_time" class="btn btn-danger btn-lg" onclick="buy_by_time()">Read by time</button>
                                         </div>
                                         <div class="row" id="hidden_down_bt">
-                                            <a href="{{asset($pdf_file_url->pdf_file)}}" class="btn btn-success btn-sm" download style="max-width: 130px; width: 100%"><i class="fas fa-download"></i></a>
+                                            <a href="{{asset($pdf_file_url->pdf_file)}}" class="btn btn-outline-danger btn-lg" download><i class="fas fa-download"></i></a>
                                         </div>
                                         <div class="row" id="hidden_starting_time_bt">
                                             <input type="number" value="1" id="duration_time"> minutes
@@ -104,47 +102,91 @@ Bookshop - Book details
                                     </div>
                                 </div>
                                 <div class="row justify-content-center mt-4" id="pdf_file">
-                                    <iframe id="pdf_viewer" src="{{asset($pdf_file_url->pdf_file)}}#toolbar=0" width="98%" height="950" allowfullscreen="true">
+                                    <iframe id="pdf_viewer" src="{{asset($pdf_file_url->pdf_file)}}#toolbar=0" width="98%" height="600" allowfullscreen="true">
                                             This browser does not support PDFs. Please download the PDF to view it: <a href="{{asset($pdf_file_url->pdf_file)}}">Download PDF</a>
                                     </iframe>
                                 </div>
-                                @endif
-
-                                @else
-                                @if(Auth::check() == false)
-                                        <a href="{{url('login')}}" class="btn btn-danger btn-lg" >Please login to read book</a>
-                                        @else
-                                        <input type="hidden" value="{{Auth::user()->id}}" id="user_id">
-                                        <input type="hidden" value="{{$book->id}}" id="book_id">
-                                        <button id="purchase_bt" class="btn btn-success btn-sm" onclick="select_purchasing_method()">Read this book</button>
-                                        @endif
-                                        <div class="row" id="hidden_purchasing_method">
-                                            <button id="buy_directly" class="btn btn-success btn-sm" onclick="buy_directly()">Read directly</button>
-                                            <button id="buy_by_time" class="btn btn-success btn-sm" onclick="buy_by_time()">Read by time</button>
-                                        </div>
-                                        <div class="row" id="hidden_down_bt">
-                                            <a href="{{asset($pdf_file_url->pdf_file)}}" class="btn btn-success btn-sm" download style="max-width: 130px; width: 100%"><i class="fas fa-download"></i></a>
-                                        </div>
-                                        <div class="row" id="hidden_starting_time_bt">
-                                            <input type="number" value="1" id="duration_time"> minutes
-                                            <button id="duration_apply" class="btn btn-danger btn-sm" onclick="select_duration()">Apply</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="book-description p-3" id="book_description">
-                                        <p>{!! Markdown::convertToHtml(e($book->description)) !!}</p>
-                                    </div>
-                                </div>
-                                <div class="row justify-content-center mt-4" id="pdf_file">
-                                    <iframe id="pdf_viewer" src="{{asset($pdf_file_url->pdf_file)}}#toolbar=0" width="98%" height="950" allowfullscreen="true">
-                                            This browser does not support PDFs. Please download the PDF to view it: <a href="{{asset($pdf_file_url->pdf_file)}}">Download PDF</a>
-                                    </iframe>
-                                </div>
-                                @endif
                             </div>
-                            <div id="time_limit">Permission closes in <span id="time">00:00</span> minutes!</div>
+                            <div id="time_limit">Registration closes in <span id="time">00:00</span> minutes!</div>
                         </div>
+                                        @else
+
+                                        @if($book->readstates[0]->state == 1)
+                                        
+                                        @if($book->readstates[0]->user_id == Auth::user()->id)
+                                        <div class="row">
+                                            <a href="{{asset($pdf_file_url->pdf_file)}}" class="btn btn-outline-danger btn-lg" download><i class="fas fa-download"></i></a>
+                                        </div>
+                                        </div>
+                                </div>
+                                <div class="row justify-content-center mt-4">
+                                    <iframe id="pdf_viewer" src="{{asset($pdf_file_url->pdf_file)}}#toolbar=0" width="98%" height="600" allowfullscreen="true">
+                                            This browser does not support PDFs. Please download the PDF to view it: <a href="{{asset($pdf_file_url->pdf_file)}}">Download PDF</a>
+                                    </iframe>
+                                </div>
+                            </div>
+                            </div>
+                                        @else
+                                        <button id="purchase_bt" class="btn btn-danger btn-lg" onclick="select_purchasing_method()">Read this book</button>
+                                        <div class="row" id="hidden_purchasing_method">
+                                            <button id="buy_directly" class="btn btn-danger btn-lg" onclick="buy_directly()">Read directly</button>
+                                            <button id="buy_by_time" class="btn btn-danger btn-lg" onclick="buy_by_time()">Read by time</button>
+                                        </div>
+                                        <div class="row" id="hidden_down_bt">
+                                            <a href="{{asset($pdf_file_url->pdf_file)}}" class="btn btn-outline-danger btn-lg" download><i class="fas fa-download"></i></a>
+                                        </div>
+                                        <div class="row" id="hidden_starting_time_bt">
+                                            <input type="number" value="1" id="duration_time"> minutes
+                                            <button id="duration_apply" class="btn btn-danger btn-sm" onclick="select_duration()">Apply</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="book-description p-3" id="book_description">
+                                        <p>{!! Markdown::convertToHtml(e($book->description)) !!}</p>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center mt-4" id="pdf_file">
+                                    <iframe id="pdf_viewer" src="{{asset($pdf_file_url->pdf_file)}}#toolbar=0" width="98%" height="600" allowfullscreen="true">
+                                            This browser does not support PDFs. Please download the PDF to view it: <a href="{{asset($pdf_file_url->pdf_file)}}">Download PDF</a>
+                                    </iframe>
+                                </div>
+                            </div>
+                            <div id="time_limit">Registration closes in <span id="time">00:00</span> minutes!</div>
+                        </div>
+                                        @endif
+
+                                        @else
+                                        <button id="purchase_bt" class="btn btn-danger btn-lg" onclick="select_purchasing_method()">Read this book</button>
+                                        <div class="row" id="hidden_purchasing_method">
+                                            <button id="buy_directly" class="btn btn-danger btn-lg" onclick="buy_directly()">Read directly</button>
+                                            <button id="buy_by_time" class="btn btn-danger btn-lg" onclick="buy_by_time()">Read by time</button>
+                                        </div>
+                                        <div class="row" id="hidden_down_bt">
+                                            <a href="{{asset($pdf_file_url->pdf_file)}}" class="btn btn-outline-danger btn-lg" download><i class="fas fa-download"></i></a>
+                                        </div>
+                                        <div class="row" id="hidden_starting_time_bt">
+                                            <input type="number" value="1" id="duration_time"> minutes
+                                            <button id="duration_apply" class="btn btn-danger btn-sm" onclick="select_duration()">Apply</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="book-description p-3" id="book_description">
+                                        <p>{!! Markdown::convertToHtml(e($book->description)) !!}</p>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center mt-4" id="pdf_file">
+                                    <iframe id="pdf_viewer" src="{{asset($pdf_file_url->pdf_file)}}#toolbar=0" width="98%" height="600" allowfullscreen="true">
+                                            This browser does not support PDFs. Please download the PDF to view it: <a href="{{asset($pdf_file_url->pdf_file)}}">Download PDF</a>
+                                    </iframe>
+                                </div>
+                            </div>
+                            <div id="time_limit">Registration closes in <span id="time">00:00</span> minutes!</div>
+                        </div>
+                                        @endif
+                            @endif
+                        @endif
                         <div class="card card-body my-4">
                             <div class="author-description d-flex flex-row">
                                 <div class="author-img mr-4">
@@ -176,8 +218,8 @@ Bookshop - Book details
     <script>
         function select_purchasing_method() {
             document.getElementById("purchase_bt").style.display = "none";
-            document.getElementById("hidden_purchasing_method").style.display = "inline";
-            document.getElementById("hidden_purchasing_method").style.paddingLeft = "13px";
+            document.getElementById("hidden_purchasing_method").style.display = "block";
+            // document.getElementById("hidden_purchasing_method").style.paddingLeft = "13px";
         }
 
         function buy_by_time() {
@@ -193,7 +235,7 @@ Bookshop - Book details
             document.getElementById("hidden_purchasing_method").style.display = "none";
             document.getElementById("hidden_down_bt").style.display = "block";
             document.getElementById("book_description").style.display = "none";
-            document.getElementById("hidden_down_bt").style.paddingLeft = "13px";
+            // document.getElementById("hidden_down_bt").style.paddingLeft = "13px";
 
             $.ajaxSetup({
                   headers: {

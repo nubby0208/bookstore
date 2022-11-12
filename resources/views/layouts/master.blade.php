@@ -111,6 +111,7 @@
             $('footer').removeClass('blue-dark').addClass('bg-light');
             $('footer').removeClass('text-white').addClass('text-black');
             $('#galaxy_checkbox').prop('checked', true);
+            $('.nav-link').removeClass('text-white').addClass('text-black');
         } else {
             $('div.blue-dark').removeClass('blue-dark').addClass('bg-light');
             $('.text-white').removeClass('text-white').addClass('text-black');
@@ -118,6 +119,7 @@
             $('footer').removeClass('bg-light').addClass('blue-dark');
             $('footer').removeClass('text-black').addClass('text-white');
             $('#galaxy_checkbox').prop('checked', false);
+            $('.nav-link').removeClass('text-black').addClass('text-white');
         }
         is_light_mode = !is_light_mode;
     }

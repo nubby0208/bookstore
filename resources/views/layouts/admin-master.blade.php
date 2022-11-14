@@ -54,7 +54,7 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; <strong>Bookshop Management System. All right reserved. </strong> <span id="year"></span></span>
+                    <span id="year"></span>
                 </div>
             </div>
         </footer>

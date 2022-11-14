@@ -6,7 +6,7 @@
 @section('content')
     <div class="container">
         <div class="card my-4">
-            <div class="card-header bg-dark text-white">
+            <div class="card-header blue-dark text-white">
                 <h4><i class="fas fa-shopping-cart"></i> Shopping cart</h4>
             </div>
             <div class="card-body">

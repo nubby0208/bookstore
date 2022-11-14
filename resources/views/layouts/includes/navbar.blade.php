@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm text-white navbar-white p-1 border-bottom" id="nav-top">
+<nav class="navbar navbar-expand-sm text-white navbar-white p-1" id="nav-top">
     <div class="container">
         <a href="{{route('bookshop.home')}}" class="logo-img"></a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#nav-collapse">

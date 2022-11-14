@@ -5,7 +5,7 @@
         <div class="sidebar-brand-icon">
             <img src="{{asset('/')}}admin/img/logo.png" width="30" alt="">
         </div>
-        <div class="sidebar-brand-text mx-3">Book shop</div>
+        <div class="sidebar-brand-text mx-3">Paradise EsbookShop</div>
     </a>
 
     <!-- Divider -->

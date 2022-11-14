@@ -45,7 +45,7 @@
                 <div class="col-md-8">
                     <div class="content-area">
                         <div class="card my-4">
-                            <div class="card-header bg-dark">
+                            <div class="card-header blue-dark">
                                 <h4><a href="{{route('category', 'engineering')}}" class="text-white">Engineering Books</a></h4>
                             </div>
                             <div class="card-body">
@@ -85,7 +85,7 @@
                             </div>
                         </div>
                         <div class="card my-4">
-                            <div class="card-header bg-dark">
+                            <div class="card-header blue-dark">
                                 <h4><a href="{{route('category', 'literature')}}" class="text-white">Literature Books</a></h4>
                             </div>
                             <div class="card-body">
@@ -132,7 +132,7 @@
     <section class="discount-book mb-5" id="discount-books">
         <div class="container">
             <div class="card mb-10">
-                <div class="card-header bg-dark text-white">
+                <div class="card-header blue-dark text-white">
                     <h4><a href="{{route('discount-books')}}" class="text-white">Discount's Book</a></h4>
                 </div>
                 <div class="card-body">

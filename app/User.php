@@ -51,6 +51,10 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Review');
     }
+    public function readstates()
+    {
+        return $this->hasMany('App\ReadState');
+    }
 
     /*
     * Image Accessor
@@ -61,7 +65,7 @@ class User extends Authenticatable
     }
     public function getDefaultImgAttribute($value)
     {
-        return asset('/').'assets/img/'.'user-placeholder 3.png';
+        return asset('/').'assets/img/'.'user-placeholder.png';
     }
 
 

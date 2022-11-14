@@ -4,13 +4,15 @@
 Bookshop - Book details
 @endsection
 @section('content')
+<meta name="csrf-token" content="{{ csrf_token() }}">
+<link rel="stylesheet" href="{{asset('/')}}assets/css/book-detail.css">
     <section class="main-content">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
                     <div class="content-area">
                         <div class="card my-4">
-                            <div class="card-header bg-dark">
+                            <div class="card-header blue-dark">
                                 <h4 class="text-white">Book Details</h4>
                             </div>
                             <div class="card-body">
@@ -64,15 +66,127 @@ Bookshop - Book details
                                             </div>
                                         </form>
                                         @include('layouts.includes.flash-message')
-                                    </div>
+                                        
+                                        @if(Auth::check() == false)
+                                        <a href="{{url('login')}}" class="btn btn-danger btn-lg" >Please login to read book</a>
+                                        </div>
                                 </div>
                                 <div class="row">
                                     <div class="book-description p-3">
                                         <p>{!! Markdown::convertToHtml(e($book->description)) !!}</p>
                                     </div>
                                 </div>
+                                </div>
+                                </div>
+                                        @else
+                                        <input type="hidden" value="{{Auth::user()->id}}" id="user_id">
+                                        <input type="hidden" value="{{$book->id}}" id="book_id">
+                                        @if(count($book->readstates) == 0)
+                                        <button id="purchase_bt" class="btn btn-success btn-sm" onclick="select_purchasing_method()">Read this book</button>
+                                        <div class="row" id="hidden_purchasing_method">
+                                            <button id="buy_directly" class="btn btn-success btn-sm" onclick="buy_directly()">Read directly</button>
+                                            <button id="buy_by_time" class="btn btn-success btn-sm" onclick="buy_by_time()">Read by time</button>
+                                        </div>
+                                        <div class="row" id="hidden_down_bt">
+                                            <a href="{{asset($pdf_file_url->pdf_file)}}" class="btn btn-success btn-sm" download style="max-width: 130px; width: 100%"><i class="fas fa-download"></i></a>
+                                        </div>
+                                        <div class="row" id="hidden_starting_time_bt">
+                                            <input type="number" value="1" id="duration_time"> minutes
+                                            <button id="duration_apply" class="btn btn-danger btn-sm" onclick="select_duration()">Apply</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="book-description p-3" id="book_description">
+                                        <p>{!! Markdown::convertToHtml(e($book->description)) !!}</p>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center mt-4" id="pdf_file">
+                                    <iframe id="pdf_viewer" src="{{asset($pdf_file_url->pdf_file)}}#toolbar=0" width="98%" height="600" allowfullscreen="true">
+                                            This browser does not support PDFs. Please download the PDF to view it: <a href="{{asset($pdf_file_url->pdf_file)}}">Download PDF</a>
+                                    </iframe>
+                                </div>
                             </div>
+                            <div id="time_limit">Permission closes in <span id="time">00:00</span> minutes!</div>
                         </div>
+                                        @else
+
+                                        @if($book->readstates[0]->state == 1)
+                                        
+                                        @if($book->readstates[0]->user_id == Auth::user()->id)
+                                        <div class="row">
+                                            <a href="{{asset($pdf_file_url->pdf_file)}}" class="btn btn-success btn-sm" download style="max-width: 130px; width: 100%"><i class="fas fa-download"></i></a>
+                                        </div>
+                                        </div>
+                                </div>
+                                <div class="row justify-content-center mt-4">
+                                    <iframe id="pdf_viewer" src="{{asset($pdf_file_url->pdf_file)}}#toolbar=0" width="98%" height="600" allowfullscreen="true">
+                                            This browser does not support PDFs. Please download the PDF to view it: <a href="{{asset($pdf_file_url->pdf_file)}}">Download PDF</a>
+                                    </iframe>
+                                </div>
+                            </div>
+                            </div>
+                                        @else
+                                        <button id="purchase_bt" class="btn btn-success btn-sm" onclick="select_purchasing_method()">Read this book</button>
+                                        <div class="row" id="hidden_purchasing_method">
+                                            <button id="buy_directly" class="btn btn-success btn-sm" onclick="buy_directly()">Read directly</button>
+                                            <button id="buy_by_time" class="btn btn-success btn-sm" onclick="buy_by_time()">Read by time</button>
+                                        </div>
+                                        <div class="row" id="hidden_down_bt">
+                                            <a href="{{asset($pdf_file_url->pdf_file)}}" class="btn btn-success btn-sm" download style="max-width: 130px; width: 100%"><i class="fas fa-download"></i></a>
+                                        </div>
+                                        <div class="row" id="hidden_starting_time_bt">
+                                            <input type="number" value="1" id="duration_time"> minutes
+                                            <button id="duration_apply" class="btn btn-danger btn-sm" onclick="select_duration()">Apply</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="book-description p-3" id="book_description">
+                                        <p>{!! Markdown::convertToHtml(e($book->description)) !!}</p>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center mt-4" id="pdf_file">
+                                    <iframe id="pdf_viewer" src="{{asset($pdf_file_url->pdf_file)}}#toolbar=0" width="98%" height="600" allowfullscreen="true">
+                                            This browser does not support PDFs. Please download the PDF to view it: <a href="{{asset($pdf_file_url->pdf_file)}}">Download PDF</a>
+                                    </iframe>
+                                </div>
+                            </div>
+                            <div id="time_limit">Permission closes in <span id="time">00:00</span> minutes!</div>
+                        </div>
+                                        @endif
+
+                                        @else
+                                        <button id="purchase_bt" class="btn btn-success btn-sm" onclick="select_purchasing_method()">Read this book</button>
+                                        <div class="row" id="hidden_purchasing_method">
+                                            <button id="buy_directly" class="btn btn-success btn-sm" onclick="buy_directly()">Read directly</button>
+                                            <button id="buy_by_time" class="btn btn-success btn-sm" onclick="buy_by_time()">Read by time</button>
+                                        </div>
+                                        <div class="row" id="hidden_down_bt">
+                                            <a href="{{asset($pdf_file_url->pdf_file)}}" class="btn btn-success btn-sm" download style="max-width: 130px; width: 100%"><i class="fas fa-download"></i></a>
+                                        </div>
+                                        <div class="row" id="hidden_starting_time_bt">
+                                            <input type="number" value="1" id="duration_time"> minutes
+                                            <button id="duration_apply" class="btn btn-danger btn-sm" onclick="select_duration()">Apply</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="book-description p-3" id="book_description">
+                                        <p>{!! Markdown::convertToHtml(e($book->description)) !!}</p>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center mt-4" id="pdf_file">
+                                    <iframe id="pdf_viewer" src="{{asset($pdf_file_url->pdf_file)}}#toolbar=0" width="98%" height="600" allowfullscreen="true">
+                                            This browser does not support PDFs. Please download the PDF to view it: <a href="{{asset($pdf_file_url->pdf_file)}}">Download PDF</a>
+                                    </iframe>
+                                </div>
+                            </div>
+                            <div id="time_limit">Permission closes in <span id="time">00:00</span> minutes!</div>
+                        </div>
+                                        @endif
+                            @endif
+                        @endif
                         <div class="card card-body my-4">
                             <div class="author-description d-flex flex-row">
                                 <div class="author-img mr-4">
@@ -101,4 +215,171 @@ Bookshop - Book details
             </div>
         </div>
     </section>
+    <script>
+        var other_link_state = false;
+
+        function select_purchasing_method() {
+            document.getElementById("purchase_bt").style.display = "none";
+            document.getElementById("hidden_purchasing_method").style.display = "inline";
+            document.getElementById("hidden_purchasing_method").style.paddingLeft = "13px";
+        }
+
+        function buy_by_time() {
+            document.getElementById("hidden_starting_time_bt").style.display = "block";
+            document.getElementById("hidden_purchasing_method").style.display = "none";
+            document.getElementById("hidden_down_bt").style.display = "none";
+
+           
+        }
+
+        function buy_directly() {
+            document.getElementById("pdf_file").style.display = "block";
+            document.getElementById("hidden_purchasing_method").style.display = "none";
+            document.getElementById("hidden_down_bt").style.display = "block";
+            document.getElementById("book_description").style.display = "none";
+            // document.getElementById("hidden_down_bt").style.paddingLeft = "13px";
+
+            // console.log(user_remain_id);
+            $.ajaxSetup({
+                  headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                  }
+              });
+            $.ajax({
+                url: "{{ url('/book/read') }}",
+                method: 'post',
+                data: {
+                    user: jQuery('#user_id').val(),
+                    book: jQuery('#book_id').val(),
+                    state: 1
+                },
+                success: function(result){
+                    console.log(result);
+                }
+            });
+        }
+
+        function select_duration() {
+            var final_sel_time = document.getElementById("duration_time").value;
+            // console.log(final_sel_time);
+            var final_minutes = parseInt(final_sel_time); 
+            var Minutes = 60 * parseInt(final_sel_time),
+                display = document.querySelector('#time'),
+                ob1 = document.querySelector('#pdf_file'),
+                ob2 = document.querySelector('#time_limit');
+                ob3 = document.querySelector('#book_description');
+            var duration_time = 0;
+            var temp_src = document.getElementById("pdf_viewer").src;
+            document.getElementById("pdf_viewer").src = temp_src;
+            if(document.getElementById("duration_time").value == '') {
+                alert("Input empty field!");
+            }
+            else {
+                document.getElementById("hidden_starting_time_bt").style.display = "none";
+                document.getElementById("pdf_file").style.display = "block";          
+                document.getElementById("time_limit").style.display = "block";
+                document.getElementById("book_description").style.display = "none";
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    url: "{{ url('/book/duration') }}",
+                    method: 'post',
+                    data: {
+                        user: jQuery('#user_id').val(),
+                        book: jQuery('#book_id').val(),
+                        state: 2,
+                        time: final_minutes
+                    },
+                    success: function(result){
+                        console.log(result);
+                    }
+
+                });
+                startTimer(Minutes, display, ob1, ob2, ob3);
+            }
+        }
+        
+        function startTimer(duration, display, ob1, ob2, ob3) {
+            var limit_time = parseInt(document.getElementById("duration_time").value);
+            // console.log(duration);
+            var flag = 0;
+            var timer = duration, minutes, seconds;
+            var remain_time_int;
+            if(other_link_state == false){
+                
+                setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+                
+                remain_time_int = minutes;
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = minutes + ":" + seconds;
+                // remain_time = minutes;
+                
+                // $("a").click(function(e) {
+                //     e.preventDefault();
+                //     console.log(jQuery('#user_id').val(), jQuery('#book_id').val(), limit_time, remain_time_int);
+                //     $.ajaxSetup({
+                //         headers: {
+                //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                //         }
+                //     });
+                //     $.ajax({
+                //         url: "{{ url('/book/remain') }}",
+                //         method: 'post',
+                //         data: {
+                //             user: jQuery('#user_id').val(),
+                //             book: jQuery('#book_id').val(),
+                //             state: 3,
+                //             limit_time: limit_time,
+                //             remain_time: remain_time_int
+                //         },
+                //         success: function(result){
+                //             console.log(result);
+                //         }
+
+                //     });
+                //     // window.location.href = e.href;
+                // });
+                if(flag == 0){
+                    if (--timer < 0) {
+                        flag == 1;
+                        ob1.style.display = "none";
+                        ob2.style.display = "none";
+                        ob3.style.display = "block";
+                        window.location.reload();
+                    }
+                }
+            }, 1000);
+            }            
+        }
+        // window.onload = function () {
+        //     var final_sel_time = document.getElementById("duration_time").value;
+        //     console.log(final_sel_time);
+        //     var Minutes = 60 * parseInt(final_sel_time),
+        //         display = document.querySelector('#time'),
+        //         ob1 = document.querySelector('#pdf_file'),
+        //         ob2 = document.querySelector('#time_limit');
+        //         ob3 = document.querySelector('#book_description');
+        //     startTimer(Minutes, display, ob1, ob2, ob3);
+        // };
+        
+        // $("a").click(function() {
+        //     alert('asdasdasd');
+        //     // if (isInDiscount) {
+        //             e.preventDefault()
+        //             // console.log("that's right!");
+        //             // window.location.href = e.href;
+        //         // }
+        //     });
+        
+
+    </script>
 @endsection

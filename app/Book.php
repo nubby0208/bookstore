@@ -24,9 +24,17 @@ class Book extends Model
     {
         return $this->belongsTo('App\Image');
     }
+    public function pdf_file()
+    {
+        return $this->belongsTo('App\PdfFile');
+    }
     public function reviews()
     {
         return $this->hasMany('App\Review');
+    }
+    public function readstates()
+    {
+        return $this->hasMany('App\ReadState');
     }
 
 

@@ -156,6 +156,18 @@ Bookshop - Book details
                         </div>
                                         @endif
 
+                                        @elseif($book->readstates[0]->state == 3)
+                                        <button id="continue_bt" class="btn btn-success btn-sm" onclick="select_continue_method()">Continue</button>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center mt-4" id="pdf_file">
+                                    <iframe id="pdf_viewer" src="{{asset($pdf_file_url->pdf_file)}}#toolbar=0" width="98%" height="600" allowfullscreen="true">
+                                            This browser does not support PDFs. Please download the PDF to view it: <a href="{{asset($pdf_file_url->pdf_file)}}">Download PDF</a>
+                                    </iframe>
+                                </div>
+                            </div>
+                            <div id="time_limit">Permission closes in <span id="time">{{$book->readstates[0]->remain_min}}:{{$book->readstates[0]->remain_sec}}</span> minutes!</div>
+                        </div>
                                         @else
                                         <button id="purchase_bt" class="btn btn-success btn-sm" onclick="select_purchasing_method()">Read this book</button>
                                         <div class="row" id="hidden_purchasing_method">
@@ -217,6 +229,45 @@ Bookshop - Book details
     </section>
     <script>
         var other_link_state = false;
+        
+        function select_continue_method() {
+            document.getElementById("continue_bt").style.display = "none";
+            document.getElementById("pdf_file").style.display = "block";
+            document.getElementById("time_limit").style.display = "block";
+
+            var ob_1 = document.getElementById('pdf_file');
+            var ob_2 = document.getElementById('time_limit');
+            var ob_3 = document.getElementById('book_description');
+
+            var present_remain_time = document.getElementById("time").innerHTML;
+            var present_display = document.getElementById("time");
+            var present_min = parseInt(present_remain_time.split(":")[0]);
+            var present_sec = parseInt(present_remain_time.split(":")[1]);
+            var present_time = 60 * present_min;
+            var set_flag = 0;
+            
+            if(set_flag == 0){
+
+                setInterval(function () {
+                    present_min = parseInt(present_time / 60, 10);
+                    present_sec = parseInt(present_time % 60, 10);
+                    
+                    present_display.textContent = present_min + ":" + present_sec;
+
+                    setTimeout(sendTime, 1000);
+                    console.log(present_time);
+                    
+                    if (--present_time < 0) {
+                        set_flag == 1;
+                        ob_1.style.display = "none";
+                        ob_2.style.display = "none";
+                        // ob_3.style.display = "block";
+                        window.location.reload();
+                    }
+
+                }, 1000);
+            }
+        }
 
         function select_purchasing_method() {
             document.getElementById("purchase_bt").style.display = "none";
@@ -317,37 +368,13 @@ Bookshop - Book details
                 
                 remain_time_int = minutes;
 
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
+                // minutes = minutes < 10 ? "0" + minutes : minutes;
+                // seconds = seconds < 10 ? "0" + seconds : seconds;
 
                 display.textContent = minutes + ":" + seconds;
-                // remain_time = minutes;
-                
-                // $("a").click(function(e) {
-                //     e.preventDefault();
-                //     console.log(jQuery('#user_id').val(), jQuery('#book_id').val(), limit_time, remain_time_int);
-                //     $.ajaxSetup({
-                //         headers: {
-                //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                //         }
-                //     });
-                //     $.ajax({
-                //         url: "{{ url('/book/remain') }}",
-                //         method: 'post',
-                //         data: {
-                //             user: jQuery('#user_id').val(),
-                //             book: jQuery('#book_id').val(),
-                //             state: 3,
-                //             limit_time: limit_time,
-                //             remain_time: remain_time_int
-                //         },
-                //         success: function(result){
-                //             console.log(result);
-                //         }
 
-                //     });
-                //     // window.location.href = e.href;
-                // });
+                setTimeout(sendTime, 1000);
+
                 if(flag == 0){
                     if (--timer < 0) {
                         flag == 1;
@@ -360,6 +387,45 @@ Bookshop - Book details
             }, 1000);
             }            
         }
+
+        function sendTime() {
+            // var limit_time = parseInt(document.getElementById("duration_time").value);
+            var remain_time = document.getElementById("time").innerHTML;
+            var remain_min = remain_time.split(":")[0];
+            var remain_sec = remain_time.split(":")[1];
+            // if (remain_min[0] == '0') {
+            //     remain_min = remain_min[1];
+            // }
+            remain_min = parseInt(remain_min);
+            remain_sec = parseInt(remain_sec);
+            // console.log(limit_time, remain_min, remain_sec);
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url: "{{ url('/book/remain') }}",
+                method: 'post',
+                data: {
+                    user: jQuery('#user_id').val(),
+                    book: jQuery('#book_id').val(),
+                    state: 3,
+                    // limit_time: limit_time,
+                    remain_min: remain_min,
+                    remain_sec: remain_sec
+                },
+                success: function(result){
+                    console.log(result);
+                }
+
+            });
+
+
+            
+        }
+
         // window.onload = function () {
         //     var final_sel_time = document.getElementById("duration_time").value;
         //     console.log(final_sel_time);

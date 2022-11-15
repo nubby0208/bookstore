@@ -9,6 +9,7 @@ return [
 	| Main URL to your WHMCS
 	|
 	*/
+
 	'url'             => env('WHMCS_URL', 'http://localhost/whmcs'),
 
 	/*
@@ -30,8 +31,8 @@ return [
 		'type' => env('WHMCS_AUTH_TYPE', 'api'),
 
 		'api' => [
-			'identifier' => env('WHMCS_API_ID', ''),
-			'secret'     => env('WHMCS_API_SECRET', ''),
+			'identifier' => env('WHMCS_API_ID', 'HEUgjAtEnTEZBocgyNIoP48V6jmvjIT4'),
+			'secret'     => env('WHMCS_API_SECRET', 'hdwlznKDXSofNPnrlGc0MLFrj2U8I49e'),
 		],
 
 		'password' => [
@@ -54,7 +55,8 @@ return [
 	| @see https://developers.whmcs.com/api/access-control/
 	|
 	*/
-	'api_access_key'  => env('WHMCS_API_ACCESS_KEY', ''),
+  
+	'api_access_key'  => env('WHMCS_API_ACCESS_KEY', 'cool_passphrase_goes_hero'),
 
 	/*
 	|--------------------------------------------------------------------------

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Sburina\Whmcs\Facades\Whmcs;
+
 class RegisterController extends Controller
 {
     /*
@@ -31,7 +32,7 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = '/login';
-
+    private $name = 'ddd';
     /**
      * Create a new controller instance.
      *
@@ -65,17 +66,27 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return Whmcs::AddUser([
-            'firstname' => $data['name'],
-            'lastname' => $data['name'],
-            'email' => $data['email'],
-            'password2' => Hash::make($data['password']),
-        ]);
         // return User::create([
         //     'name' => $data['name'],
         //     'email' => $data['email'],
         //     'password' => Hash::make($data['password']),
         // ]);
+        $result = Whmcs::GetClientsDetails([
+            'email' => 'pouldomingo@gmal.com'
+        ]);
+        $this->name = $result['result'];
+        return Whmcs::AddClient([
+            'firstname' => $data['name'],
+            // 'lastname' => $data['name'],
+            'address1' => $data['email'],
+            'city' => $data['email'],
+            'state' => $data['email'],
+            'postcode' => $data['email'],
+            'country' => 'us',
+            'phonenumber' => $data['email'],
+            'email' => $data['email'],
+            'password2' => Hash::make($data['password']),
+        ]);
     }
 
     /*
@@ -93,7 +104,7 @@ class RegisterController extends Controller
 
         return $this->registered($request, $user)
             ?: redirect($this->redirectPath())
-                ->with('success_message', 'Your are registered, Now you can login.');
+                ->with('success_message', $this->name);
     }
 
 

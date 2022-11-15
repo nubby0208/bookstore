@@ -9,7 +9,8 @@ return [
 	| Main URL to your WHMCS
 	|
 	*/
-	'url'             => env('WHMCS_URL', 'http://51.178.28.136/whmcs'),
+
+	'url'             => env('WHMCS_URL', 'http://localhost/whmcs'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,6 +55,7 @@ return [
 	| @see https://developers.whmcs.com/api/access-control/
 	|
 	*/
+  
 	'api_access_key'  => env('WHMCS_API_ACCESS_KEY', 'cool_passphrase_goes_hero'),
 
 	/*

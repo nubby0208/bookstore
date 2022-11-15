@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ed5e1443a53ee75ffa23d950607720dd",
+    "content-hash": "c85f995a7aac5df7dc910ee9b2c2e59b",
     "packages": [
         {
             "name": "bumbummen99/shoppingcart",
@@ -2421,6 +2421,57 @@
                 "source": "https://github.com/sarfraznawaz2005/loading/tree/1.3.5"
             },
             "time": "2021-05-02T18:10:28+00:00"
+        },
+        {
+            "name": "sburina/laravel-whmcs-up",
+            "version": "v1.0.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sburina/laravel-whmcs-up.git",
+                "reference": "d8584ace2dccf227a59543d57a51f478da903a8e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sburina/laravel-whmcs-up/zipball/d8584ace2dccf227a59543d57a51f478da903a8e",
+                "reference": "d8584ace2dccf227a59543d57a51f478da903a8e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "laravel/framework": "^5 || ^6 || ^7 || ^8 || ^9"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Sburina\\Whmcs\\WhmcsServiceProvider"
+                    ],
+                    "aliases": {
+                        "Whmcs": "Sburina\\Whmcs\\Facades\\Whmcs"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sburina\\Whmcs\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sinisa Burina",
+                    "email": "sburina@gmail.com"
+                }
+            ],
+            "description": "WHMCS API client and user provider for Laravel",
+            "support": {
+                "issues": "https://github.com/sburina/laravel-whmcs-up/issues",
+                "source": "https://github.com/sburina/laravel-whmcs-up/tree/v1.0.14"
+            },
+            "time": "2022-04-06T16:52:17+00:00"
         },
         {
             "name": "stripe/stripe-php",
@@ -6776,7 +6827,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.1.3"
+        "php": "^7.1.3|^8.1.11"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"

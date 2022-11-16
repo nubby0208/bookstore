@@ -74,7 +74,7 @@ class RegisterController extends Controller
         $result = Whmcs::GetClientsDetails([
             'email' => 'pouldomingo@gmal.com'
         ]);
-        $this->name = $result['result'];
+        $this->name = $result['message'];
         return Whmcs::AddClient([
             'firstname' => $data['name'],
             // 'lastname' => $data['name'],

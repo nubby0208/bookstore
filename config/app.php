@@ -179,7 +179,8 @@ return [
         GrahamCampbell\Markdown\MarkdownServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        Sburina\Whmcs\WhmcsServiceProvider::class
+        Sburina\Whmcs\WhmcsServiceProvider::class,
+        App\Providers\HelperServiceProvider::class,
     ],
 
     /*

@@ -1,0 +1,34 @@
+{
+	"name": "sburina/laravel-whmcs-up",
+	"description": "WHMCS API client and user provider for Laravel",
+	"type": "library",
+	"license": "MIT",
+	"minimum-stability": "stable",
+	"authors": [
+		{
+			"name": "Sinisa Burina",
+			"email": "sburina@gmail.com"
+		}
+	],
+	"require": {
+		"ext-json": "*",
+		"laravel/framework": "^5 || ^6 || ^7 || ^8 || ^9"
+	},
+	"require-dev": {
+	},
+	"autoload": {
+		"psr-4": {
+			"Sburina\\Whmcs\\": "src/"
+		}
+	},
+	"extra": {
+		"laravel": {
+			"providers": [
+				"Sburina\\Whmcs\\WhmcsServiceProvider"
+			],
+			"aliases": {
+				"Whmcs": "Sburina\\Whmcs\\Facades\\Whmcs"
+			}
+		}
+	}
+}

@@ -52,9 +52,9 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://localhost/bookstore/index.php'),
+    'url' => env('APP_URL', 'https://localhost'),
 
-    'asset_url' => env('ASSET_URL', 'https://localhost/bookstore/'),
+    'asset_url' => env('ASSET_URL', null),
 
     /*
     |--------------------------------------------------------------------------

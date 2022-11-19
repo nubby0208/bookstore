@@ -32,7 +32,7 @@
 
                       <td>{{$item->name}}</td>
 
-                      <td>&#8369;{{$item->price}}</td>
+                      <td>&#x20AC;{{$item->price}}</td>
 
                       <td>
                         <span class="quantity-input mr-2 mb-2 d-flex flex-row">
@@ -42,7 +42,7 @@
                         </span>
                       </td>
 
-                      <td>&#8369;{{$item->subtotal()}}</td>
+                      <td>&#x20AC;{{$item->subtotal()}}</td>
                     </tr>
                     </tbody>
                     @endforeach
@@ -50,7 +50,7 @@
                     <tr>
                         <td colspan="4"><a href="{{route('all-books')}}" class="text-primary">Continue shopping</a></td>
                         <td><strong>Total</strong></td>
-                        <td>&#8369;{{Cart::total()}}</td>
+                        <td>&#x20AC;{{Cart::total()}}</td>
                     </tr>
                     <tr>
                         <td colspan="4"></td>

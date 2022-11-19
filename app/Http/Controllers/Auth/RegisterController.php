@@ -66,27 +66,27 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // return User::create([
-        //     'name' => $data['name'],
-        //     'email' => $data['email'],
-        //     'password' => Hash::make($data['password']),
-        // ]);
-        $result = Whmcs::GetClientsDetails([
-            'email' => 'pouldomingo@gmal.com'
-        ]);
-        $this->name = $result['message'];
-         return Whmcs::AddClient([
-            'firstname' => $data['name'],
-            // 'lastname' => $data['name'],
-            'address1' => $data['email'],
-            'city' => $data['email'],
-            'state' => $data['email'],
-            'postcode' => $data['email'],
-            'country' => 'us',
-            'phonenumber' => $data['email'],
+        return User::create([
+            'name' => $data['name'],
             'email' => $data['email'],
-            'password2' => Hash::make($data['password']),
+            'password' => Hash::make($data['password']),
         ]);
+        // $result = Whmcs::GetClientsDetails([
+        //     'email' => 'pouldomingo@gmal.com'
+        // ]);
+        // $this->name = $result['message'];
+        //  return Whmcs::AddClient([
+        //     'firstname' => $data['name'],
+        //     // 'lastname' => $data['name'],
+        //     'address1' => $data['email'],
+        //     'city' => $data['email'],
+        //     'state' => $data['email'],
+        //     'postcode' => $data['email'],
+        //     'country' => 'us',
+        //     'phonenumber' => $data['email'],
+        //     'email' => $data['email'],
+        //     'password2' => Hash::make($data['password']),
+        // ]);
     }
 
     /*

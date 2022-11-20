@@ -20,6 +20,7 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
+                @include('partials/language_switcher')
                 @if(Auth::check() == false)
                     <li class="nav-item px-2">
                         <a href="{{url('login')}}" class="nav-link text-danger"><i class="fas fa-user-lock"></i> Login</a>

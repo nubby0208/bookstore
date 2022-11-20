@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Bookshop - User home</title>
+    <title>{{ __('Books4All') }} - {{ __('Home') }}</title>
     <!-- Favicon icon -->
     <link rel="icon" href="{{asset('/')}}assets/img/favicon-2.png" type="image/x-icon">
     <!-- Font Awesome -->

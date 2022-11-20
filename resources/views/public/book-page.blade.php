@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    Bookshop - All books
+{{ __('Books4All') }} - {{ __('All books') }}
 @endsection
 @section('content')
     <section class="main-content">

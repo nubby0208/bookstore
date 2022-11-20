@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-Bookshop - Book details
+{{ __('Books4All') }} - {{ __('Book Details') }}
 @endsection
 @section('content')
 <meta name="csrf-token" content="{{ csrf_token() }}">

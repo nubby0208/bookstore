@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Bookshop admin - Dashboard</title>
+    <title>{{ __('Books4All') }} - {{ __('admin') }}</title>
     <!-- Favicon icon -->
     <link rel="icon" href="{{asset('/')}}assets/img/favicon-2.png" type="image/x-icon">
     <!-- Custom fonts for this template-->

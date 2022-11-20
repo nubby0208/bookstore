@@ -1,9 +1,25 @@
 {
   "Book of Love": "Libro d'amore",
+
   "Home": "Casa",
   "Books": "Libri",
   "Discount Book": "Libro di sconto",
   "About": "Di",
   "Profile": "Profilo",
-  "Logout": "Disconnettersi"
+  "Logout": "Disconnettersi",
+  "Books Categories": "Categorie di libri",
+  "Recent Books": "Libri recenti",
+  "Engineering Books": "Libri di ingegneria",
+  "See More": "Vedi altro",
+  "Literature Books": "Libri di letteratura",
+  "Discounts Book": "Libro di sconto",
+  "Search Book": "Cerca Libro",
+  "Search": "Ricerca",
+  "Books For All": "Libri per tutti",
+  "For All": "Per tutti",
+  "Books of Wisdom": "Libri di saggezza",
+  "Books of Sacrifice": "Libri di sacrificio",
+  "Let us bring to the world of love": "Portiamo nel mondo l'amore",
+  "Let us bring to the world of Sacrifice": "Portiamo nel mondo del Sacrificio",
+  "Let us bring to the world of Wisdom": "Portiamo nel mondo la Sapienza"
 }

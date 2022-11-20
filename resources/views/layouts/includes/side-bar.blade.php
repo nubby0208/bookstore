@@ -2,7 +2,7 @@
     <div class="sidebar-items">
         <div class="card my-4">
             <div class="card-header blue-dark text-white">
-                <h4>Books Categories</h4>
+                <h4>{{ __('Books Categories') }}</h4>
             </div>
             <div class="card-body">
                 <ul class="ctg-list">
@@ -16,7 +16,7 @@
         </div>
         <div class="card my-3">
             <div class="card-header blue-dark text-white">
-                <h4>Recent Books</h4>
+                <h4>{{ __('Recent Books') }}</h4>
             </div>
             <div class="card-body">
                 @foreach($recent_books as $book)

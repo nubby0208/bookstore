@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>@yield('title', 'Bookshop - Home')</title>
+    <title>{{ __('Books4All') }} - {{ __('Home') }}</title>
     <!-- Favicon icon -->
     <link rel="icon" href="{{asset('/')}}assets/img/favicon.png" type="image/x-icon">
     <!-- Font Awesome -->

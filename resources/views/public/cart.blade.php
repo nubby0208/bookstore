@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    Bookshop - Cart page
+{{ __('Books4All') }} - {{ __('Cart page') }}
 @endsection
 
 @section('content')

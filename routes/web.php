@@ -54,7 +54,7 @@ Route::post('/book/{book}/review', 'ReviewsController@store')->name('book.review
 Route::post('/book/read', 'BookshopHomeController@readDirect');
 Route::post('/book/duration', 'BookshopHomeController@readDuration');
 Route::post('/book/limit', 'BookshopHomeController@readLimit');
-// Route::post('/book/remain', 'BookshopHomeController@readRemain');
+Route::post('/book/remain', 'BookshopHomeController@readRemain');
 
 // Cart Route
 Route::post('/cart/add', 'ShoppingCartController@add_to_cart')->name('cart.add');

@@ -111,7 +111,7 @@ class BookshopHomeController extends Controller
 
     public function readDuration(Request $request)
     {
-        $temp = ReadState::where('user_id', $request->user)->where('book_id', $request->book)->where('state', $request->state)->get();
+        $temp = ReadState::where('user_id', $request->user)->where('book_id', $request->book)->get();
         // var_dump($temp);
         if(count($temp) == 0){
             $readState = new ReadState;
@@ -122,28 +122,29 @@ class BookshopHomeController extends Controller
             $readState->save();
         }
         else{
-            ReadState::where('user_id', $request->user)->where('book_id', $request->book)->where('state', $request->state)->update(array('limit_time'=>$request->time));
+            ReadState::where('user_id', $request->user)->where('book_id', $request->book)->update(array('state'=>$request->state, 'limit_time'=>$request->time));
         }
 
         return response()->json(['success'=>'success']);
     }
 
-    // public function readRemain(Request $request)
-    // {
-    //     $temp = ReadState::where('user_id', $request->user)->where('book_id', $request->book)->where('state', 2)->get();
-    //     if(count($temp) == 0){
-    //         $readState = new ReadState;
-    //         $readState->user_id = $request->user;
-    //         $readState->book_id = $request->book;
-    //         $readState->state = $request->state;
-    //         $readState->limit_time = $request->limit_time;
-    //         $readState->remain_time = $request->remain_time_int;
-    //         $readState->save();
-    //     }
-    //     else{
-    //         ReadState::where('user_id', $request->user)->where('book_id', $request->book)->where('state', 2)->update(array('limit_time'=>$request->limit_time, 'remain_time'=>$request->remain_time_int));
-    //     }
+    public function readRemain(Request $request)
+    {
 
-    //     return response()->json(['success'=>'success']);
-    // }
+        $temp = ReadState::where('user_id', $request->user)->where('book_id', $request->book)->where('state', 2)->get();
+        $temp2 = ReadState::where('user_id', $request->user)->where('book_id', $request->book)->where('state', 3)->get();
+
+        if(count($temp) != 0){
+            ReadState::where('user_id', $request->user)->where('book_id', $request->book)->where('state', 2)->update(array('state'=>$request->state, 'remain_min'=>$request->remain_min, 'remain_sec'=>$request->remain_sec));
+        }
+        else if(count($temp2) != 0){
+            ReadState::where('user_id', $request->user)->where('book_id', $request->book)->where('state', 3)->update(array('state'=>$request->state, 'remain_min'=>$request->remain_min, 'remain_sec'=>$request->remain_sec));
+            if($request->remain_min == 0){
+                ReadState::where('user_id', $request->user)->where('book_id', $request->book)->where('state', $request->state)->update(array('state'=>0, 'limit_time'=>0, 'remain_min'=>0, 'remain_sec'=>0));
+            }
+        }
+
+        // ReadState::where('user_id', $request->user)->where('book_id', $request->book)->where('state', 2)->where('limit_time', $request->limit_time)->update(array('state'=>$request->state, 'remain_min'=>$request->remain_min, 'remain_sec'=>$request->remain_sec));
+        return response()->json(['success'=>'success']);
+    }
 }

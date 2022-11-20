@@ -14,22 +14,21 @@
                     <div class="slider-img slider-bg-1"></div>
                     <div class="carousel-caption">
                         <h2>{{ __('Book of Love') }}</h2>
-                        <p class="d-none d-md-block">Let the pain itself be loved, enhanced, adipisicing. The wise man of their labors.
-                            Because of the hardships we have in our offices, the practice of cheering for forgiveness will indeed come to pass.</p>
+                        <p class="d-none d-md-block">{{ __('Let us bring to the world of love') }}</p>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div class="slider-img slider-bg-2"></div>
                     <div class="carousel-caption">
-                        <h2>Books of Sacrifice</h2>
-                        <p class="d-none d-md-block">The love of the main character, the adipisic The wise man of their labors, is the suffering itself. Duties due to our distress, the practice of appealing for pardon will be implemented.</p>
+                        <h2>{{ __('Books of Sacrifice') }}</h2>
+                        <p class="d-none d-md-block">{{ __('Let us bring to the world of Sacrifice') }}</p>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div class="slider-img slider-bg-3"></div>
                     <div class="carousel-caption">
-                        <h2>Books of Wisdom</h2>
-                        <p class="d-none d-md-block">The love of the main character, the adipisic The wise man of their labors, is the suffering itself. Duties due to our distress, the practice of appealing for pardon will be implemented.</p>
+                        <h2>{{ __('Books of Wisdom') }}</h2>
+                        <p class="d-none d-md-block">{{ __('Let us bring to the world of Wisdom') }}</p>
                     </div>
                 </div>
             </div>
@@ -46,7 +45,7 @@
                     <div class="content-area">
                         <div class="card my-4">
                             <div class="card-header blue-dark">
-                                <h4><a href="{{route('category', 'engineering')}}" class="text-white">Engineering Books</a></h4>
+                                <h4><a href="{{route('category', 'engineering')}}" class="text-white">{{ __('Engineering Books') }}</a></h4>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -80,13 +79,13 @@
                                     @endif
                                 </div>
                                 <div class="show-more pt-2 text-right">
-                                    <a href="{{route('category', 'engineering')}}" class="text-secondary">See More <i class="fas fa-angle-double-right"></i></a>
+                                    <a href="{{route('category', 'engineering')}}" class="text-secondary">{{ __('See More') }} <i class="fas fa-angle-double-right"></i></a>
                                 </div>
                             </div>
                         </div>
                         <div class="card my-4">
                             <div class="card-header blue-dark">
-                                <h4><a href="{{route('category', 'literature')}}" class="text-white">Literature Books</a></h4>
+                                <h4><a href="{{route('category', 'literature')}}" class="text-white">{{ __('Literature Books') }}</a></h4>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -120,7 +119,7 @@
                                     @endif
                                 </div>
                                 <div class="show-more pt-2 text-right">
-                                    <a href="{{route('category', 'literature')}}" class="text-secondary">See More <i class="fas fa-angle-double-right"></i></a>
+                                    <a href="{{route('category', 'literature')}}" class="text-secondary">{{ __('See More') }} <i class="fas fa-angle-double-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -133,7 +132,7 @@
         <div class="container">
             <div class="card mb-10">
                 <div class="card-header blue-dark text-white">
-                    <h4><a href="{{route('discount-books')}}" class="text-white">Discount's Book</a></h4>
+                    <h4><a href="{{route('discount-books')}}" class="text-white">{{ __('Discount Book') }}</a></h4>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -167,7 +166,7 @@
                         @endif
                     </div>
                     <div class="show-more pt-2 text-right">
-                        <a href="{{route('discount-books')}}" class="text-secondary">See More <i class="fas fa-angle-double-right"></i></a>
+                        <a href="{{route('discount-books')}}" class="text-secondary">{{ __('See More') }} <i class="fas fa-angle-double-right"></i></a>
                     </div>
                 </div>
             </div>

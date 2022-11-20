@@ -25,15 +25,15 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="headings">
-                    <h3><a href="{{route('bookshop.home')}}" class="text-secondary"><b class="text-danger">Paradise</b> EbookShop</a></h3>
+                    <h3><a href="{{route('bookshop.home')}}" class="text-secondary"><b class="text-danger">{{ __('Books') }}</b> {{ __('For All') }}</a></h3>
                 </div>
             </div>
             <div class="col-md-4">
                 <form action="{{route('all-books')}}">
                     <div class="input-group input-group-sm m-1">
-                        <input type="text" name="term" value="{{request('term')}}" class="form-control" placeholder="Search Book..">
+                        <input type="text" name="term" value="{{request('term')}}" class="form-control" placeholder="{{ __('Search Book') }}..">
                         <div class="input-group-append">
-                            <button class="btn btn-danger" type="submit">Search</button>
+                            <button class="btn btn-danger" type="submit">{{ __('Search') }}</button>
                         </div>
                     </div>
                 </form>

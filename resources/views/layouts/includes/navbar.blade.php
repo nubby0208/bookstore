@@ -7,19 +7,20 @@
         <div class="collapse navbar-collapse" id="nav-collapse">
             <ul class="navbar-nav ">
                 <li class="nav-item px-2 ">
-                    <a href="{{route('bookshop.home')}}" class="nav-link">Home</a>
+                    <a href="{{route('bookshop.home')}}" class="nav-link">{{ __('Home') }}</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a href="{{route('all-books')}}" class="nav-link">Books</a>
+                    <a href="{{route('all-books')}}" class="nav-link">{{ __('Books') }}</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a href="{{route('discount-books')}}" class="nav-link">Discount's Book</a>
+                    <a href="{{route('discount-books')}}" class="nav-link">{{ __('Discount Book') }}</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a href="#" class="nav-link">About</a>
+                    <a href="#" class="nav-link">{{ __('About') }}</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
+                @include('partials/language_switcher')
                 @if(Auth::check() == false)
                     <li class="nav-item px-2">
                         <a href="{{url('login')}}" class="nav-link text-danger"><i class="fas fa-user-lock"></i> Login</a>
@@ -37,22 +38,22 @@
                             @if(Auth::user()->role->name == "Admin")
                                 <a class="dropdown-item" href="{{route('admin.home')}}">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-muted"></i>
-                                    Profile
+                                    {{ __('Profile') }}
                                 </a>
                             @elseif(Auth::user()->role->name == "User")
                                 <a class="dropdown-item" href="{{route('user.home')}}">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-muted"></i>
-                                    Profile
+                                    {{ __('Profile') }}
                                 </a>
                             @else
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-muted"></i>
-                                    Profile
+                                    {{ __('Profile') }}
                                 </a>
                             @endif
                             <a class="dropdown-item" href="{{url('logout')}}">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-muted"></i>
-                                Logout
+                                {{ __('Logout') }}
                             </a>
                         </div>
                     </li>

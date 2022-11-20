@@ -13,7 +13,7 @@
                 <div class="carousel-item active">
                     <div class="slider-img slider-bg-1"></div>
                     <div class="carousel-caption">
-                        <h2>Book of Love</h2>
+                        <h2>{{ __('Book of Love') }}</h2>
                         <p class="d-none d-md-block">Let the pain itself be loved, enhanced, adipisicing. The wise man of their labors.
                             Because of the hardships we have in our offices, the practice of cheering for forgiveness will indeed come to pass.</p>
                     </div>

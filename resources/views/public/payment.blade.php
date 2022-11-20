@@ -19,7 +19,7 @@
                 </div>
             </div>
 
-            <div class="bg-light p-3 my-4">
+            <div class="bg-light p-3 my-4" style="display: flex;">
                 <form action="{{route('cart.checkout')}}" method="post">
                     @csrf
                     <input type="hidden" name="cart_total" value="{{Cart::total()}}">
@@ -31,9 +31,7 @@
                             data-locale="auto">
                     </script>
                 </form>
-            </div>
-            <div class="bg-light p-3 my-4">
-                <button class="btn btn-success btn-sm"><strong>{{ __('Cash on delivery') }}</strong></button>
+                <button class="btn btn-success btn-sm" style="margin-left: 10px;"><strong>{{ __('Cash on delivery') }}</strong></button>
             </div>
         </div>
     </div>

@@ -18,11 +18,11 @@
                         @else
                             <div class="card my-4">
                                 <div class="card-header blue-dark">
-                                    <h4 class="text-white">All books</h4>
+                                    <h4 class="text-white">{{ __('All books') }}</h4>
                                 </div>
                                 @if(isset($categoryName))
                                     <div class="alert alert-info m-3">
-                                        Books from <strong>{{$categoryName}}</strong>
+                                        {{ __('Books from') }} <strong>{{$categoryName}}</strong>
                                     </div>
                                 @endif
                                 @if(isset($authorName))
@@ -43,14 +43,14 @@
                                                     <div class="book-image mb-2">
                                                         <a href="{{route('book-details', $book->id)}}"><img src="{{$book->image_url}}" alt=""></a>
                                                         @if($book->discount_rate)
-                                                            <h6><span class="badge badge-warning discount-tag">Discount {{$book->discount_rate}}%</span></h6>
+                                                            <h6><span class="badge badge-warning discount-tag">{{ __('Discount') }} {{$book->discount_rate}}%</span></h6>
                                                         @endif
                                                     </div>
                                                     <div class="book-title mb-2">
                                                         <a href="{{route('book-details', $book->id)}}">{{str_limit($book->title, 30)}}</a>
                                                     </div>
                                                     <div class="book-author mb-2">
-                                                        <small>By <a href="{{route('author', $book->author->slug)}}">{{$book->author->name}}</a></small>
+                                                        <small>{{ __('By') }} <a href="{{route('author', $book->author->slug)}}">{{$book->author->name}}</a></small>
                                                     </div>
                                                     <div class="pbook-price mb-3">
                                                         @if($book->discount_rate)

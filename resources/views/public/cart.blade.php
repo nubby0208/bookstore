@@ -7,7 +7,7 @@
     <div class="container">
         <div class="card my-4">
             <div class="card-header blue-dark text-white">
-                <h4><i class="fas fa-shopping-cart"></i> Shopping cart</h4>
+                <h4><i class="fas fa-shopping-cart"></i> {{ __('Shopping cart') }}</h4>
             </div>
             <div class="card-body">
                 @include('layouts.includes.flash-message')
@@ -16,11 +16,11 @@
                 <thead class="bg-light">
                 <tr>
                   <th></th>
-                  <th scope="col">Image</th>
-                  <th scope="col">Title</th>
-                  <th scope="col">Price</th>
-                  <th scope="col" width="100">Quantity</th>
-                  <th scope="col">Sub total</th>
+                  <th scope="col">{{ __('Image') }}</th>
+                  <th scope="col">{{ __('Title') }}</th>
+                  <th scope="col">{{ __('Price') }}</th>
+                  <th scope="col" width="100">{{ __('Quantity') }}</th>
+                  <th scope="col">{{ __('Sub total') }}</th>
                 </tr>
                 </thead>
                     @foreach(Cart::content() as $item)
@@ -48,20 +48,20 @@
                     @endforeach
                 <tbody>
                     <tr>
-                        <td colspan="4"><a href="{{route('all-books')}}" class="text-primary">Continue shopping</a></td>
-                        <td><strong>Total</strong></td>
+                        <td colspan="4"><a href="{{route('all-books')}}" class="text-primary">{{ __('Continue shopping') }}</a></td>
+                        <td><strong>{{ __('Total') }}</strong></td>
                         <td>&#x20AC;{{Cart::total()}}</td>
                     </tr>
                     <tr>
                         <td colspan="4"></td>
                         <td colspan="2">
-                            <a href="{{route('cart.checkout')}}" class="btn btn-outline-danger btn-sm">Checkout <i class="fas fa-long-arrow-alt-right"></i></a>
+                            <a href="{{route('cart.checkout')}}" class="btn btn-outline-danger btn-sm">{{ __('Checkout') }} <i class="fas fa-long-arrow-alt-right"></i></a>
                         </td>
                     </tr>
                 </tbody>
                 </table>
                 @else
-                    <div class="alert alert-warning">No item found in cart. <a href="{{route('all-books')}}"> Continue shopping</a></div>
+                    <div class="alert alert-warning">{{ __('No item found in cart') }}. <a href="{{route('all-books')}}"> {{ __('Continue shopping') }}</a></div>
                 @endif
             </div>
         </div>

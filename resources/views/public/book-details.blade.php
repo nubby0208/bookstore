@@ -13,7 +13,7 @@ Bookshop - Book details
                     <div class="content-area">
                         <div class="card my-4">
                             <div class="card-header blue-dark">
-                                <h4 class="text-white">Book Details</h4>
+                                <h4 class="text-white">{{ __('Book Details') }}</h4>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -27,29 +27,29 @@ Bookshop - Book details
                                             <h5>{{$book->title}}</h5>
                                         </div>
                                         <div class="author mb-2">
-                                            By <a href="{{route('author', $book->author->slug)}}">{{$book->author->name}}</a>
+                                            {{ __('By') }} <a href="{{route('author', $book->author->slug)}}">{{$book->author->name}}</a>
                                         </div>
                                         @if(($book->quantity) > 1)
-                                            <div class="badge badge-success mb-2">In Stock</div>
+                                            <div class="badge badge-success mb-2">{{ __('In Stock') }}</div>
                                         @else
-                                            <div class="badge badge-danger mb-2">out of Stock</div>
+                                            <div class="badge badge-danger mb-2">{{ __('out of Stock') }}</div>
                                         @endif
                                         @if($book->discount_rate)
-                                            <h6><span class="badge badge-warning">{{$book->discount_rate}}% Discount</span></h6>
+                                            <h6><span class="badge badge-warning">{{$book->discount_rate}}% {{ __('Discount') }}</span></h6>
                                         @endif
                                         <div class="book-price mb-2">
-                                            <span class="mr-1">Price</span>
+                                            <span class="mr-1">{{ __('Price') }}</span>
                                             @if($book->discount_rate)
                                                 <span></span><strong class="line-through">&#x20AC;{{$book->init_price}}</strong>
                                             @endif
-                                                <span>now </span><strong>&#x20AC;{{$book->price}}</strong>
+                                                <span>{{ __('now') }} </span><strong>&#x20AC;{{$book->price}}</strong>
                                             @if($book->discount_rate)
-                                                <div><strong class="text-danger">Save &#x20AC;{{$book->init_price - $book->price}}</strong></div>
+                                                <div><strong class="text-danger">{{ __('Save') }} &#x20AC;{{$book->init_price - $book->price}}</strong></div>
                                             @endif
                                         </div>
                                         <div class="book-category mb-2 py-1 d-flex flex-row border-top border-bottom">
                                             <a href="{{route('category', $book->category->slug)}}" class="mr-4"><i class="fas fa-folder"></i> {{$book->category->name}}</a>
-                                            <a href="#review-section" class="mr-4"><i class="fas fa-comments"></i> Reviews</a>
+                                            <a href="#review-section" class="mr-4"><i class="fas fa-comments"></i> {{ __('Reviews') }}</a>
                                         </div>
 
                                         <form action="{{route('cart.add')}}" method="post">
@@ -62,13 +62,13 @@ Bookshop - Book details
                                             </span>
                                                 <input type="hidden" name="book_id" value="{{$book->id}}">
 
-                                                <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-shopping-cart"></i> Add to cart</button>
+                                                <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-shopping-cart"></i> {{ __('Add to cart') }}</button>
                                             </div>
                                         </form>
                                         @include('layouts.includes.flash-message')
                                         
                                         @if(Auth::check() == false)
-                                        <a href="{{url('login')}}" class="btn btn-danger btn-lg" >Please login to read book</a>
+                                        <a href="{{url('login')}}" class="btn btn-danger btn-lg" >{{ __('Please login to read book') }}</a>
                                         </div>
                                 </div>
                                 <div class="row">
@@ -82,17 +82,17 @@ Bookshop - Book details
                                         <input type="hidden" value="{{Auth::user()->id}}" id="user_id">
                                         <input type="hidden" value="{{$book->id}}" id="book_id">
                                         @if(count($book->readstates) == 0)
-                                        <button id="purchase_bt" class="btn btn-success btn-sm" onclick="select_purchasing_method()">Read this book</button>
+                                        <button id="purchase_bt" class="btn btn-success btn-sm" onclick="select_purchasing_method()">{{ __('Read this book') }}</button>
                                         <div class="row" id="hidden_purchasing_method">
-                                            <button id="buy_directly" class="btn btn-success btn-sm" onclick="buy_directly()">Read directly</button>
-                                            <button id="buy_by_time" class="btn btn-success btn-sm" onclick="buy_by_time()">Read by time</button>
+                                            <button id="buy_directly" class="btn btn-success btn-sm" onclick="buy_directly()">{{ __('Read directly') }}</button>
+                                            <button id="buy_by_time" class="btn btn-success btn-sm" onclick="buy_by_time()">{{ __('Read by time') }}</button>
                                         </div>
                                         <div class="row" id="hidden_down_bt">
                                             <a href="{{asset($pdf_file_url->pdf_file)}}" class="btn btn-success btn-sm" download style="max-width: 130px; width: 100%"><i class="fas fa-download"></i></a>
                                         </div>
                                         <div class="row" id="hidden_starting_time_bt">
-                                            <input type="number" value="1" id="duration_time"> minutes
-                                            <button id="duration_apply" class="btn btn-danger btn-sm" onclick="select_duration()">Apply</button>
+                                            <input type="number" value="1" id="duration_time"> {{ __('minutes') }}
+                                            <button id="duration_apply" class="btn btn-danger btn-sm" onclick="select_duration()">{{ __('Apply') }}</button>
                                         </div>
                                     </div>
                                 </div>

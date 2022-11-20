@@ -14,7 +14,7 @@
                                 <form method="post" action="{{url('/register')}}">
                                     {{csrf_field()}}
                                     <div class="form-group">
-                                        <label for="name">Name</label>
+                                        <label for="name">{{ __('Name') }}</label>
                                         <input type="text" name="name" value="{{old('name')}}" class="form-control {{$errors->has('name')? 'is-invalid': ''}}">
 
                                         @if($errors->has('name'))
@@ -24,7 +24,7 @@
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="email">Email</label>
+                                        <label for="email">{{ __('Email') }}</label>
                                         <input type="email" name="email" value="{{old('email')}}" class="form-control {{$errors->has('email')? 'is-invalid': ''}}">
 
                                         @if($errors->has('email'))
@@ -34,7 +34,7 @@
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="password">Password</label>
+                                        <label for="password">{{ __('Password') }}</label>
                                         <input type="password" name="password" class="form-control {{$errors->has('password')? 'is-invalid': ''}}">
                                         @if($errors->has('password'))
                                             <span class="invalid-feedback">
@@ -43,14 +43,14 @@
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <label for="confirm password">Confirm Password</label>
+                                        <label for="confirm password">{{ __('Confirm Password') }}</label>
                                         <input type="password" name="password_confirmation" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-success btn-block btn-md">Register</button>
+                                        <button type="submit" class="btn btn-success btn-block btn-md">{{ __('Register') }}</button>
                                     </div>
                                 </form>
-                                <small>Already have an account? <a href="{{url('login')}}">Login here</a></small>
+                                <small>{{ __('Already have an account') }}? <a href="{{url('login')}}">{{ __('Login here') }}</a></small>
                             </div>
                         </div>
                     </div>

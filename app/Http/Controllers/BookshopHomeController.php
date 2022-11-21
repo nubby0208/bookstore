@@ -12,6 +12,8 @@ use Sburina\Whmcs\Facades\Whmcs;
 
 class BookshopHomeController extends Controller
 {
+    private $transactionId = 1000;
+
     public function index()
     {
         # Home page Books
@@ -136,7 +138,7 @@ class BookshopHomeController extends Controller
 
         $result = \Whmcs::AddInvoicePayment([
             'invoiceid' => $result['invoiceid'],
-            'transid' => 'D28DJIDJW393JDWQKQI332',
+            'transid' => 'D28DJIDJW393J23QKQI332',
             'gateway' => 'paypal',
             'date' => '2023-01-01 12:33:12',
         ]);

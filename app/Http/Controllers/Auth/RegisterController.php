@@ -71,7 +71,7 @@ class RegisterController extends Controller
         //     'email' => $data['email'],
         //     'password' => Hash::make($data['password']),
         // ]);
-        $result = Whmcs::GetClientsDetails1([
+        $result = Whmcs::sbGetClientsDetails1([
             'email' => 'pouldomingo@gmal.com'
         ]);
         $this->name = $result['client']['fullname'];

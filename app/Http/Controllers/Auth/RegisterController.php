@@ -84,10 +84,17 @@ class RegisterController extends Controller
         // ]);
         // $this->name = $result['orderid'];
 
-        $result = \Whmcs::GetPaymentMethods();
-        $this->name = $result['paymentmethods']['paymentmethod'][0]["displayname"];
+        // $result = \Whmcs::GetPaymentMethods();
+        // $this->name = $result['paymentmethods']['paymentmethod'][0]["displayname"];
 
-        
+        $result = \Whmcs::AddInvoicePayment([
+            'invoiceid' => 12687,
+            'transid' => 'D28DJIDJW393JDWQKQI332',
+            'gateway' => 'paypal',
+            'date' => '2023-01-01 12:33:12',
+        ]);
+        $this->name = $result["result"];
+
         //  return Whmcs::AddClient([
         //     'firstname' => $data['name'],
         //     // 'lastname' => $data['name'],

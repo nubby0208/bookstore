@@ -10,7 +10,7 @@ return [
 	|
 	*/
 
-	'url'             => env('WHMCS_URL', 'https://localhost/whmcs'),
+	'url'             => env('WHMCS_URL', 'https://whmcs.books4all.it/whmcs'),
 
 	/*
 	|--------------------------------------------------------------------------

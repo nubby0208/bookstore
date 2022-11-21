@@ -162,25 +162,4 @@ class Whmcs
         return redirect($this->getAutoLoginUrl($goto));
     }
 
-    /**
-     * Obtain the Clients Details for a specific client.
-     *
-     * Either email or clientid is required!
-     *
-     * @param  int  $clientid
-     * @param  string  $paymentmethod
-     * @param  array  $pid
-     * 
-     *
-     * @return object
-     */
-    public function AddOrder($clientid, $paymentmethod = "paypal", $pid)
-    {
-        return (new Client)->post([
-            'action'   => 'AddOrder',
-            'clientid' => $clientid,
-            'paymentmethod' => $paymentmethod,
-            'pid' => $pid,
-        ]);
-    }
 }

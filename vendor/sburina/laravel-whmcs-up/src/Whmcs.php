@@ -179,7 +179,7 @@ class Whmcs
         return (new Client)->post([
             'action'   => 'AddOrder',
             'clientid' => $clientid,
-            'paymentmethod'    => $paymentmethod,
+            'paymentmethod' => $paymentmethod,
             'pid' => $pid,
         ]);
     }

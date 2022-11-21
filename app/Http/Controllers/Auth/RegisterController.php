@@ -79,7 +79,7 @@ class RegisterController extends Controller
 
         $result = \Whmcs::GetProducts([
         ]);
-        $this->name = $result['totalresults'] + ', ' + $result['products']['product'][0]['pid'] + ', ' + $result['products']['product'][0]['name'];
+        $this->name = $result['totalresults'] . ', ' . $result['products']['product'][0]['pid'] . ', ' . $result['products']['product'][0]['name'];
 
 
         // $result = \Whmcs::AddOrder([

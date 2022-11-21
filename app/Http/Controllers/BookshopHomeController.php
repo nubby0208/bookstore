@@ -8,6 +8,7 @@ use App\PdfFile;
 use App\Category;
 use App\ReadState;
 use Illuminate\Http\Request;
+use Sburina\Whmcs\Facades\Whmcs;
 
 class BookshopHomeController extends Controller
 {
@@ -106,7 +107,20 @@ class BookshopHomeController extends Controller
             ReadState::where('user_id', $request->user)->where('book_id', $request->book)->update(array('state'=>$request->state));
         }
 
-        return response()->json(['success'=>'success']);
+        $result = \Whmcs::AddOrder([
+            'clientid' => 11,
+            'paymentmethod' => 'paypal',
+            'pid' => array(29),
+        ]);
+
+        $result = \Whmcs::AddInvoicePayment([
+            'invoiceid' => $result['invoiceid'],
+            'transid' => 'D28DJIDJW393JDWQKQI332',
+            'gateway' => 'paypal',
+            'date' => '2023-01-01 12:33:12',
+        ]);
+
+        return response()->json(['success'=>'success', 'result'=>$result["result"]]);
     }
 
     public function readDuration(Request $request)

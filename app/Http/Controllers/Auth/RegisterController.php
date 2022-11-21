@@ -89,9 +89,9 @@ class RegisterController extends Controller
         // ]);
         // $this->name = $result['invoiceid'];
 
-        $result = \Whmcs::GetPaymentMethods();
+        $result = \Whmcs::GetPaymentMethods([]);
         // $this->name = $result['paymentmethods']['paymentmethod'][0]["displayname"];
-        $this->name = $result['totalresults'];
+        $this->name = $result['result'];
 
         // $result = \Whmcs::AddInvoicePayment([
         //     'invoiceid' => 12688,

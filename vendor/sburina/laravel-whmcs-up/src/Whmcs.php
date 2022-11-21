@@ -163,9 +163,13 @@ class Whmcs
     }
 
     /**
-     * Add New Order
+     * Obtain the Clients Details for a specific client.
      *
-     * @param  string|null  $goto
+     * Either email or clientid is required!
+     *
+     * @param  string|null  $email
+     * @param  int|null  $clientid
+     * @param  bool  $stats
      *
      * @return array
      */

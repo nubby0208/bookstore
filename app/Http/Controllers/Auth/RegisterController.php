@@ -71,7 +71,8 @@ class RegisterController extends Controller
         //     'email' => $data['email'],
         //     'password' => Hash::make($data['password']),
         // ]);
-        $result = Whmcs::AddOrder([
+        
+        $result = \Whmcs::AddOrder([
             'clientid' => 8,
             'paymentmethod' => 'paypal',
             'pid' => array(1,1)

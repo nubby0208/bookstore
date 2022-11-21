@@ -284,10 +284,7 @@
         }
 
         function buy_directly() {
-            document.getElementById("pdf_file").style.display = "block";
-            document.getElementById("hidden_purchasing_method").style.display = "none";
-            document.getElementById("hidden_down_bt").style.display = "block";
-            document.getElementById("book_description").style.display = "none";
+            
             // document.getElementById("hidden_down_bt").style.paddingLeft = "13px";
 
             // console.log(user_remain_id);
@@ -306,6 +303,12 @@
                 },
                 success: function(result){
                     console.log(result);
+                    if(result['success'] != 'success')
+                        return;
+                    document.getElementById("pdf_file").style.display = "block";
+                    document.getElementById("hidden_purchasing_method").style.display = "none";
+                    document.getElementById("hidden_down_bt").style.display = "block";
+                    document.getElementById("book_description").style.display = "none";
                 }
             });
         }

@@ -78,13 +78,13 @@ class RegisterController extends Controller
         // $this->name = $result['products']['product'][0]['id'];
 
         $result = \Whmcs::AddOrder([
-            'clientid' => 11,
+            'clientid' => 349,
             'paymentmethod' => 'paypal',
             'pid' => array(498, 498),
             'domain' => array(''),
             'billingcycle' => array('monthly'),
         ]);
-        $this->name = $result['result'];
+        $this->name = $result['orderid'];
 
         
         //  return Whmcs::AddClient([

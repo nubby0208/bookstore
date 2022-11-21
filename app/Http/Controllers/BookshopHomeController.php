@@ -128,6 +128,22 @@ class BookshopHomeController extends Controller
 
     public function readDuration(Request $request)
     {
+        $result = \Whmcs::AddOrder([
+            'clientid' => $request->user,
+            'paymentmethod' => 'paypal',
+            'pid' => array(37),
+        ]);
+
+        $result = \Whmcs::AddInvoicePayment([
+            'invoiceid' => $result['invoiceid'],
+            'transid' => 'D28DJIDJW393JDWQKQI332',
+            'gateway' => 'paypal',
+            'date' => '2023-01-01 12:33:12',
+        ]);
+
+        if($result["result"] != "success")
+            return response()->json(['success'=>'fail']);
+        
         $temp = ReadState::where('user_id', $request->user)->where('book_id', $request->book)->get();
         // var_dump($temp);
         if(count($temp) == 0){

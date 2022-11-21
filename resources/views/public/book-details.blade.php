@@ -329,10 +329,7 @@
                 alert("Input empty field!");
             }
             else {
-                document.getElementById("hidden_starting_time_bt").style.display = "none";
-                document.getElementById("pdf_file").style.display = "block";          
-                document.getElementById("time_limit").style.display = "block";
-                document.getElementById("book_description").style.display = "none";
+                
 
                 $.ajaxSetup({
                     headers: {
@@ -349,11 +346,17 @@
                         time: final_minutes
                     },
                     success: function(result){
+                        if(result['success'] != 'success')
+                            return;
+                        document.getElementById("hidden_starting_time_bt").style.display = "none";
+                        document.getElementById("pdf_file").style.display = "block";          
+                        document.getElementById("time_limit").style.display = "block";
+                        document.getElementById("book_description").style.display = "none";
+                        startTimer(Minutes, display, ob1, ob2, ob3);
                         console.log(result);
                     }
 
                 });
-                startTimer(Minutes, display, ob1, ob2, ob3);
             }
         }
         

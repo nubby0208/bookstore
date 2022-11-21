@@ -81,7 +81,7 @@ class RegisterController extends Controller
             'clientid' => 11,
             'paymentmethod' => 'paypal',
             'pid' => array(498),
-            'priceoverride' => array(500)
+            'noinvoice' => false
         ]);
         $this->name = $result['invoiceid'];
 

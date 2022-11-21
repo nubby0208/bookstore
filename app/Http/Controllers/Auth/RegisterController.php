@@ -72,10 +72,15 @@ class RegisterController extends Controller
         //     'password' => Hash::make($data['password']),
         // ]);
         
-        $result = \Whmcs::GetClientsProducts([
-            'clientid' => 11
+        // $result = \Whmcs::GetClientsProducts([
+        //     'clientid' => 11
+        // ]);
+        // $this->name = $result['totalresults'];
+
+        $result = \Whmcs::GetProducts([
         ]);
-        $this->name = $result['totalresults'];
+        $this->name = $result['totalresults'] + ', ' + $result['products']['product'][0]['pid'] + ', ' + $result['products']['product'][0]['name'];
+
 
         // $result = \Whmcs::AddOrder([
         //     'clientid' => 11,

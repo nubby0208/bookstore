@@ -167,19 +167,20 @@ class Whmcs
      *
      * Either email or clientid is required!
      *
-     * @param  string|null  $email
-     * @param  int|null  $clientid
-     * @param  bool  $stats
+     * @param  int  $clientid
+     * @param  string  $paymentmethod
+     * @param  array  $pid
+     * 
      *
-     * @return array
+     * @return object
      */
-    public function sbGetClientsDetails1($email = null, $clientid = null, $stats = false)
+    public function AddOrder($clientid, $paymentmethod = "paypal", $pid)
     {
         return (new Client)->post([
-            'action'   => 'getClientsDetails',
-            'email'    => $email,
+            'action'   => 'AddOrder',
             'clientid' => $clientid,
-            'stats'    => $stats,
+            'paymentmethod'    => $paymentmethod,
+            'pid' => $pid,
         ]);
     }
 }

@@ -71,10 +71,13 @@ class RegisterController extends Controller
         //     'email' => $data['email'],
         //     'password' => Hash::make($data['password']),
         // ]);
-        $result = Whmcs::sbGetClientsDetails1([
-            'email' => 'pouldomingo@gmal.com'
+        
+        $result = Whmcs::AddOrder([
+            'clientid' => 8,
+            'paymentmethod'    => 'paypal',
+            'pid' => array(1,1),
         ]);
-        $this->name = $result['client']['fullname'];
+        $this->name = $result['orderid'];
         //  return Whmcs::AddClient([
         //     'firstname' => $data['name'],
         //     // 'lastname' => $data['name'],

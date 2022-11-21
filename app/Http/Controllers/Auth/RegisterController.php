@@ -88,7 +88,7 @@ class RegisterController extends Controller
         // $this->name = $result['paymentmethods']['paymentmethod'][0]["displayname"];
 
         $result = \Whmcs::AddInvoicePayment([
-            'invoiceid' => 12687,
+            'invoiceid' => 12688,
             'transid' => 'D28DJIDJW393JDWQKQI332',
             'gateway' => 'paypal',
             'date' => '2023-01-01 12:33:12',

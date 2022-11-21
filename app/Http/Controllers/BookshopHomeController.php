@@ -142,7 +142,7 @@ class BookshopHomeController extends Controller
         $pid = 0;
         foreach ($result['products']['product'] as $Item)
         {
-            if($Item['name'] == 'time reading')
+            if($Item['name'] == 'Bundle 21 eur')
                 $pid = $Item['pid'];
         }
 

@@ -12,8 +12,6 @@ use Sburina\Whmcs\Facades\Whmcs;
 
 class BookshopHomeController extends Controller
 {
-    private $transactionId = 1000;
-
     public function index()
     {
         # Home page Books
@@ -96,15 +94,24 @@ class BookshopHomeController extends Controller
 
     public function readDirect(Request $request)
     {
+        $result = \Whmcs::GetProducts([
+        ]);
+        $pid = 0;
+        foreach ($result['products']['product'] as $Item)
+        {
+            if($Item['name'] == 'New eBook')
+                $pid = $Item['pid'];
+        }
+
         $result = \Whmcs::AddOrder([
             'clientid' => $request->user,
             'paymentmethod' => 'paypal',
-            'pid' => array(29),
+            'pid' => array($pid),
         ]);
 
         $result = \Whmcs::AddInvoicePayment([
             'invoiceid' => $result['invoiceid'],
-            'transid' => 'D28DJIDJW393JDWQKQI332',
+            'transid' => $this->random_str(),
             'gateway' => 'paypal',
             'date' => '2023-01-01 12:33:12',
         ]);
@@ -130,15 +137,24 @@ class BookshopHomeController extends Controller
 
     public function readDuration(Request $request)
     {
+        $result = \Whmcs::GetProducts([
+        ]);
+        $pid = 0;
+        foreach ($result['products']['product'] as $Item)
+        {
+            if($Item['name'] == 'time reading')
+                $pid = $Item['pid'];
+        }
+
         $result = \Whmcs::AddOrder([
             'clientid' => $request->user,
             'paymentmethod' => 'paypal',
-            'pid' => array(37),
+            'pid' => array($pid),
         ]);
 
         $result = \Whmcs::AddInvoicePayment([
             'invoiceid' => $result['invoiceid'],
-            'transid' => 'D28DJIDJW393J23QKQI332',
+            'transid' => $this->random_str(),
             'gateway' => 'paypal',
             'date' => '2023-01-01 12:33:12',
         ]);
@@ -181,5 +197,35 @@ class BookshopHomeController extends Controller
 
         // ReadState::where('user_id', $request->user)->where('book_id', $request->book)->where('state', 2)->where('limit_time', $request->limit_time)->update(array('state'=>$request->state, 'remain_min'=>$request->remain_min, 'remain_sec'=>$request->remain_sec));
         return response()->json(['success'=>'success']);
+    }
+
+    /**
+     * Generate a random string, using a cryptographically secure 
+     * pseudorandom number generator (random_int)
+     *
+     * This function uses type hints now (PHP 7+ only), but it was originally
+     * written for PHP 5 as well.
+     * 
+     * For PHP 7, random_int is a PHP core function
+     * For PHP 5.x, depends on https://github.com/paragonie/random_compat
+     * 
+     * @param int $length      How many characters do we want?
+     * @param string $keyspace A string of all possible characters
+     *                         to select from
+     * @return string
+     */
+    private function random_str(
+        int $length = 64,
+        string $keyspace = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    ): string {
+        if ($length < 1) {
+            throw new \RangeException("Length must be a positive integer");
+        }
+        $pieces = [];
+        $max = mb_strlen($keyspace, '8bit') - 1;
+        for ($i = 0; $i < $length; ++$i) {
+            $pieces []= $keyspace[random_int(0, $max)];
+        }
+        return implode('', $pieces);
     }
 }

@@ -66,61 +66,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // return User::create([
-        //     'name' => $data['name'],
-        //     'email' => $data['email'],
-        //     'password' => Hash::make($data['password']),
-        // ]);
-        
-        // $result = \Whmcs::GetClientsProducts([
-        //     'clientid' => 11
-        // ]);
-        // $this->name = $result['totalresults'];
-
-        // $result = \Whmcs::GetProducts([
-        // ]);
-        // $this->name = $result['products']['product'][3]['pid'] . ', ' . $result['products']['product'][3]['name'];
-        // foreach ($result['products']['product'] as $Item)
-        // {
-        //     if($Item['name'] == 'New eBook')
-        //         $this->name = $Item['pid'] . ', ' . $Item['name'];
-        // }
-
-        $result = \Whmcs::AddOrder([
-            'clientid' => 11,
-            'paymentmethod' => 'paypal',
-            'pid' => array(29),
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
         ]);
-        $this->name = $result['invoiceid'];
-
-        // $result = \Whmcs::CreateInvoice([
-        //     'userid' => 11,
-        // ]);
-        // $this->name = $result['invoiceid'];
-
-        // $result = \Whmcs::GetPaymentMethods([]);
-        // $this->name = $result['paymentmethods']['paymentmethod'][0]["displayname"];
-
-        $result = \Whmcs::AddInvoicePayment([
-            'invoiceid' => $this->name,
-            'transid' => 'D28DJIDJW393JDWQKQI332',
-            'gateway' => 'paypal',
-            'date' => '2023-01-01 12:33:12',
-        ]);
-        $this->name = $this->name . ', ' . $result["result"];
-
-        //  return Whmcs::AddClient([
-        //     'firstname' => $data['name'],
-        //     // 'lastname' => $data['name'],
-        //     'address1' => $data['email'],
-        //     'city' => $data['email'],
-        //     'state' => $data['email'],
-        //     'postcode' => $data['email'],
-        //     'country' => 'us',
-        //     'phonenumber' => $data['email'],
-        //     'email' => $data['email'],
-        //     'password2' => Hash::make($data['password']),
-        // ]);
     }
 
     /*

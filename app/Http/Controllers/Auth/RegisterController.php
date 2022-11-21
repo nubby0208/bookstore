@@ -77,21 +77,21 @@ class RegisterController extends Controller
         // ]);
         // $this->name = $result['totalresults'];
 
-        $result = \Whmcs::GetProducts([
-        ]);
-        $this->name = $result['products']['product'][3]['pid'] . ', ' . $result['products']['product'][3]['name'];
-        foreach ($result['products']['product'] as $Item)
-        {
-            if($Item['name'] == 'New eBook')
-                $this->name = $Item['pid'] . ', ' . $Item['name'];
-        }
-
-        // $result = \Whmcs::AddOrder([
-        //     'clientid' => 11,
-        //     'paymentmethod' => 'paypal',
-        //     'pid' => array(23),
+        // $result = \Whmcs::GetProducts([
         // ]);
-        // $this->name = $result['invoiceid'];
+        // $this->name = $result['products']['product'][3]['pid'] . ', ' . $result['products']['product'][3]['name'];
+        // foreach ($result['products']['product'] as $Item)
+        // {
+        //     if($Item['name'] == 'New eBook')
+        //         $this->name = $Item['pid'] . ', ' . $Item['name'];
+        // }
+
+        $result = \Whmcs::AddOrder([
+            'clientid' => 11,
+            'paymentmethod' => 'paypal',
+            'pid' => array(29),
+        ]);
+        $this->name = $result['invoiceid'];
 
         // $result = \Whmcs::CreateInvoice([
         //     'userid' => 11,
@@ -101,13 +101,13 @@ class RegisterController extends Controller
         // $result = \Whmcs::GetPaymentMethods([]);
         // $this->name = $result['paymentmethods']['paymentmethod'][0]["displayname"];
 
-        // $result = \Whmcs::AddInvoicePayment([
-        //     'invoiceid' => $this->name,
-        //     'transid' => 'D28DJIDJW393JDWQKQI332',
-        //     'gateway' => 'paypal',
-        //     'date' => '2023-01-01 12:33:12',
-        // ]);
-        // $this->name = $result["result"];
+        $result = \Whmcs::AddInvoicePayment([
+            'invoiceid' => $this->name,
+            'transid' => 'D28DJIDJW393JDWQKQI332',
+            'gateway' => 'paypal',
+            'date' => '2023-01-01 12:33:12',
+        ]);
+        $this->name = $this->name . ', ' . $result["result"];
 
         //  return Whmcs::AddClient([
         //     'firstname' => $data['name'],

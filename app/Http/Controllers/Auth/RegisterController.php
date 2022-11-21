@@ -79,7 +79,7 @@ class RegisterController extends Controller
 
         $result = \Whmcs::AddOrder([
             'clientid' => 11,
-            'paymentmethod' => 'PayPal',
+            'paymentmethod' => 'paypal',
             'pid' => array(498),
         ]);
         $this->name = $result['invoiceid'];

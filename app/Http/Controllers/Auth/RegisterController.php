@@ -85,7 +85,7 @@ class RegisterController extends Controller
         // $this->name = $result['orderid'];
 
         $result = \Whmcs::CreateInvoice([
-            'clientid' => 11,
+            'userid' => 11,
         ]);
         $this->name = $result['invoiceid'];
 

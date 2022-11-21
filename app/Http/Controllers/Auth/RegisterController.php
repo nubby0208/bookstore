@@ -82,7 +82,7 @@ class RegisterController extends Controller
             'paymentmethod' => 'paypal',
             'pid' => array(498, 498)
         ]);
-        $this->name = $result['orderid'];
+        $this->name = $result['result'];
 
         
         //  return Whmcs::AddClient([

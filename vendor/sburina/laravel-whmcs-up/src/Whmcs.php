@@ -161,4 +161,21 @@ class Whmcs
     {
         return redirect($this->getAutoLoginUrl($goto));
     }
+
+    /**
+     * Add New Order
+     *
+     * @param  string|null  $goto
+     *
+     * @return array
+     */
+    public function sbGetClientsDetails1($email = null, $clientid = null, $stats = false)
+    {
+        return (new Client)->post([
+            'action'   => 'getClientsDetails',
+            'email'    => $email,
+            'clientid' => $clientid,
+            'stats'    => $stats,
+        ]);
+    }
 }

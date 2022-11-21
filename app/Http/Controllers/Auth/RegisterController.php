@@ -81,8 +81,6 @@ class RegisterController extends Controller
             'clientid' => 349,
             'paymentmethod' => 'paypal',
             'pid' => array(498, 498),
-            'domain' => array(''),
-            'billingcycle' => array('monthly'),
         ]);
         $this->name = $result['orderid'];
 

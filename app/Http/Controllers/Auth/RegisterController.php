@@ -72,17 +72,17 @@ class RegisterController extends Controller
         //     'password' => Hash::make($data['password']),
         // ]);
         
-        // $result = \Whmcs::GetClientsProducts([
-        //     'clientid' => 8
-        // ]);
-        // $this->name = $result['products']['product'][0]['id'];
-
-        $result = \Whmcs::AddOrder([
-            'clientid' => 11,
-            'paymentmethod' => 'paypal',
-            'pid' => array(498),
+        $result = \Whmcs::GetClientsProducts([
+            'clientid' => 11
         ]);
-        $this->name = $result['invoiceid'];
+        $this->name = $result['totalresults'];
+
+        // $result = \Whmcs::AddOrder([
+        //     'clientid' => 11,
+        //     'paymentmethod' => 'paypal',
+        //     'pid' => array(498),
+        // ]);
+        // $this->name = $result['invoiceid'];
 
         // $result = \Whmcs::CreateInvoice([
         //     'userid' => 11,
@@ -92,12 +92,12 @@ class RegisterController extends Controller
         // $result = \Whmcs::GetPaymentMethods([]);
         // $this->name = $result['paymentmethods']['paymentmethod'][0]["displayname"];
 
-        $result = \Whmcs::AddInvoicePayment([
-            'invoiceid' => $this->name,
-            'transid' => 'D28DJIDJW393JDWQKQI332',
-            'gateway' => 'paypal',
-            'date' => '2023-01-01 12:33:12',
-        ]);
+        // $result = \Whmcs::AddInvoicePayment([
+        //     'invoiceid' => $this->name,
+        //     'transid' => 'D28DJIDJW393JDWQKQI332',
+        //     'gateway' => 'paypal',
+        //     'date' => '2023-01-01 12:33:12',
+        // ]);
         // $this->name = $result["result"];
 
         //  return Whmcs::AddClient([

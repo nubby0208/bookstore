@@ -35,7 +35,7 @@ class AdminBooksController extends AdminBaseController
             // 'name' => $request->name,
             // 'gid' => 4,
             'type' => 'other',
-            'gid' => $request->init_price,
+            'gid' => 3,
             'paytype' => 'onetime',
             'name' => $request->name,
         ]);

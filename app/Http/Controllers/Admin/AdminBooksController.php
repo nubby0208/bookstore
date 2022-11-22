@@ -35,6 +35,9 @@ class AdminBooksController extends AdminBaseController
             'name' => $request->name,
             'gid' => 4,
         ]);
+        if($result["result"] != "success")
+            return redirect('/admin/books')
+            ->with('success_message', 'Book creation failed');
         $result = \Whmcs::GetProducts([
         ]);
         $input['id'] = count($result['products']['product']) - 1;

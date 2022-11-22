@@ -14,6 +14,7 @@ use Sburina\Whmcs\Facades\Whmcs;
 
 class AdminBooksController extends AdminBaseController
 {
+    private $gid = 5;
     public function index()
     {
         $books = Book::with('category', 'author', 'image', 'pdf_file')
@@ -35,7 +36,7 @@ class AdminBooksController extends AdminBaseController
             // 'name' => $request->name,
             // 'gid' => 4,
             'type' => 'other',
-            'gid' => $request->init_price,
+            'gid' => $gid,
             'paytype' => 'onetime',
             'name' => $request->title,
         ]);

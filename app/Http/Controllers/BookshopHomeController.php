@@ -12,6 +12,7 @@ use Sburina\Whmcs\Facades\Whmcs;
 
 class BookshopHomeController extends Controller
 {
+    private $gid = 2;
     public function index()
     {
         # Home page Books
@@ -139,17 +140,17 @@ class BookshopHomeController extends Controller
     {
         $result = \Whmcs::GetProducts([
         ]);
-        $pid = 0;
+        $group = array();
         foreach ($result['products']['product'] as $Item)
         {
-            if($Item['name'] == 'Bundle 21 eur')
-                $pid = $Item['pid'];
+            if($Item['gid'] == $gid)
+                array_push($group, $Item);
         }
 
         $result = \Whmcs::AddOrder([
             'clientid' => $request->user,
             'paymentmethod' => 'paypal',
-            'pid' => array($pid),
+            'pid' => array($group[0]['pid']),
         ]);
 
         $result = \Whmcs::AddInvoicePayment([

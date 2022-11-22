@@ -75,13 +75,13 @@ class RegisterController extends Controller
         $result = Whmcs::AddClient([
             'firstname' => $data['name'],
             'lastname' => $data['name'],
-            'address1' => $data['email'],
-            'city' => $data['email'],
-            'state' => $data['email'],
-            'postcode' => $data['email'],
-            'country' => 'us',
-            'phonenumber' => $data['email'],
             'email' => $data['email'],
+            'address1' => '123 Main Street',
+            'city' => 'Anytown',
+            'state' => 'State',
+            'postcode' => '12345',
+            'country' => 'US',
+            'phonenumber' => '800-555-1234',
             'password2' => Hash::make($data['password']),
         ]);
         

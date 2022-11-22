@@ -74,7 +74,7 @@ class RegisterController extends Controller
         // ]);
         $result = Whmcs::AddClient([
             'firstname' => $data['name'],
-            // 'lastname' => $data['name'],
+            'lastname' => $data['name'],
             'address1' => $data['email'],
             'city' => $data['email'],
             'state' => $data['email'],

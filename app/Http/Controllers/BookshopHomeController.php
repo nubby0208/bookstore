@@ -143,7 +143,7 @@ class BookshopHomeController extends Controller
         $group = array();
         foreach ($result['products']['product'] as $Item)
         {
-            if($Item['gid'] == $gid)
+            if($Item['gid'] == $this->gid)
                 array_push($group, $Item);
         }
 

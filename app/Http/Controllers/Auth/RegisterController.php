@@ -66,9 +66,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // $result = Whmcs::AddClient([
+        //     'firstname' => $data['name'],
+        //     'lastname' => '',
+        //     'email' => $data['email'],
+        //     'password2' => Hash::make($data['password']),
+        // ]);
         $result = Whmcs::AddClient([
             'firstname' => $data['name'],
-            'lastname' => '',
+            // 'lastname' => $data['name'],
+            'address1' => $data['email'],
+            'city' => $data['email'],
+            'state' => $data['email'],
+            'postcode' => $data['email'],
+            'country' => 'us',
+            'phonenumber' => $data['email'],
             'email' => $data['email'],
             'password2' => Hash::make($data['password']),
         ]);

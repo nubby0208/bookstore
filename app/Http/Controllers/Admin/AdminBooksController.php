@@ -35,8 +35,9 @@ class AdminBooksController extends AdminBaseController
             // 'name' => $request->name,
             // 'gid' => 4,
             'type' => 'other',
-            'gid' => 1,
-            'name' => 'Sample Product111111',
+            'gid' => 4,
+            'paytype' => 'onetime',
+            'name' => 'Sample Product2222',
         ]);
         if($result["result"] != "success")
             return redirect('/admin/books')

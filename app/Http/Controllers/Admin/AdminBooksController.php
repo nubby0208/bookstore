@@ -10,6 +10,7 @@ use App\PdfFile;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Intervention\Image\ImageManagerStatic as Photo;
+use Sburina\Whmcs\Facades\Whmcs;
 
 class AdminBooksController extends AdminBaseController
 {
@@ -27,6 +28,16 @@ class AdminBooksController extends AdminBaseController
     public function store(BooksCreateRequest $request)
     {
         $input = $request->all();
+
+        
+
+        $result = \Whmcs::AddProduct([
+            'name' => $request->name,
+            'gid' => 4,
+        ]);
+        $result = \Whmcs::GetProducts([
+        ]);
+        $input['id'] = count($result['products']['product']) - 1;
 
         $count_discount = (($request->init_price * $request->discount_rate)/100);
         $final_price  = $request->init_price - $count_discount;

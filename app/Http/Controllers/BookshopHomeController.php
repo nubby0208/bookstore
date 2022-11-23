@@ -97,7 +97,16 @@ class BookshopHomeController extends Controller
         //     $pdf_file_url = PdfFile::findOrFail(1);
         // }
         // return view('public.book-details' , compact('book', 'book_reviews', 'pdf_file_url'));
-
+//-----------------------------------------------------------------
+        $book = Book::with('readstates')->findOrFail($id);
+        $book_reviews = $book->reviews()->latest()->get();
+        // $state = Book::with('readstates')->get();
+        if ($book->pdf_id != 0){
+            $pdf_file_url = PdfFile::findOrFail($book->pdf_id);
+        }
+        else{
+            $pdf_file_url = PdfFile::findOrFail(1);
+        }
         //0 for nothing
         //1 for purchased
         //2 for time reading

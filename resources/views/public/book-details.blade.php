@@ -270,9 +270,7 @@
         }
 
         function select_purchasing_method() {
-            document.getElementById("purchase_bt").style.display = "none";
-            document.getElementById("hidden_purchasing_method").style.display = "inline";
-            document.getElementById("hidden_purchasing_method").style.paddingLeft = "13px";
+            window.location.assign("https://whmcs.books4all.it/whmcs/index.php/store/ebooks");
         }
 
         function buy_by_time() {

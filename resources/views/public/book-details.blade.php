@@ -81,7 +81,8 @@
                                         @else
                                         <input type="hidden" value="{{Auth::user()->id}}" id="user_id">
                                         <input type="hidden" value="{{$book->id}}" id="book_id">
-                                        @if($readstate == 0)
+                                        <input value="{{$readstate}}" id="book_id">
+                                        @if(count($book->readstates) == 0)
                                         <button id="purchase_bt" class="btn btn-success btn-sm" onclick="select_purchasing_method()">{{ __('Read this book') }}</button>
                                         <div class="row" id="hidden_purchasing_method">
                                             <button id="buy_directly" class="btn btn-success btn-sm" onclick="buy_directly()">{{ __('Read directly') }}</button>
@@ -111,8 +112,9 @@
                         </div>
                                         @else
 
-                                        @if($readstate == 1)
+                                        @if($book->readstates[0]->state == 1)
                                         
+                                        @if($book->readstates[0]->user_id == Auth::user()->id)
                                         <div class="row">
                                             <a href="{{asset($pdf_file_url->pdf_file)}}" class="btn btn-success btn-sm" download style="max-width: 130px; width: 100%"><i class="fas fa-download"></i></a>
                                         </div>
@@ -153,8 +155,9 @@
                             </div>
                             <div id="time_limit">Permission closes in <span id="time">00:00</span> minutes!</div>
                         </div>
+                                        @endif
 
-                                        @elseif($readstate == 2)
+                                        @elseif($book->readstates[0]->state == 3)
                                         <button id="continue_bt" class="btn btn-success btn-sm" onclick="select_continue_method()">Continue</button>
                                     </div>
                                 </div>

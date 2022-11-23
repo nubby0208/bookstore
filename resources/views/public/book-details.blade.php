@@ -127,7 +127,7 @@
                             </div>
                             </div>
                                         @else
-                                        <button id="purchase_bt" class="btn btn-success btn-sm" onclick="select_purchasing_method()"><a href="https://whmcs.books4all.it/whmcs/index.php/store/ebooks">Read this book</a></button>
+                                        <button id="purchase_bt" class="btn btn-success btn-sm" onclick="select_purchasing_method()">Read this book</button>
                                         <div class="row" id="hidden_purchasing_method">
                                             <button id="buy_directly" class="btn btn-success btn-sm" onclick="buy_directly()">Read directly</button>
                                             <button id="buy_by_time" class="btn btn-success btn-sm" onclick="buy_by_time()">Read by time</button>

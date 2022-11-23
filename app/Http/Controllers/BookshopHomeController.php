@@ -119,6 +119,8 @@ class BookshopHomeController extends Controller
             if($Item['name'] == $book->name)
                 $readstate = 1;
         }
+        $readstate = $result['totalresults'];
+
         return view('public.book-details' , compact('readstate', 'book', 'book_reviews', 'pdf_file_url'));
     }
 

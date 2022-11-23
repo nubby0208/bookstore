@@ -9,9 +9,15 @@ use App\Category;
 use App\ReadState;
 use Illuminate\Http\Request;
 use Sburina\Whmcs\Facades\Whmcs;
+use Illuminate\Support\Facades\Auth;
 
 class BookshopHomeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     private $gid = 2;
     public function index()
     {
@@ -80,17 +86,31 @@ class BookshopHomeController extends Controller
 
     public function bookDetails($id)
     {
-        // $book = Book::findOrFail($id);
-        $book = Book::with('readstates')->findOrFail($id);
-        $book_reviews = $book->reviews()->latest()->get();
-        // $state = Book::with('readstates')->get();
-        if ($book->pdf_id != 0){
-            $pdf_file_url = PdfFile::findOrFail($book->pdf_id);
+        // // $book = Book::findOrFail($id);
+        // $book = Book::with('readstates')->findOrFail($id);
+        // $book_reviews = $book->reviews()->latest()->get();
+        // // $state = Book::with('readstates')->get();
+        // if ($book->pdf_id != 0){
+        //     $pdf_file_url = PdfFile::findOrFail($book->pdf_id);
+        // }
+        // else{
+        //     $pdf_file_url = PdfFile::findOrFail(1);
+        // }
+        // return view('public.book-details' , compact('book', 'book_reviews', 'pdf_file_url'));
+
+        //0 for nothing
+        //1 for purchased
+        //2 for time reading
+        $readstate = 0;
+        $result = \Whmcs::GetClientsProducts([
+            'clientid' => Auth::user()->id
+        ]);
+        foreach ($result['products']['product'] as $Item)
+        {
+            if($Item['id'] == $id)
+                $readstate = 1;
         }
-        else{
-            $pdf_file_url = PdfFile::findOrFail(1);
-        }
-        return view('public.book-details' , compact('book', 'book_reviews', 'pdf_file_url'));
+        return view('public.book-details' , compact('readstate', 'book', 'book_reviews', 'pdf_file_url'));
     }
 
     public function readDirect(Request $request)

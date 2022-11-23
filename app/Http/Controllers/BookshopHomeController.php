@@ -116,7 +116,7 @@ class BookshopHomeController extends Controller
         ]);
         foreach ($result['products']['product'] as $Item)
         {
-            if($Item['id'] == $id)
+            if($Item['pid'] == $id)
                 $readstate = 1;
         }
         return view('public.book-details' , compact('readstate', 'book', 'book_reviews', 'pdf_file_url'));

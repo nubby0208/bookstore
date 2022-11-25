@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\Auth;
 
 class BookshopHomeController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     private $gid = 2;
     public function index()

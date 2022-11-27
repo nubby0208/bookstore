@@ -80,7 +80,7 @@ class BookshopHomeController extends Controller
         return view('public.book-page', compact('books', 'authorName'));
     }
 
-    public function bookDetails($id)
+    public function bookDetails($bookid)
     {
         // // $book = Book::findOrFail($id);
         // $book = Book::with('readstates')->findOrFail($id);
@@ -94,15 +94,8 @@ class BookshopHomeController extends Controller
         // }
         // return view('public.book-details' , compact('book', 'book_reviews', 'pdf_file_url'));
 //-----------------------------------------------------------------
-        $book = Book::with('readstates')->findOrFail($id);
-        $book_reviews = $book->reviews()->latest()->get();
-        // $state = Book::with('readstates')->get();
-        if ($book->pdf_id != 0){
-            $pdf_file_url = PdfFile::findOrFail($book->pdf_id);
-        }
-        else{
-            $pdf_file_url = PdfFile::findOrFail(1);
-        }
+        
+        //readstate definition
         //0 for nothing
         //1 for purchased
         //2 for time reading
@@ -111,13 +104,41 @@ class BookshopHomeController extends Controller
             'clientid' => Auth::user()->id
         ]);
         if($result['result'] == 'success' && $result['totalresults'] > 0)
+        {
+            // check if purchased
             foreach ($result['products']['product'] as $Item)
             {
                 if($Item['name'] == $book->title)
                     $readstate = 1;
             }
+            // check if having time credit
 
-        return view('public.book-details' , compact('readstate', 'book', 'book_reviews', 'pdf_file_url'));
+        }
+
+        $temp = ReadState::where('user_id', Auth::user()->id)->where('book_id', $bookid)->get();
+        // var_dump($temp);
+        if(count($temp) == 0){
+            $readState = new ReadState;
+            $readState->user_id = Auth::user()->id;
+            $readState->book_id = $bookid;
+            $readState->state = $readstate;
+            $readState->save();
+        }
+        else{
+            ReadState::where('user_id', Auth::user()->id)->where('book_id', $bookid)->update(array('state'=>$readstate));
+        }
+
+        $book = Book::with('readstates')->findOrFail($bookid);
+        $book_reviews = $book->reviews()->latest()->get();
+        // $state = Book::with('readstates')->get();
+        if ($book->pdf_id != 0){
+            $pdf_file_url = PdfFile::findOrFail($book->pdf_id);
+        }
+        else{
+            $pdf_file_url = PdfFile::findOrFail(1);
+        }
+
+        return view('public.book-details' , compact('book', 'book_reviews', 'pdf_file_url'));
     }
 
     public function readDirect(Request $request)

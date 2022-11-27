@@ -29,29 +29,34 @@ class AdminBooksController extends AdminBaseController
     public function store(BooksCreateRequest $request)
     {
         $input = $request->all();
+        $count_discount = (($request->init_price * $request->discount_rate)/100);
+        $final_price  = $request->init_price - $count_discount;
+        $input['price'] = $final_price;
 
-        
-
+        //whmcs add product
         $result = \Whmcs::AddProduct([
             // 'name' => $request->name,
             // 'gid' => 4,
             'type' => 'other',
             'gid' => $this->gid,
             'paytype' => 'onetime',
-            'pricing' => array(1 => array('monthly' => 99.00, 'msetupfee' => 1.99, 'quarterly' => 2.00, 'qsetupfee' => 1.99, 'semiannually' => 3.00, 'ssetupfee' => 1.99, 'annually' => 4.00, 'asetupfee' => 1.99, 'biennially' => 5.00, 'bsetupfee' => 1.99, 'triennially' => 6.00, 'tsetupfee' => 1.99)),
+            'pricing' => array(1 => array('monthly' => $input['price'], 'msetupfee' => 1.99, 'quarterly' => 2.00, 'qsetupfee' => 1.99, 'semiannually' => 3.00, 'ssetupfee' => 1.99, 'annually' => 4.00, 'asetupfee' => 1.99, 'biennially' => 5.00, 'bsetupfee' => 1.99, 'triennially' => 6.00, 'tsetupfee' => 1.99)),
             'name' => $request->title,
         ]);
+        
+        //if failed redirect
         if($result["result"] != "success")
             return redirect('/admin/books')
             ->with('success_message', $request->name . ' Book creation failed');
+        
+        //if success get product id
         $result = \Whmcs::GetProducts([
         ]);
-        
-        $input['id'] = count($result['products']['product']) - 1;
-
-        $count_discount = (($request->init_price * $request->discount_rate)/100);
-        $final_price  = $request->init_price - $count_discount;
-        $input['price'] = $final_price;
+        foreach (array_reverse($result['products']['product']) as $Item)
+        {
+            if($Item['name'] == $request->title)
+                $input['id'] = $Item['pid'];
+        }
 
         if($file = $request->file('image_id'))
         {

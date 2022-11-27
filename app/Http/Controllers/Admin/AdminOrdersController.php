@@ -6,6 +6,7 @@ use App\Order;
 use App\OrderDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Sburina\Whmcs\Facades\Whmcs;
 
 class AdminOrdersController extends AdminBaseController
 {
@@ -17,7 +18,18 @@ class AdminOrdersController extends AdminBaseController
     public function index()
     {
         $orders = Order::latest()->get();
-        return view('admin.orders.all-orders', compact('orders'));
+        
+        $result = \Whmcs::GetProducts([
+        ]);
+        $pid = 0;
+        foreach ($result['products']['product'] as $Item)
+        {
+            if($Item['name'] == 'New eBook')
+                $pid = $Item['pid'];
+        }
+        
+        $display = $pid;
+        return view('admin.orders.all-orders', compact('display', 'orders'));
     }
 
     /**

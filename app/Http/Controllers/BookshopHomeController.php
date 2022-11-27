@@ -139,7 +139,7 @@ class BookshopHomeController extends Controller
             $pdf_file_url = PdfFile::findOrFail(1);
         }
 
-        return view('public.book-details' , compact('book', 'book_reviews', 'pdf_file_url'));
+        return view('public.book-details' , compact('test', 'book', 'book_reviews', 'pdf_file_url'));
     }
 
     public function readDirect(Request $request)

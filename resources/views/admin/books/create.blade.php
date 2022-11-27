@@ -46,7 +46,7 @@
 
                 <div class="form-group">
                     {!! Form::label('author_id', 'Author') !!}
-                    {!! Form::select('author_id', App\Author::pluck('name', 'id'), null,['placeholder'=>'Select author','class'=>'form-control '.($errors->has('author_id')? 'is-invalid': '')]) !!}
+                    {!! Form::select('author_id', App\Author::pluck('name', 'id'), null,['class'=>'form-control '.($errors->has('author_id')? 'is-invalid': '')]) !!}
                     @if($errors->has('author_id'))
                         <span class="invalid-feedback">
                             <strong>{{$errors->first('author_id')}}</strong>
@@ -56,7 +56,7 @@
 
                 <div class="form-group">
                     {!! Form::label('category_id', 'Category') !!}
-                    {!! Form::select('category_id', App\Category::pluck('name', 'id'), null,['placeholder'=>'Select category','class'=>'form-control '.($errors->has('category_id')? 'is-invalid': '')]) !!}
+                    {!! Form::select('category_id', App\Category::pluck('name', 'id'), null,['class'=>'form-control '.($errors->has('category_id')? 'is-invalid': '')]) !!}
                     @if($errors->has('category_id'))
                         <span class="invalid-feedback">
                             <strong>{{$errors->first('category_id')}}</strong>
@@ -150,6 +150,27 @@
                 .replace(/^-+|-+$/g, '')
 
             slugInput.val(theSlug);
+
+                descriptionInput = $('#description');
+            theDescription = theTitle.replace(/&/g, '-and-')
+                .replace(/[^a-z$0-9-]+/g, '-')
+                .replace(/\-\-+/g, '-')
+                .replace(/^-+|-+$/g, '')
+
+            descriptionInput.val(theDescription);
+
+            init_priceInput = $('#init_price');
+            init_priceInput.val(99);
+            
+            discount_rateInput = $('#discount_rate');
+            discount_rateInput.val(10);
+            
+            quantityInput = $('#quantity');
+            quantityInput.val(99);
+
+            price_per_minInput = $('#price_per_min');
+            price_per_minInput.val(0.9);
+
         });
     </script>
 @endsection

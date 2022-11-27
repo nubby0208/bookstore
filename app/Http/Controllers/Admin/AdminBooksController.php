@@ -30,7 +30,9 @@ class AdminBooksController extends AdminBaseController
     {
         $input = $request->all();
 
-        
+        $count_discount = (($request->init_price * $request->discount_rate)/100);
+        $final_price  = $request->init_price - $count_discount;
+        $input['price'] = $final_price;
 
         $result = \Whmcs::AddProduct([
             // 'name' => $request->name,
@@ -38,6 +40,7 @@ class AdminBooksController extends AdminBaseController
             'type' => 'other',
             'gid' => $this->gid,
             'paytype' => 'onetime',
+            'pricing' => array(1 => array('monthly' => $input['price'], 'msetupfee' => 1.99, 'quarterly' => 2.00, 'qsetupfee' => 1.99, 'semiannually' => 3.00, 'ssetupfee' => 1.99, 'annually' => 4.00, 'asetupfee' => 1.99, 'biennially' => 5.00, 'bsetupfee' => 1.99, 'triennially' => 6.00, 'tsetupfee' => 1.99)),
             'name' => $request->title,
         ]);
         if($result["result"] != "success")
@@ -45,11 +48,10 @@ class AdminBooksController extends AdminBaseController
             ->with('success_message', $request->name . ' Book creation failed');
         $result = \Whmcs::GetProducts([
         ]);
-        $input['id'] = count($result['products']['product']) - 1;
 
-        $count_discount = (($request->init_price * $request->discount_rate)/100);
-        $final_price  = $request->init_price - $count_discount;
-        $input['price'] = $final_price;
+        $input['id'] = $result['pid'];
+
+        
 
         if($file = $request->file('image_id'))
         {

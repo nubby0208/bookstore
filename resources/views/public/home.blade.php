@@ -45,14 +45,14 @@
                     <div class="content-area">
                         <div class="card my-4">
                             <div class="card-header blue-dark">
-                                <h4><a href="{{route('category', 'engineering')}}" class="text-white">{{ __('Engineering Books') }}</a></h4>
+                                <h4><a href="{{route('category', 'engineering')}}" class="text-white">{{ __('Pack1 Books') }}</a></h4>
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    @if(! $engineering_books->count())
+                                    @if(! $pack1_books->count())
                                        <div class="alert alert-warning">No books availble</div>
                                     @else
-                                        @foreach($engineering_books as $book)
+                                        @foreach($pack1_books as $book)
                                             <div class="col-lg-3 col-6">
                                                 <div class="book-wrap">
                                                     <div class="book-image mb-2">
@@ -85,14 +85,14 @@
                         </div>
                         <div class="card my-4">
                             <div class="card-header blue-dark">
-                                <h4><a href="{{route('category', 'literature')}}" class="text-white">{{ __('Literature Books') }}</a></h4>
+                                <h4><a href="{{route('category', 'literature')}}" class="text-white">{{ __('Pack2 Books') }}</a></h4>
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    @if(! $literature_books->count())
+                                    @if(! $pack2_books->count())
                                         <div class="alert alert-warning">No books availble</div>
                                     @else
-                                        @foreach($literature_books as $book)
+                                        @foreach($pack2_books as $book)
                                             <div class="col-lg-3 col-6">
                                                 <div class="book-wrap">
                                                     <div class="book-image mb-2">

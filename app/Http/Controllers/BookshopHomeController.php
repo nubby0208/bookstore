@@ -18,14 +18,14 @@ class BookshopHomeController extends Controller
     public function index()
     {
         # Home page Books
-        $engineering_books = Book::with('category')->whereHas('category', function($query) {
-            $query->where('slug', 'engineering'); })
+        $pack1_books = Book::with('category')->whereHas('category', function($query) {
+            $query->where('slug', 'pack1'); })
             ->take(8)
             ->latestFirst()
             ->get();
-        $literature_books = Book::with('category', 'author', 'image', 'pdf_file')
+        $pack2_books = Book::with('category', 'author', 'image', 'pdf_file')
             ->whereHas('category', function ($query){
-                $query->where('slug', 'literature'); })
+                $query->where('slug', 'pack2'); })
             ->take(4)
             ->latestFirst()
             ->get();
@@ -34,7 +34,7 @@ class BookshopHomeController extends Controller
             ->orderBy('discount_rate', 'desc')
             ->take(6)
             ->get();
-        return view('public.home', compact('engineering_books', 'discount_books', 'literature_books'));
+        return view('public.home', compact('pack1_books', 'discount_books', 'pack2_books'));
     }
     public function allBooks()
     {

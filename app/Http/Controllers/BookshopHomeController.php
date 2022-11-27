@@ -110,11 +110,12 @@ class BookshopHomeController extends Controller
         $result = \Whmcs::GetClientsProducts([
             'clientid' => Auth::user()->id
         ]);
-        foreach ($result['products']['product'] as $Item)
-        {
-            if($Item['name'] == $book->title)
-                $readstate = 1;
-        }
+        if($result['result'] == 'success' && $result['totalresults'] > 0)
+            foreach ($result['products']['product'] as $Item)
+            {
+                if($Item['name'] == $book->title)
+                    $readstate = 1;
+            }
 
         return view('public.book-details' , compact('readstate', 'book', 'book_reviews', 'pdf_file_url'));
     }

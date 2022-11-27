@@ -4,7 +4,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">$display</h1>
+        <h1 class="h3 mb-2 text-gray-800">All orders</h1>
         <div class="my-2 px-1">
             <div class="row">
                 <div class="col-6">
@@ -25,6 +25,7 @@
                 <span class="m-0 font-weight-bold text-primary">Orders list</span>
             </div>
             <div class="card-body">
+            <h1 class="h3 mb-2 text-gray-800">$display</h1>
                 @if($orders->count())
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

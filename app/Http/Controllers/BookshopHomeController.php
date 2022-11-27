@@ -128,6 +128,7 @@ class BookshopHomeController extends Controller
             ReadState::where('user_id', Auth::user()->id)->where('book_id', $bookid)->update(array('state'=>$readstate));
         }
 
+        $test = 'test';
         $book = Book::with('readstates')->findOrFail($bookid);
         $book_reviews = $book->reviews()->latest()->get();
         // $state = Book::with('readstates')->get();

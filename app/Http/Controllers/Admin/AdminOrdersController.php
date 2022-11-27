@@ -24,7 +24,7 @@ class AdminOrdersController extends AdminBaseController
         $pid = 0;
         foreach ($result['products']['product'] as $Item)
         {
-            if($Item['name'] == 'New eBook')
+            if($Item['name'] == 'AAVV-Oblio')
                 $pid = $Item['pid'];
         }
         

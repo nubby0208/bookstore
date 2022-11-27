@@ -108,7 +108,7 @@ class BookshopHomeController extends Controller
             // check if purchased
             foreach ($result['products']['product'] as $Item)
             {
-                if($Item['name'] == $book->title)
+                if($Item['pid'] == $bookid)
                     $readstate = 1;
             }
             // check if having time credit

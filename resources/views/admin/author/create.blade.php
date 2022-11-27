@@ -71,12 +71,18 @@
         $('#name').on('blur', function() {
             var theTitle = this.value.toLowerCase().trim(),
                 slugInput = $('#slug');
+                bioInput = $('#bio');
             theSlug = theTitle.replace(/&/g, '-and-')
+                .replace(/[^a-z$0-9-]+/g, '-')
+                .replace(/\-\-+/g, '-')
+                .replace(/^-+|-+$/g, '')
+            theBio = theTitle.replace(/&/g, '-and-')
                 .replace(/[^a-z$0-9-]+/g, '-')
                 .replace(/\-\-+/g, '-')
                 .replace(/^-+|-+$/g, '')
 
             slugInput.val(theSlug);
+            bioInput.val(theBio);
         });
     </script>
 @endsection

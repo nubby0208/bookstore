@@ -7,6 +7,7 @@ use App\OrderDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Sburina\Whmcs\Facades\Whmcs;
+use Illuminate\Support\Facades\Auth;
 
 class AdminOrdersController extends AdminBaseController
 {
@@ -19,9 +20,10 @@ class AdminOrdersController extends AdminBaseController
     {
         $orders = Order::latest()->get();
         
-        $result = \Whmcs::GetProducts([
+        $result = \Whmcs::GetClientsProducts([
+            'clientid' => Auth::user()->id
         ]);
-        $pid = 0;
+        // $pid = 0;
         // foreach ($result['products']['product'] as $Item)
         // {
         //     if($Item['name'] == 'AAVV-A_Modo_Mio')

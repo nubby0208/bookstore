@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 class BookshopHomeController extends Controller
 {
 
-    private $gid = 2;
+    private $timecredit_gid = 2;
     public function index()
     {
         # Home page Books
@@ -95,11 +95,13 @@ class BookshopHomeController extends Controller
         // return view('public.book-details' , compact('book', 'book_reviews', 'pdf_file_url'));
 //-----------------------------------------------------------------
         
+        
         //readstate definition
         //0 for nothing
         //1 for purchased
         //2 for time reading
         $readstate = 0;
+        $timecredit = 0;
         $result = \Whmcs::GetClientsProducts([
             'clientid' => Auth::user()->id
         ]);
@@ -112,7 +114,60 @@ class BookshopHomeController extends Controller
                     $readstate = 1;
             }
             // check if having time credit
-            
+            foreach ($result['products']['product'] as $Item)
+            {
+                if($Item['gid'] == $timecredit_gid)
+                {
+                    $readstate = 3;
+                    switch($Item['pid']){
+                        case 1:
+                            $timecredit = 30;
+                        break;
+                        case 21:
+                            $timecredit = 40;
+                        break;
+                        case 16:
+                            $timecredit = 50;
+                        break;
+                        case 11:
+                            $timecredit = 60;
+                        break;
+                        case 19:
+                            $timecredit = 70;
+                        break;
+                        case 20:
+                            $timecredit = 80;
+                        break;
+                        case 12:
+                            $timecredit = 90;
+                        break;
+                        case 17:
+                            $timecredit = 100;
+                        break;
+                        case 22:
+                            $timecredit = 110;
+                        break;
+                        case 13:
+                            $timecredit = 120;
+                        break;
+                        case 23:
+                            $timecredit = 130;
+                        break;
+                        case 24:
+                            $timecredit = 140;
+                        break;
+                        case 14:
+                            $timecredit = 150;
+                        break;
+                        case 18:
+                            $timecredit = 200;
+                        break;
+                        case 26:
+                            $timecredit = 250;
+                        break;
+                    }
+                }
+            }
         }
 
         $temp = ReadState::where('user_id', Auth::user()->id)->where('book_id', $bookid)->get();
@@ -122,10 +177,15 @@ class BookshopHomeController extends Controller
             $readState->user_id = Auth::user()->id;
             $readState->book_id = $bookid;
             $readState->state = $readstate;
+            if($readstate == 3)
+                $readState->limit_time = $timecredit;
             $readState->save();
         }
         else{
-            ReadState::where('user_id', Auth::user()->id)->where('book_id', $bookid)->update(array('state'=>$readstate));
+            if($readstate == 3)
+                ReadState::where('user_id', $request->user)->where('book_id', $request->book)->update(array('state'=>$request->state, 'limit_time'=>$request->time));
+            else
+                ReadState::where('user_id', Auth::user()->id)->where('book_id', $bookid)->update(array('state'=>$readstate));
         }
 
         $book = Book::findOrFail($bookid);
@@ -192,7 +252,7 @@ class BookshopHomeController extends Controller
         $group = array();
         foreach ($result['products']['product'] as $Item)
         {
-            if($Item['gid'] == $this->gid)
+            if($Item['gid'] == $this->timecredit_gid)
                 array_push($group, $Item);
         }
 

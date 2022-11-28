@@ -22,13 +22,13 @@ class AdminOrdersController extends AdminBaseController
         $result = \Whmcs::GetProducts([
         ]);
         $pid = 0;
-        foreach ($result['products']['product'] as $Item)
-        {
-            if($Item['name'] == 'AAVV-A_Modo_Mio')
-                $pid = $Item['pid'];
-        }
+        // foreach ($result['products']['product'] as $Item)
+        // {
+        //     if($Item['name'] == 'AAVV-A_Modo_Mio')
+        //         $pid = $Item['pid'];
+        // }
         
-        $display = $pid;
+        $display = json_encode($result);
         return view('admin.orders.all-orders', compact('display', 'orders'));
     }
 

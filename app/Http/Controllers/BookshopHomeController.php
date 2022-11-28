@@ -113,12 +113,10 @@ class BookshopHomeController extends Controller
                 if($Item['pid'] == $bookid)
                     $readstate = 1;
             }
-            // check if having time credit
-            foreach ($result['products']['product'] as $Item)
-            {
-                if($Item['gid'] == $timecredit_gid)
+            // if not purchased check if having time credit
+            if($readstate == 0){
+                foreach ($result['products']['product'] as $Item)
                 {
-                    $readstate = 3;
                     switch($Item['pid']){
                         case 1:
                             $timecredit = 30;
@@ -176,14 +174,20 @@ class BookshopHomeController extends Controller
             $readState = new ReadState;
             $readState->user_id = Auth::user()->id;
             $readState->book_id = $bookid;
-            $readState->state = $readstate;
-            if($readstate == 3)
+            if($timecredit != 0)
+            {
                 $readState->limit_time = $timecredit;
+                $readstate = 3;
+            }
+            $readState->state = $readstate;
             $readState->save();
         }
         else{
-            if($readstate == 3)
-                ReadState::where('user_id', $request->user)->where('book_id', $request->book)->update(array('state'=>$request->state, 'limit_time'=>$request->time));
+            if($timecredit != 0)
+            {
+                $readstate = 3;
+                ReadState::where('user_id', Auth::user()->id)->where('book_id', $bookid)->update(array('state'=>$readstate, 'limit_time'=>$timecredit));
+            }
             else
                 ReadState::where('user_id', Auth::user()->id)->where('book_id', $bookid)->update(array('state'=>$readstate));
         }

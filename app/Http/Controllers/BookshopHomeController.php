@@ -177,7 +177,7 @@ class BookshopHomeController extends Controller
             if($timecredit != 0)
             {
                 $readState->limit_time = $timecredit;
-                $readstate = 3;
+                $readstate = 2;
             }
             $readState->state = $readstate;
             $readState->save();
@@ -185,7 +185,7 @@ class BookshopHomeController extends Controller
         else{
             if($timecredit != 0)
             {
-                $readstate = 3;
+                $readstate = 2;
                 ReadState::where('user_id', Auth::user()->id)->where('book_id', $bookid)->update(array('state'=>$readstate, 'limit_time'=>$timecredit));
             }
             else

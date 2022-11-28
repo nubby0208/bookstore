@@ -263,6 +263,8 @@
                         ob_2.style.display = "none";
                         // ob_3.style.display = "block";
                         window.location.reload();
+                        document.getElementById("purchase_bt").style.display = "block";
+                        document.getElementById("continue_bt").style.display = "block";
                     }
 
                 }, 1000);

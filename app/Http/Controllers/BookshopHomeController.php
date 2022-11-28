@@ -112,7 +112,7 @@ class BookshopHomeController extends Controller
                     $readstate = 1;
             }
             // check if having time credit
-
+            
         }
 
         $temp = ReadState::where('user_id', Auth::user()->id)->where('book_id', $bookid)->get();
@@ -138,8 +138,8 @@ class BookshopHomeController extends Controller
             $pdf_file_url = PdfFile::findOrFail(1);
         }
 
-        $test = ReadState::where('user_id', Auth::user()->id)->where('book_id', $bookid)->get();
-        return view('public.book-details' , compact('test', 'book', 'book_reviews', 'pdf_file_url'));
+        $book_readstate = ReadState::where('user_id', Auth::user()->id)->where('book_id', $bookid)->get();
+        return view('public.book-details' , compact('book_readstate', 'book', 'book_reviews', 'pdf_file_url'));
     }
 
     public function readDirect(Request $request)

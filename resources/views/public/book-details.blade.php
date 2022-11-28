@@ -168,6 +168,25 @@
                             </div>
                             <div id="time_limit">Permission closes in <span id="time">{{$book_readstate[0]->remain_min}}:{{$book_readstate[0]->remain_sec}}</span> minutes!</div>
                         </div>
+                                        @elseif($book_readstate[0]->state == 4)
+                                        <div class="row" id="hidden_starting_time_bt">
+                                            <button id="duration_apply" class="btn btn-danger btn-sm" onclick="select_duration({{$book_readstate[0]->limit_time}})">Apply</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="book-description p-3" id="book_description">
+                                        <p>{!! Markdown::convertToHtml(e($book->description)) !!}</p>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center mt-4" id="pdf_file">
+                                    <iframe id="pdf_viewer" src="{{asset($pdf_file_url->pdf_file)}}#toolbar=0" width="98%" height="600" allowfullscreen="true">
+                                            This browser does not support PDFs. Please download the PDF to view it: <a href="{{asset($pdf_file_url->pdf_file)}}">Download PDF</a>
+                                    </iframe>
+                                </div>
+                            </div>
+                            <div id="time_limit">Permission closes in <span id="time">00:00</span> minutes!</div>
+                        </div>
                                         @else
                                         <button id="purchase_bt" class="btn btn-success btn-sm" onclick="buy_by_time()">Read this book</button>
                                         <div class="row" id="hidden_purchasing_method">
@@ -311,8 +330,7 @@
             });
         }
 
-        function select_duration() {
-            var final_sel_time = document.getElementById("duration_time").value;
+        function select_duration(final_sel_time) {
             // console.log(final_sel_time);
             var final_minutes = parseInt(final_sel_time); 
             var Minutes = 60 * parseInt(final_sel_time),
@@ -323,9 +341,6 @@
             var duration_time = 0;
             var temp_src = document.getElementById("pdf_viewer").src;
             document.getElementById("pdf_viewer").src = temp_src;
-            if(document.getElementById("duration_time").value == '') {
-                alert("Input empty field!");
-            }
             else {
                 
 

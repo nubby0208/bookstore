@@ -174,22 +174,11 @@ class BookshopHomeController extends Controller
             $readState = new ReadState;
             $readState->user_id = Auth::user()->id;
             $readState->book_id = $bookid;
-            if($timecredit != 0)
-            {
-                $readState->limit_time = $timecredit;
-                $readstate = 2;
-            }
             $readState->state = $readstate;
             $readState->save();
         }
         else{
-            if($timecredit != 0)
-            {
-                $readstate = 2;
-                ReadState::where('user_id', Auth::user()->id)->where('book_id', $bookid)->update(array('state'=>$readstate, 'limit_time'=>$timecredit));
-            }
-            else
-                ReadState::where('user_id', Auth::user()->id)->where('book_id', $bookid)->update(array('state'=>$readstate));
+            ReadState::where('user_id', Auth::user()->id)->where('book_id', $bookid)->update(array('state'=>$readstate));
         }
 
         $book = Book::findOrFail($bookid);
@@ -203,7 +192,7 @@ class BookshopHomeController extends Controller
         }
 
         $book_readstate = ReadState::where('user_id', Auth::user()->id)->where('book_id', $bookid)->get();
-        return view('public.book-details' , compact('book_readstate', 'book', 'book_reviews', 'pdf_file_url'));
+        return view('public.book-details' , compact('timecredit', 'book_readstate', 'book', 'book_reviews', 'pdf_file_url'));
     }
 
     public function readDirect(Request $request)

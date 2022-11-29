@@ -118,51 +118,57 @@ class BookshopHomeController extends Controller
                 foreach ($result['products']['product'] as $Item)
                 {
                     switch($Item['pid']){
-                        case 1:
+                        case 32:
                             $timecredit = 30;
                         break;
-                        case 21:
-                            $timecredit = 40;
-                        break;
-                        case 16:
-                            $timecredit = 50;
-                        break;
-                        case 11:
+                        case 30:
                             $timecredit = 60;
                         break;
-                        case 19:
-                            $timecredit = 70;
-                        break;
-                        case 20:
-                            $timecredit = 80;
-                        break;
-                        case 12:
-                            $timecredit = 90;
-                        break;
-                        case 17:
-                            $timecredit = 100;
-                        break;
-                        case 22:
-                            $timecredit = 110;
-                        break;
-                        case 13:
-                            $timecredit = 120;
-                        break;
-                        case 23:
-                            $timecredit = 130;
-                        break;
-                        case 24:
-                            $timecredit = 140;
-                        break;
-                        case 14:
-                            $timecredit = 150;
-                        break;
-                        case 18:
-                            $timecredit = 200;
-                        break;
-                        case 26:
-                            $timecredit = 250;
-                        break;
+                        // case 1:
+                        //     $timecredit = 30;
+                        // break;
+                        // case 21:
+                        //     $timecredit = 40;
+                        // break;
+                        // case 16:
+                        //     $timecredit = 50;
+                        // break;
+                        // case 11:
+                        //     $timecredit = 60;
+                        // break;
+                        // case 19:
+                        //     $timecredit = 70;
+                        // break;
+                        // case 20:
+                        //     $timecredit = 80;
+                        // break;
+                        // case 12:
+                        //     $timecredit = 90;
+                        // break;
+                        // case 17:
+                        //     $timecredit = 100;
+                        // break;
+                        // case 22:
+                        //     $timecredit = 110;
+                        // break;
+                        // case 13:
+                        //     $timecredit = 120;
+                        // break;
+                        // case 23:
+                        //     $timecredit = 130;
+                        // break;
+                        // case 24:
+                        //     $timecredit = 140;
+                        // break;
+                        // case 14:
+                        //     $timecredit = 150;
+                        // break;
+                        // case 18:
+                        //     $timecredit = 200;
+                        // break;
+                        // case 26:
+                        //     $timecredit = 250;
+                        // break;
                     }
                 }
             }

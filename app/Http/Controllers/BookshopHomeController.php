@@ -189,6 +189,7 @@ class BookshopHomeController extends Controller
             $readState->save();
         }
         else{
+            $limit_time = 0;
             if($temp[0] -> state == 3)
                 $readstate = 3;
             if($temp[0] -> state == 0 && $timecredit != 0)

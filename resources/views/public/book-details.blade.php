@@ -357,7 +357,6 @@
                 success: function(result){
                     if(result['success'] != 'success')
                         return;
-                    document.getElementById("hidden_starting_time_bt").style.display = "none";
                     document.getElementById("pdf_file").style.display = "block";          
                     document.getElementById("time_limit").style.display = "block";
                     document.getElementById("book_description").style.display = "none";

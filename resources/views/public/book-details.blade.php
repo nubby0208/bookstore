@@ -269,7 +269,7 @@
             }
         }
 
-        function selectPurchasingMethod() {
+        window.selectPurchasingMethod = function() {
             window.location.assign("https://whmcs.books4all.it/whmcs/index.php/store/ebooks");
         }
 

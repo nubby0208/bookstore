@@ -174,11 +174,11 @@ class BookshopHomeController extends Controller
             $readState = new ReadState;
             $readState->user_id = Auth::user()->id;
             $readState->book_id = $bookid;
-            // if($timecredit != 0)
-            // {
-            //     $readstate = 4;
-            //     $readState->limit_time = $timecredit;
-            // }
+            if($timecredit != 0)
+            {
+                $readstate = 4;
+                $readState->limit_time = $timecredit;
+            }
             $readState->state = $readstate;
             $readState->save();
         }

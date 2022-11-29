@@ -80,7 +80,7 @@
                                 </div>
                                         @else
                                         <input type="hidden" value="{{Auth::user()->id}}" id="user_id">
-                                        <input value="{{$book->id}}" id="book_id">
+                                        <input type="hidden" value="{{$book->id}}" id="book_id">
                                         @if(count($book_readstate) == 0)
                                         <button id="purchase_bt" class="btn btn-success btn-sm" onclick="selectPurchasingMethod()">{{ __('Read this book') }}</button>
                                         <div class="row" id="hidden_purchasing_method">

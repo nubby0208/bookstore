@@ -322,36 +322,33 @@
             var duration_time = 0;
             var temp_src = document.getElementById("pdf_viewer").src;
             document.getElementById("pdf_viewer").src = temp_src;
-            else {
-                
 
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                $.ajax({
-                    url: "{{ url('/book/duration') }}",
-                    method: 'post',
-                    data: {
-                        user: jQuery('#user_id').val(),
-                        book: jQuery('#book_id').val(),
-                        state: 2,
-                        time: final_minutes
-                    },
-                    success: function(result){
-                        if(result['success'] != 'success')
-                            return;
-                        document.getElementById("hidden_starting_time_bt").style.display = "none";
-                        document.getElementById("pdf_file").style.display = "block";          
-                        document.getElementById("time_limit").style.display = "block";
-                        document.getElementById("book_description").style.display = "none";
-                        startTimer(Minutes, display, ob1, ob2, ob3);
-                        console.log(result);
-                    }
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url: "{{ url('/book/duration') }}",
+                method: 'post',
+                data: {
+                    user: jQuery('#user_id').val(),
+                    book: jQuery('#book_id').val(),
+                    state: 2,
+                    time: final_minutes
+                },
+                success: function(result){
+                    if(result['success'] != 'success')
+                        return;
+                    document.getElementById("hidden_starting_time_bt").style.display = "none";
+                    document.getElementById("pdf_file").style.display = "block";          
+                    document.getElementById("time_limit").style.display = "block";
+                    document.getElementById("book_description").style.display = "none";
+                    startTimer(Minutes, display, ob1, ob2, ob3);
+                    console.log(result);
+                }
 
-                });
-            }
+            });
         }
         
         function startTimer(duration, display, ob1, ob2, ob3) {

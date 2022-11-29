@@ -168,8 +168,6 @@
                             </div>
                             <div id="time_limit">Permission closes in <span id="time">{{$book_readstate[0]->remain_min}}:{{$book_readstate[0]->remain_sec}}</span> minutes!</div>
                         </div>
-                                        
-                                        
                                         @else
                                         <button id="purchase_bt" class="btn btn-success btn-sm" onclick="select_purchasing_method()">Read this book</button>
                                         <div class="row" id="hidden_purchasing_method">

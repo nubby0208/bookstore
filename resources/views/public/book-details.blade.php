@@ -169,8 +169,8 @@
                             <div id="time_limit">Permission closes in <span id="time">{{$book_readstate[0]->remain_min}}:{{$book_readstate[0]->remain_sec}}</span> minutes!</div>
                         </div>
                         @elseif($book_readstate[0]->state == 4)
-
-                                            <button id="duration_apply" class="btn btn-danger btn-sm" onclick="select_duration(30)">Apply</button>
+                        <input type="hidden" value="{{$book_readstate[0]->limit_time}}" id="limit_time">
+                                            <button id="duration_apply" class="btn btn-danger btn-sm" onclick="select_duration()">Apply</button>
                                 <div class="row">
                                     <div class="book-description p-3" id="book_description">
                                         <p>{!! Markdown::convertToHtml(e($book->description)) !!}</p>
@@ -327,7 +327,8 @@
             });
         }
 
-        function select_duration(final_sel_time) {
+        function select_duration() {
+            let final_sel_time = jQuery('#limit_time').val();
             // console.log(final_sel_time);
             var final_minutes = parseInt(final_sel_time); 
             var Minutes = 60 * parseInt(final_sel_time),

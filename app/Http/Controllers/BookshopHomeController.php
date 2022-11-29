@@ -190,9 +190,9 @@ class BookshopHomeController extends Controller
         }
         else{
             $limit_time = 0;
-            if($temp[0] -> state == 3)
+            if($readstate != 1 && $temp[0] -> state == 3)
                 $readstate = 3;
-            if($temp[0] -> state == 0 && $timecredit != 0)
+            if($readstate != 1 && $temp[0] -> state == 0 && $timecredit != 0)
             {
                 $readstate = 4;
                 $limit_time = $timecredit;

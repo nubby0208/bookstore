@@ -329,7 +329,7 @@
         }
 
         function select_duration() {
-            var final_sel_time = parseInt(document.getElementById("duration_time").value);
+            var final_sel_time = document.getElementById("duration_time").value;
 
             // console.log(final_sel_time);
             var final_minutes = parseInt(final_sel_time); 

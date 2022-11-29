@@ -119,10 +119,10 @@ class BookshopHomeController extends Controller
                 {
                     switch($Item['pid']){
                         case 32:
-                            $timecredit = 1;
+                            $timecredit = 30;
                         break;
                         case 30:
-                            $timecredit = 2;
+                            $timecredit = 60;
                         break;
                         // case 1:
                         //     $timecredit = 30;
@@ -191,7 +191,12 @@ class BookshopHomeController extends Controller
         else{
             if($temp[0] -> state == 3)
                 $readstate = 3;
-            ReadState::where('user_id', Auth::user()->id)->where('book_id', $bookid)->update(array('state'=>$readstate));
+            if($temp[0] -> state == 0 && $timecredit != 0)
+            {
+                $readstate = 4;
+                $limit_time = $timecredit;
+            }
+            ReadState::where('user_id', Auth::user()->id)->where('book_id', $bookid)->update(array('state'=>$readstate, 'limit_time'=>$limit_time));
         }
 
         $book = Book::findOrFail($bookid);

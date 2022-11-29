@@ -25,7 +25,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="headings">
-                    <h3><a href="{{route('bookshop.home')}}" class="text-secondary"><b class="text-danger">{{ __('Books') }}</b> {{ __('For All') }}</a></h3>
+                    <h3><a href="{{route('bookshop.home')}}" class="text-secondary"><b class="text-danger">{{ __('Books') }}</b> <span style="color: white;">{{ __('For All') }}</span></a></h3>
                 </div>
             </div>
             <div class="col-md-4">

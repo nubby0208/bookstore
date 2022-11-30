@@ -169,8 +169,6 @@
                             <div id="time_limit">Permission closes in <span id="time">{{$book_readstate[0]->remain_min}}:{{$book_readstate[0]->remain_sec}}</span> minutes!</div>
                         </div>
                         @elseif($book_readstate[0]->state == 4)
-                        <input type="number" value="{{$book_readstate[0]->limit_time}}" id="duration_time">
-
                                             <button id="duration_apply" class="btn btn-danger btn-sm" onclick="select_duration()">Apply</button>
                                 <div class="row">
                                     <div class="book-description p-3" id="book_description">

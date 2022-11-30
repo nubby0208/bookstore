@@ -169,9 +169,8 @@
                             <div id="time_limit">Permission closes in <span id="time">{{$book_readstate[0]->remain_min}}:{{$book_readstate[0]->remain_sec}}</span> minutes!</div>
                         </div>
                         @elseif($book_readstate[0]->state == 4)
-                        <input type="number" value="{{$book_readstate[0]->limit_time}}" id="duration_time">
 
-                                            <button id="duration_apply" class="btn btn-danger btn-sm" onclick="select_duration()">read for {{$book_readstate[0]->limit_time}} Minutes</button>
+                                            <button id="duration_apply" class="btn btn-danger btn-sm" onclick="select_duration()">Apply {{$book_readstate[0]->limit_time}} Minutes Reading Pack</button>
                                 <div class="row">
                                     <div class="book-description p-3" id="book_description">
                                         <p>{!! Markdown::convertToHtml(e($book->description)) !!}</p>
@@ -362,6 +361,8 @@
                     document.getElementById("pdf_file").style.display = "block";          
                     document.getElementById("time_limit").style.display = "block";
                     document.getElementById("book_description").style.display = "none";
+                    document.getElementById("duration_apply").style.display = "none";
+                    
                     startTimer(Minutes, display, ob1, ob2, ob3);
                     console.log(result);
                 }

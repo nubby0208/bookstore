@@ -28,6 +28,7 @@ span.image-circle img {
 }
 nav#nav-top {
     min-height: 50px;
+    background: #369643;
 }
 .shopping-cart {
     position: relative;
@@ -38,6 +39,23 @@ span.quantity-input {
     border-radius: 5px;
     background: #F8F9FA;
 }
+
+span{
+    font-family: cursive;
+}
+
+h4{
+    font-family: cursive;
+}
+
+.nav-link {
+    display: block;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-family: cursive;
+    font-size: larger;
+}
+
 
 .shopping-cart .count-cart {
     position: absolute;

@@ -157,7 +157,7 @@
                                         @endif
 
                                         @elseif($book_readstate[0]->state == 3)
-                                        <button id="continue_bt" class="btn btn-success btn-sm" onclick="select_continue_method()">Continue</button>
+                                        <button id="continue_bt" class="btn btn-success btn-sm" onclick="select_continue_method()">Continue reading</button>
                                     </div>
                                 </div>
                                 <div class="row justify-content-center mt-4" id="pdf_file">
@@ -169,7 +169,9 @@
                             <div id="time_limit">Permission closes in <span id="time">{{$book_readstate[0]->remain_min}}:{{$book_readstate[0]->remain_sec}}</span> minutes!</div>
                         </div>
                         @elseif($book_readstate[0]->state == 4)
-                                            <button id="duration_apply" class="btn btn-danger btn-sm" onclick="select_duration()">Apply</button>
+                        <input type="number" value="{{$book_readstate[0]->limit_time}}" id="duration_time">
+
+                                            <button id="duration_apply" class="btn btn-danger btn-sm" onclick="select_duration()">read for {{$book_readstate[0]->limit_time}} Minutes</button>
                                 <div class="row">
                                     <div class="book-description p-3" id="book_description">
                                         <p>{!! Markdown::convertToHtml(e($book->description)) !!}</p>

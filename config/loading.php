@@ -7,7 +7,7 @@ return [
 
     // specify loading icon:
     // cp-round, cp-pinwheel, cp-balls, cp-bubble, cp-flip, cp-hue, cp-skeleton, cp-eclipse, cp-boxes, cp-morph, cp-heart, cp-meter
-    'icon' => 'cp-round',
+    'icon' => 'cp-bubble',
 
     // hide loading indicator on DOM ready or complete window load. Use either of "window", "dom"
     'hide_event' => 'window',

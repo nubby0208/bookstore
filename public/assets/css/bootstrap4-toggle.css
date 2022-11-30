@@ -30,6 +30,7 @@
 }
 .toggle.btn.btn-light, .toggle.btn.btn-outline-light {
 	/* bootstrap-4 - add a border so toggle is delineated */
+	height: 34px !important;
 	border-color: rgba(0, 0, 0, .15);
 }
 .toggle input[type="checkbox"] {
@@ -79,7 +80,7 @@
 	height: 100%;
 	width: 0px;
 	border-width: 0 1px;
-	background-color: #fff;
+	background-color: #00cc99;
 }
 
 .toggle.btn-outline-primary .toggle-handle {
@@ -121,7 +122,7 @@
 
 /* NOTE: Must come first, so classes below override as needed */
 /* [default] (bootstrap-4.1.3 - .btn - h:38px) */
-.toggle.btn { min-width: 3.7rem; min-height: 2.15rem; }
+.toggle.btn { min-width: 2.7rem; min-height: 1.15rem; }
 .toggle-on.btn { padding-right: 1.5rem; }
 .toggle-off.btn { padding-left: 1.5rem; }
 

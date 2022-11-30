@@ -25,7 +25,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="headings">
-                    <h3><a href="{{route('bookshop.home')}}" class="text-secondary"><b class="text-danger">{{ __('Books') }}</b> <span style="color: white;">{{ __('For All') }}</span></a></h3>
+                    <h3><a href="{{route('bookshop.home')}}" class="text-secondary"><b style="color: #00cc99;">{{ __('Books') }}</b> <span style="color: white;">{{ __('For All') }}</span></a></h3>
                 </div>
             </div>
             <div class="col-md-4">
@@ -33,24 +33,24 @@
                     <div class="input-group input-group-sm m-1">
                         <input type="text" name="term" value="{{request('term')}}" class="form-control" placeholder="{{ __('Search Book') }}..">
                         <div class="input-group-append">
-                            <button class="btn btn-danger" type="submit">{{ __('Search') }}</button>
+                            <button class="btn" style="background-color: #00cc99;" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="col-md-4 row">
-                <div class="col-md-8 text-right">
-                    <input id="galaxy_checkbox" type="checkbox" checked data-toggle="toggle" data-offstyle="dark" data-onstyle="warning" data-style="border" data-on="<i class='fa fa-sun text_white'></i>" data-off="<i class='fa fa-moon text_white'></i>">
-                </div>
                 <div class="col-md-4">
                     <div class="shopping-cart text-right">
-                        <a href="{{route('cart')}}" class="text-danger"><i class="fas fa-shopping-cart fa-2x m-1"></i>
+                        <a href="{{route('cart')}}" style="color: #00cc99;"><i class="fas fa-shopping-cart fa-2x m-1"></i>
                             @if(Cart::content()->count())
                                 <span class="count-cart">{{Cart::content()->count()}}</span>
                             @endif
                         </a>
 
                     </div>
+                </div>
+                <div class="col-md-4 text-right">
+                    <input id="galaxy_checkbox" type="checkbox" checked data-toggle="toggle" data-offstyle="dark" data-onstyle="light" data-on="<i class='fa fa-sun text_white'></i>" data-off="<i class='fa fa-moon text_white'></i>">
                 </div>
             </div>
         </div>
@@ -63,11 +63,11 @@
 <footer class="py-3 text-center border-top bg-light">
     <div class="container">
         <div class="go-to-top mb-2">
-            <a href="#nav-top" class="text-muted" title="Go to top"><i class="fas fa-angle-double-up"></i></a>
+            <a href="#nav-top" class="text-muted" title="Go to top"><i class="fas fa-hand-point-up fa-5x"></i></a>
         </div>
-        <div class="footer-text">
+        <!-- <div class="footer-text">
             <span id="year"></span>
-        </div>
+        </div> -->
         <!-- <div class="social-icon mt-2">
         <span class="mr-2">
           <a href="#" class="text-primary"><i class="fab fa-facebook fa-2x"></i></a>

@@ -213,7 +213,7 @@ class BookshopHomeController extends Controller
         }
 
         $book_readstate = 0;
-        if(Auth::user() != null){
+        if(Auth::user() != null)
             $book_readstate = ReadState::where('user_id', Auth::user()->id)->where('book_id', $bookid)->get();
         return view('public.book-details' , compact('book_readstate', 'book', 'book_reviews', 'pdf_file_url'));
     }

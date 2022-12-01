@@ -102,102 +102,104 @@ class BookshopHomeController extends Controller
         //2 for time reading
         $readstate = 0;
         $timecredit = 0;
-        $result = \Whmcs::GetClientsProducts([
-            'clientid' => Auth::user()->id
-        ]);
-        if($result['result'] == 'success' && $result['totalresults'] > 0)
-        {
-            // check if purchased
-            foreach ($result['products']['product'] as $Item)
+        if(Auth::user() != null){
+            $result = \Whmcs::GetClientsProducts([
+                'clientid' => Auth::user()->id
+            ]);
+            if($result['result'] == 'success' && $result['totalresults'] > 0)
             {
-                if($Item['pid'] == $bookid)
-                    $readstate = 1;
-            }
-            // if not purchased check if having time credit
-            if($readstate == 0){
+                // check if purchased
                 foreach ($result['products']['product'] as $Item)
                 {
-                    switch($Item['pid']){
-                        case 32:
-                            $timecredit = 30;
-                        break;
-                        case 30:
-                            $timecredit = 60;
-                        break;
-                        // case 1:
-                        //     $timecredit = 30;
-                        // break;
-                        // case 21:
-                        //     $timecredit = 40;
-                        // break;
-                        // case 16:
-                        //     $timecredit = 50;
-                        // break;
-                        // case 11:
-                        //     $timecredit = 60;
-                        // break;
-                        // case 19:
-                        //     $timecredit = 70;
-                        // break;
-                        // case 20:
-                        //     $timecredit = 80;
-                        // break;
-                        // case 12:
-                        //     $timecredit = 90;
-                        // break;
-                        // case 17:
-                        //     $timecredit = 100;
-                        // break;
-                        // case 22:
-                        //     $timecredit = 110;
-                        // break;
-                        // case 13:
-                        //     $timecredit = 120;
-                        // break;
-                        // case 23:
-                        //     $timecredit = 130;
-                        // break;
-                        // case 24:
-                        //     $timecredit = 140;
-                        // break;
-                        // case 14:
-                        //     $timecredit = 150;
-                        // break;
-                        // case 18:
-                        //     $timecredit = 200;
-                        // break;
-                        // case 26:
-                        //     $timecredit = 250;
-                        // break;
+                    if($Item['pid'] == $bookid)
+                        $readstate = 1;
+                }
+                // if not purchased check if having time credit
+                if($readstate == 0){
+                    foreach ($result['products']['product'] as $Item)
+                    {
+                        switch($Item['pid']){
+                            case 32:
+                                $timecredit = 30;
+                            break;
+                            case 30:
+                                $timecredit = 60;
+                            break;
+                            // case 1:
+                            //     $timecredit = 30;
+                            // break;
+                            // case 21:
+                            //     $timecredit = 40;
+                            // break;
+                            // case 16:
+                            //     $timecredit = 50;
+                            // break;
+                            // case 11:
+                            //     $timecredit = 60;
+                            // break;
+                            // case 19:
+                            //     $timecredit = 70;
+                            // break;
+                            // case 20:
+                            //     $timecredit = 80;
+                            // break;
+                            // case 12:
+                            //     $timecredit = 90;
+                            // break;
+                            // case 17:
+                            //     $timecredit = 100;
+                            // break;
+                            // case 22:
+                            //     $timecredit = 110;
+                            // break;
+                            // case 13:
+                            //     $timecredit = 120;
+                            // break;
+                            // case 23:
+                            //     $timecredit = 130;
+                            // break;
+                            // case 24:
+                            //     $timecredit = 140;
+                            // break;
+                            // case 14:
+                            //     $timecredit = 150;
+                            // break;
+                            // case 18:
+                            //     $timecredit = 200;
+                            // break;
+                            // case 26:
+                            //     $timecredit = 250;
+                            // break;
+                        }
                     }
                 }
             }
-        }
 
-        $temp = ReadState::where('user_id', Auth::user()->id)->where('book_id', $bookid)->get();
-        // var_dump($temp);
-        if(count($temp) == 0){
-            $readState = new ReadState;
-            $readState->user_id = Auth::user()->id;
-            $readState->book_id = $bookid;
-            if($timecredit != 0)
-            {
-                $readstate = 4;
-                $readState->limit_time = $timecredit;
+            $temp = ReadState::where('user_id', Auth::user()->id)->where('book_id', $bookid)->get();
+            // var_dump($temp);
+            if(count($temp) == 0){
+                $readState = new ReadState;
+                $readState->user_id = Auth::user()->id;
+                $readState->book_id = $bookid;
+                if($timecredit != 0)
+                {
+                    $readstate = 4;
+                    $readState->limit_time = $timecredit;
+                }
+                $readState->state = $readstate;
+                $readState->save();
             }
-            $readState->state = $readstate;
-            $readState->save();
-        }
-        else{
-            $limit_time = 0;
-            if($readstate != 1 && $temp[0] -> state == 3)
-                $readstate = 3;
-            if($readstate != 1 && $temp[0] -> state == 0 && $timecredit != 0)
-            {
-                $readstate = 4;
-                $limit_time = $timecredit;
+            else{
+                $limit_time = 0;
+                if($readstate != 1 && $temp[0] -> state == 3)
+                    $readstate = 3;
+                if($readstate != 1 && $temp[0] -> state == 0 && $timecredit != 0)
+                {
+                    $readstate = 4;
+                    $limit_time = $timecredit;
+                }
+                ReadState::where('user_id', Auth::user()->id)->where('book_id', $bookid)->update(array('state'=>$readstate, 'limit_time'=>$limit_time));
             }
-            ReadState::where('user_id', Auth::user()->id)->where('book_id', $bookid)->update(array('state'=>$readstate, 'limit_time'=>$limit_time));
         }
 
         $book = Book::findOrFail($bookid);

@@ -30,7 +30,6 @@
 }
 .toggle.btn.btn-light, .toggle.btn.btn-outline-light {
 	/* bootstrap-4 - add a border so toggle is delineated */
-	height: 34px !important;
 	border-color: rgba(0, 0, 0, .15);
 }
 .toggle input[type="checkbox"] {

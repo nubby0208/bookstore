@@ -23,7 +23,7 @@
 <section class="header py-2 blue-dark">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="headings">
                     <h3><a href="{{route('bookshop.home')}}" class="text-secondary"><b style="color: #00cc99;">{{ __('Books') }}</b> <span style="color: white;">{{ __('For All') }}</span></a></h3>
                 </div>
@@ -40,14 +40,14 @@
             </div>
             <div class="col-md-4 row">
                 <div class="col-md-4">
-                    <div class="shopping-cart text-right">
+                    <!-- <div class="shopping-cart text-right">
                         <a href="{{route('cart')}}" style="color: #00cc99;"><i class="fas fa-shopping-cart fa-2x m-1"></i>
                             @if(Cart::content()->count())
                                 <span class="count-cart">{{Cart::content()->count()}}</span>
                             @endif
                         </a>
 
-                    </div>
+                    </div> -->
                 </div>
                 <div class="col-md-4 text-right">
                     <input id="galaxy_checkbox" type="checkbox" checked data-toggle="toggle" data-offstyle="dark" data-onstyle="light" data-on="<i class='fa fa-sun text_white'></i>" data-off="<i class='fa fa-moon text_white'></i>">

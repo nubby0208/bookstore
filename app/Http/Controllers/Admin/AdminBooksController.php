@@ -26,7 +26,7 @@ class AdminBooksController extends AdminBaseController
     {
         return view('admin.books.create');
     }
-    public function store(BooksCreateRequest $request)
+    public function store1(BooksCreateRequest $request)
     {
         $input = $request->all();
         $count_discount = (($request->init_price * $request->discount_rate)/100);
@@ -87,6 +87,67 @@ class AdminBooksController extends AdminBaseController
 
     }
 
+    public function store(BooksCreateRequest $request)
+    {
+        $input = $request->all();
+        $count_discount = (($request->init_price * $request->discount_rate)/100);
+        $final_price  = $request->init_price - $count_discount;
+        $input['price'] = $final_price;
+
+        //whmcs add product
+        $result = \Whmcs::AddProduct([
+            // 'name' => $request->name,
+            // 'gid' => 4,
+            'type' => 'other',
+            'gid' => $this->gid,
+            'paytype' => 'onetime',
+            'pricing' => array(1 => array('monthly' => $input['price'], 'msetupfee' => 1.99, 'quarterly' => 2.00, 'qsetupfee' => 1.99, 'semiannually' => 3.00, 'ssetupfee' => 1.99, 'annually' => 4.00, 'asetupfee' => 1.99, 'biennially' => 5.00, 'bsetupfee' => 1.99, 'triennially' => 6.00, 'tsetupfee' => 1.99)),
+            'name' => $request->title,
+        ]);
+        
+        //if failed redirect
+        if($result["result"] != "success")
+            return redirect('/admin/books')
+            ->with('success_message', $request->name . ' Book creation failed');
+        
+        //if success get product id
+        $result = \Whmcs::GetProducts([
+        ]);
+        foreach (array_reverse($result['products']['product']) as $Item)
+        {
+            if($Item['name'] == $request->title)
+                $input['id'] = $Item['pid'];
+        }
+
+        if($file = $request->file('image_id'))
+        {
+            $name = time().$file->getClientOriginalName();
+
+            $image_resize = Photo::make($file->getRealPath());
+            $image_resize->resize(340,380);
+            $image_resize->save(public_path('assets/img/' .$name));
+
+            $image = Image::create(['file'=>$name]);
+            $input['image_id'] = $image->id;
+        }
+        if($pdf_file = $request->file('pdf_id'))
+        {
+            $pdf_name = $pdf_file->getClientOriginalName();
+            $pdf_name = 'assets/pdf/'.$pdf_name;
+            $pdf = PdfFile::create(['pdf_file'=>$pdf_name]);
+            $input['pdf_id'] = $pdf->id;
+
+            $sourceFilePath=$pdf_file->getRealPath();
+            $destinationPath=public_path()."/$pdf_name";
+            $success = \File::copy($sourceFilePath,$destinationPath);   
+        }
+
+        $create_books = Book::create($input);
+        return redirect('/admin/books')
+            ->with('success_message', 'Book created successfully');
+
+    }
+    
     public function edit($id)
     {
         $book = Book::findOrFail($id);

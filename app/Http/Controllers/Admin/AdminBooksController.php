@@ -37,7 +37,7 @@ class AdminBooksController extends AdminBaseController
             'Alessio_Follieri-Ufo_Quale_verita',
             'Alex_Troma-Leviathan',
             'Alex_Troma-Short_Stories'
-        ]
+        ];
 
         foreach($booknames as $bookname){
             //whmcs add product

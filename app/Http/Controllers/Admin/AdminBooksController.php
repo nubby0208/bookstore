@@ -40,6 +40,9 @@ class AdminBooksController extends AdminBaseController
         ];
 
         foreach($booknames as $bookname){
+            $input['title'] = $bookname;
+            $input['slug'] = $bookname;
+
             //whmcs add product
             $result = \Whmcs::AddProduct([
                 // 'name' => $request->name,
@@ -76,7 +79,6 @@ class AdminBooksController extends AdminBaseController
                 $pdf = PdfFile::create(['pdf_file'=>$pdf_name]);
                 $input['pdf_id'] = $pdf->id;
             }
-            $input['slug'] = $bookname;
             $create_books = Book::create($input);
         }
         

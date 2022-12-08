@@ -62,7 +62,7 @@
                                             </span>
                                                 <input type="hidden" name="book_id" value="{{$book->id}}">
 
-                                                <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-shopping-cart"></i> {{ __('Add to cart') }}</button>
+                                                <!-- <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-shopping-cart"></i> {{ __('Add to cart') }}</button> -->
                                             </div>
                                         </form>
                                         @include('layouts.includes.flash-message')

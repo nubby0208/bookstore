@@ -34,7 +34,7 @@ class AdminBooksController extends AdminBaseController
         $input['price'] = $final_price;
 
         $booknames = [
-            'Alessio_Follieri-Ufo_Quale_verita-1',
+            'Alessio_Follieri-Ufo_Quale_verita',
             'Alex_Troma-Leviathan',
             'Alex_Troma-Short_Stories'
         ]

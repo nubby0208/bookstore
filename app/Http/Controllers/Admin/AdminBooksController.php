@@ -34,9 +34,9 @@ class AdminBooksController extends AdminBaseController
         $input['price'] = $final_price;
 
         $booknames = [
-            'Alessio_Follieri-Ufo_Quale_verita',
-            'Alex_Troma-Leviathan',
-            'Alex_Troma-Short_Stories'
+            'Alfredo_Bruni-Vincenzo_il_pescivendolo',
+            'Alfred_Jarry-Gesta_e_Opinioni_del_Dottor_Faustroll_patafisico',
+            'Alfonso_Dazzi-U_Boot_e_altre_storie'
         ];
 
         foreach($booknames as $bookname){
@@ -70,12 +70,12 @@ class AdminBooksController extends AdminBaseController
 
             if($file = $request->file('image_id'))
             {
-                $image = Image::create(['file'=>$bookname.'-1']);
+                $image = Image::create(['file'=>$bookname.'.png']);
                 $input['image_id'] = $image->id;
             }
             if($pdf_file = $request->file('pdf_id'))
             {
-                $pdf_name = 'assets/pdf/'.$bookname;
+                $pdf_name = 'assets/pdf/'.$bookname.'.pdf';
                 $pdf = PdfFile::create(['pdf_file'=>$pdf_name]);
                 $input['pdf_id'] = $pdf->id;
             }

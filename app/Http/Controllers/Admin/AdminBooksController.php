@@ -41,44 +41,28 @@ class AdminBooksController extends AdminBaseController
             'gid' => $this->gid,
             'paytype' => 'onetime',
             'pricing' => array(1 => array('monthly' => $input['price'], 'msetupfee' => 1.99, 'quarterly' => 2.00, 'qsetupfee' => 1.99, 'semiannually' => 3.00, 'ssetupfee' => 1.99, 'annually' => 4.00, 'asetupfee' => 1.99, 'biennially' => 5.00, 'bsetupfee' => 1.99, 'triennially' => 6.00, 'tsetupfee' => 1.99)),
-            'name' => $request->title,
+            'name' => 'Alessio_Follieri-Ufo_Quale_verita-1',
         ]);
         
         //if failed redirect
         if($result["result"] != "success")
             return redirect('/admin/books')
-            ->with('success_message', $request->name . ' Book creation failed');
+            ->with('success_message', ' Book creation failed');
         
         //if success get product id
         $result = \Whmcs::GetProducts([
         ]);
         foreach (array_reverse($result['products']['product']) as $Item)
         {
-            if($Item['name'] == $request->title)
+            if($Item['name'] == 'Alessio_Follieri-Ufo_Quale_verita-1')
                 $input['id'] = $Item['pid'];
         }
 
-        if($file = $request->file('image_id'))
-        {
-            $name = time().$file->getClientOriginalName();
-
-            $image_resize = Photo::make($file->getRealPath());
-            $image_resize->resize(340,380);
-            $image_resize->save(public_path('assets/img/' .$name));
-
-            $image = Image::create(['file'=>$name]);
-            $input['image_id'] = $image->id;
-        }
         if($pdf_file = $request->file('pdf_id'))
         {
-            $pdf_name = $pdf_file->getClientOriginalName();
-            $pdf_name = 'assets/pdf/'.$pdf_name;
-            $pdf = PdfFile::create(['pdf_file'=>$pdf_name]);
+            $pdf_name = 'assets/pdf/'.'Alessio_Follieri-Ufo_Quale_verita-1';
+            $pdf = PdfFile::create(['pdf_file'=>'Alessio_Follieri-Ufo_Quale_verita-1']);
             $input['pdf_id'] = $pdf->id;
-
-            $sourceFilePath=$pdf_file->getRealPath();
-            $destinationPath=public_path()."/$pdf_name";
-            $success = \File::copy($sourceFilePath,$destinationPath);   
         }
 
         $create_books = Book::create($input);

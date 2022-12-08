@@ -35,7 +35,8 @@ class AdminBooksController extends AdminBaseController
 
         $booknames = [
             'Alessio_Follieri-Ufo_Quale_verita-1',
-            
+            'Alex_Troma-Leviathan',
+            'Alex_Troma-Short_Stories'
         ]
 
         foreach($booknames as $bookname){
@@ -66,7 +67,7 @@ class AdminBooksController extends AdminBaseController
 
             if($file = $request->file('image_id'))
             {
-                $image = Image::create(['file'=>$bookname]);
+                $image = Image::create(['file'=>$bookname.'-1']);
                 $input['image_id'] = $image->id;
             }
             if($pdf_file = $request->file('pdf_id'))

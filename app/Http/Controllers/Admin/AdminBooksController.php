@@ -76,7 +76,7 @@ class AdminBooksController extends AdminBaseController
                 $pdf = PdfFile::create(['pdf_file'=>$pdf_name]);
                 $input['pdf_id'] = $pdf->id;
             }
-
+            $input['slug'] = $bookname;
             $create_books = Book::create($input);
         }
         

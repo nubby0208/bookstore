@@ -26,7 +26,7 @@ class AdminBooksController extends AdminBaseController
     {
         return view('admin.books.create');
     }
-    public function store1(BooksCreateRequest $request)
+    public function store(BooksCreateRequest $request)
     {
         $input = $request->all();
         $count_discount = (($request->init_price * $request->discount_rate)/100);
@@ -42,6 +42,7 @@ class AdminBooksController extends AdminBaseController
         foreach($booknames as $bookname){
             $input['title'] = $bookname;
             $input['slug'] = $bookname;
+            $input['description'] = 'This book is '.$bookname;
 
             //whmcs add product
             $result = \Whmcs::AddProduct([
@@ -87,7 +88,7 @@ class AdminBooksController extends AdminBaseController
 
     }
 
-    public function store(BooksCreateRequest $request)
+    public function store1(BooksCreateRequest $request)
     {
         $input = $request->all();
         $count_discount = (($request->init_price * $request->discount_rate)/100);

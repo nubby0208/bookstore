@@ -27,7 +27,7 @@ class AdminBooksController extends AdminBaseController
         return view('admin.books.create');
     }
 
-    $pack1booknames = [
+    private $pack1booknames = [
         '10_Ricette_Halloween',
         'AAVV-12_Scheletri',
         'AAVV-300_parole_dorrore',
@@ -129,7 +129,7 @@ class AdminBooksController extends AdminBaseController
         'Alfredo_Bruni-Vincenzo_il_pescivendolo',
         'Alfred_Jarry-Gesta_e_Opinioni_del_Dottor_Faustroll_patafisico',
     ];
-    $pack2booknames = [
+    private $pack2booknames = [
         'Alfredo_Morganti-Dushara',
         'Alfredo_Morganti-Le_bolle_e_la_terra',
         'Alfredo_Morganti-Terzo_Tempo',
@@ -231,7 +231,7 @@ class AdminBooksController extends AdminBaseController
         'Wu-Ming-Libera_Baku_Ora',
         'Wu_Ming_4-L_Eroe_imperfetto',
     ];
-    $pack3booknames = [
+    private $pack3booknames = [
         'Emilio_Salgari-Il_Corsaro_Nero',
         'Emilio_Salgari-Il_figlio_del_Corsaro_Rosso',
         'Emilio_Salgari-Il_Re_del_mare',
@@ -326,7 +326,7 @@ class AdminBooksController extends AdminBaseController
         'Giovanni_Verga-Mastro_Don_Gesualdo',
         'Giovanni_Verga-Storia_di_una_capinera',
     ];
-    $pack4booknames = [
+    private $pack4booknames = [
         'Giovanni_Verga-Tigre_reale_Eva',
         'Giovanni_Verga-Tutte_le_novelle',
         'Giovanni_Verga-Una_peccatrice',
@@ -428,7 +428,7 @@ class AdminBooksController extends AdminBaseController
         'Lev_N_Tolstoj-Denaro_Falso',
         'Lewis_Carroll-Alice_nel_paese_delle_meraviglie',
     ];
-    $pack5booknames = [
+    private $pack5booknames = [
         'Lewis_Carroll-Attraverso_lo_specchio',
         'Lorenzo_Muccioli-Le_Novelle_di_Ciccone',
         'Loris_Bagnara-Mutazioni',
@@ -530,7 +530,7 @@ class AdminBooksController extends AdminBaseController
         'Publio_Virgilio_Marone-Eneide',
         'Raffaele_Gambigliani_Zoccoli-Una_scommessa_incrociata',
     ];
-    $pack6booknames = [
+    private $pack6booknames = [
         'AAVV-1000_e_non_piu_1000',
         'AAVV-E_far_l_amore_anche_se_il_mondo_muore',
         'AAVV-Halloween_Nights',
@@ -633,7 +633,7 @@ class AdminBooksController extends AdminBaseController
         'Tommaso_Campanella-Tutte_le_poesie',
         
     ];
-    $pack7booknames = [
+    private $pack7booknames = [
         'AAVV-Il_tempo_vissuto',
         'AAVV-La_pace_e_in_fiamme',
         'AAVV-Premio_Babuk_2015',
@@ -736,7 +736,7 @@ class AdminBooksController extends AdminBaseController
         'Wu_Ming_2-Guerra_agli_umani',
         
     ];
-    $pack8booknames = [
+    private $pack8booknames = [
         'Alexandre_Dumas-Il_Conte_di_Montecristo',
         'Alexandre_Dumas-La_signora_delle_camelie',
         'Arthur_Conan_Doyle-Uno_studio_in_rosso',
@@ -785,14 +785,14 @@ class AdminBooksController extends AdminBaseController
         $final_price  = $request->init_price - $count_discount;
         $input['price'] = $final_price;
 
-        $booknames = $pack1booknames;
+        $booknames = $this->pack1booknames;
 
         $booknames = [
             '10_Ricette_Halloween',
             'AAVV-12_Scheletri',
             'AAVV-300_parole_dorrore',
         ];
-        
+
         foreach($booknames as $bookname){
             $input['title'] = $bookname;
             $input['slug'] = $bookname;

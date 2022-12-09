@@ -20,8 +20,7 @@ class AdminOrdersController extends AdminBaseController
     {
         $orders = Order::latest()->get();
         
-        $result = \Whmcs::GetClientsProducts([
-            'clientid' => Auth::user()->id
+        $result = \Whmcs::GetProducts([
         ]);
         // $pid = 0;
         // foreach ($result['products']['product'] as $Item)

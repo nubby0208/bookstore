@@ -787,6 +787,12 @@ class AdminBooksController extends AdminBaseController
 
         $booknames = $pack1booknames;
 
+        $booknames = [
+            '10_Ricette_Halloween',
+            'AAVV-12_Scheletri',
+            'AAVV-300_parole_dorrore',
+        ];
+        
         foreach($booknames as $bookname){
             $input['title'] = $bookname;
             $input['slug'] = $bookname;

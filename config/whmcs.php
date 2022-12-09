@@ -9,8 +9,8 @@ return [
 	| Main URL to your WHMCS
 	|
 	*/
-
-	'url'             => env('WHMCS_URL', 'https://whmcs.havefun.fun/whmcs'),
+	'url'             => env('WHMCS_URL', 'https://whmcs.books4all.it/whmcs'),
+	// 'url'             => env('WHMCS_URL', 'https://whmcs.havefun.fun/whmcs'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -31,8 +31,10 @@ return [
 		'type' => env('WHMCS_AUTH_TYPE', 'api'),
 
 		'api' => [
-			'identifier' => env('WHMCS_API_ID', 'Zzsfc6ZyaiRjSEeXdjK7GJ44VoYJkmbD'),
-			'secret'     => env('WHMCS_API_SECRET', 'tUX8PVGyd3Bk6xNI9XFwJE7jgBDrQEMh'),
+			'identifier' => env('WHMCS_API_ID', 'HEUgjAtEnTEZBocgyNIoP48V6jmvjIT4'),
+			'secret'     => env('WHMCS_API_SECRET', 'hdwlznKDXSofNPnrlGc0MLFrj2U8I49e'),
+			// 'identifier' => env('WHMCS_API_ID', 'Zzsfc6ZyaiRjSEeXdjK7GJ44VoYJkmbD'),
+			// 'secret'     => env('WHMCS_API_SECRET', 'tUX8PVGyd3Bk6xNI9XFwJE7jgBDrQEMh'),
 		],
 
 		'password' => [

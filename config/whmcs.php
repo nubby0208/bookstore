@@ -57,8 +57,8 @@ return [
 	| @see https://developers.whmcs.com/api/access-control/
 	|
 	*/
-  
-	'api_access_key'  => env('WHMCS_API_ACCESS_KEY', ''),
+	'api_access_key'  => env('WHMCS_API_ACCESS_KEY', 'cool_passphrase_goes_hero'),
+	// 'api_access_key'  => env('WHMCS_API_ACCESS_KEY', ''),
 
 	/*
 	|--------------------------------------------------------------------------

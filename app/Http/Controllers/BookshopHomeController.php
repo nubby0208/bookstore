@@ -55,6 +55,18 @@ class BookshopHomeController extends Controller
             ->paginate(16);
         return view('public.book-page', compact('books', 'discountTitle'));
     }
+
+    public function privacy()
+    {
+        # ComposerServiceProvider load here
+        return view('public.privacy');
+    }
+
+    public function about()
+    {
+        # ComposerServiceProvider load here
+        return view('public.about');
+    }
     /*
      * Books filter by category
      */

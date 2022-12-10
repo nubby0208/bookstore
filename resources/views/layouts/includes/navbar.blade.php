@@ -16,7 +16,7 @@
                     <a href="{{route('discount-books')}}" class="nav-link">{{ __('Discount Book') }}</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a href="#" class="nav-link">{{ __('About') }}</a>
+                    <a href="{{route('about')}}" class="nav-link">{{ __('About') }}</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">

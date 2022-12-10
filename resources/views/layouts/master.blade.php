@@ -65,6 +65,11 @@
         <div class="go-to-top mb-2">
             <a href="#nav-top" class="text-muted" title="Go to top"><i class="fas fa-hand-point-up fa-5x"></i></a>
         </div>
+        <div class="notice-cookie-content">
+            <div class="notice-cookie-text">
+                <p>We are using cookies to ensure that we give you the best experience. By continuing to use this site, you agree to our policy. To read more about how we use cookies read our <a href="{{route('privacy')}}">Privacy Policy</a></p>
+            </div>
+        </div>
         <!-- <div class="footer-text">
             <span id="year"></span>
         </div> -->

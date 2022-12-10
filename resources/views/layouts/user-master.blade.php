@@ -36,7 +36,7 @@
                     <a href="{{route('discount-books')}}" class="nav-link">Discount's Books</a>
                 </li>
                 <li class="nav-item px-2">
-                    <a href="#" class="nav-link">About</a>
+                    <a href="{{route('about')}}" class="nav-link">About</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">

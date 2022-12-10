@@ -43,6 +43,8 @@ Route::get('cart/language/{locale}', function ($locale) {
 Route::get('/', 'BookshopHomeController@index')->name('bookshop.home');
 
 Route::get('/all-books', 'BookshopHomeController@allBooks')->name('all-books');
+Route::get('/about', 'BookshopHomeController@about')->name('about');
+Route::get('/privacy', 'BookshopHomeController@privacy')->name('privacy');
 Route::get('/discount-books', 'BookshopHomeController@discountBooks')->name('discount-books');
 Route::get('/category/{category}', 'BookshopHomeController@category')->name('category');
 Route::get('/author/{author}', 'BookshopHomeController@author')->name('author');

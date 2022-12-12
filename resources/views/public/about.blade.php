@@ -23,9 +23,9 @@
                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-12">
                 <div class="content">
                     <h2 class="h1">About Us</h2>
-                    <p>Ubuy has made its mark in the e-commerce world in 2012, as a cross-border shopping platform serving more than 180 countries.</p>
-                    <p>Through its website and app, Ubuy provides over 100 million brand-new, unique products from the best international brands in the US, the UK, and other countries.</p>
-                    <p>Ubuy enables seamless and confined payment methods as well as faster checkouts while amplifying the shopper's experience. As an International Shopping doorway, we bring quality products from luxury brands to customers' doorsteps from around the world with the assistance of the most trusted courier partners in the industry.</p>
+                    <p>books4all has made its mark in the e-commerce world in 2012, as a cross-border shopping platform serving more than 180 countries.</p>
+                    <p>Through its website and app, books4all provides over 100 million brand-new, unique products from the best international brands in the US, the UK, and other countries.</p>
+                    <p>books4all enables seamless and confined payment methods as well as faster checkouts while amplifying the shopper's experience. As an International Shopping doorway, we bring quality products from luxury brands to customers' doorsteps from around the world with the assistance of the most trusted courier partners in the industry.</p>
                 </div>
                 </div>
                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-12">
@@ -40,7 +40,7 @@
         <!-- ubuy-journey starts -->
         <section class="ubuy-rising mt-100 ">
             <div class="container-fluid">
-            <h2 class="h1 text-center">Ubuy’s Journey</h2>
+            <h2 class="h1 text-center">books4all’s Journey</h2>
             <div class="points text-center">
                 <div class="points-image web-view">
                 <div class="row">
@@ -54,7 +54,7 @@
                     </div>
                     <div class="col-lg-2 col-md-2 for-col-5">
                     <div class="content">
-                        <p>As an international shopping platform Ubuy has commenced its operations in many parts of the MENA Region, including Saudi Arabia, Qatar, the United Arab Emirates, Turkey, Egypt, Kuwait Abroad, and others.</p>
+                        <p>As an international shopping platform books4all has commenced its operations in many parts of the MENA Region, including Saudi Arabia, Qatar, the United Arab Emirates, Turkey, Egypt, Kuwait Abroad, and others.</p>
                     </div>
                     <div class="number number-2">
                         <img alt="02" src="https://d3ulwu8fab47va.cloudfront.net/skin/frontend/default/ubuycom-v1/images/about-us/number-2.svg">
@@ -65,12 +65,12 @@
                         <img alt="03" src="https://d3ulwu8fab47va.cloudfront.net/skin/frontend/default/ubuycom-v1/images/about-us/number-3.svg">
                     </div>
                     <div class="content">
-                        <p>Ubuy has opened online stores in 50+ countries, which include New Zealand, India, Australia, South Africa, and Hong Kong.</p>
+                        <p>books4all has opened online stores in 50+ countries, which include New Zealand, India, Australia, South Africa, and Hong Kong.</p>
                     </div>
                     </div>
                     <div class="col-lg-2 col-md-2 for-col-5">
                     <div class="content">
-                        <p>Ubuy has improved the shopping experience of customers by expanding its reach to 90+ countries along with a vast category of authentic &amp; genuine products.</p>
+                        <p>books4all has improved the shopping experience of customers by expanding its reach to 90+ countries along with a vast category of authentic &amp; genuine products.</p>
                     </div>
                     <div class="number number-2">
                         <img alt="04" src="https://d3ulwu8fab47va.cloudfront.net/skin/frontend/default/ubuycom-v1/images/about-us/number-4.svg">
@@ -99,7 +99,7 @@
                 </div>
                 <div class="points">
                     <div class="content col-6">
-                    <p class="mr-4">As an international shopping platform Ubuy has commenced its operations in many parts of the MENA Region, including Saudi Arabia, Qatar, the United Arab Emirates, Turkey, Egypt, Kuwait Abroad, and others.</p>
+                    <p class="mr-4">As an international shopping platform books4all has commenced its operations in many parts of the MENA Region, including Saudi Arabia, Qatar, the United Arab Emirates, Turkey, Egypt, Kuwait Abroad, and others.</p>
                     </div>
                     <div class="image col-6 number-2">
                     <img src="https://d3ulwu8fab47va.cloudfront.net/skin/frontend/default/ubuycom-v1/images/about-us/mv-number-2.svg">
@@ -110,12 +110,12 @@
                     <img src="https://d3ulwu8fab47va.cloudfront.net/skin/frontend/default/ubuycom-v1/images/about-us/mv-number-3.svg">
                     </div>
                     <div class="content col-6">
-                    <p class="ml-4">Ubuy has opened online stores in 50+ countries, which include New Zealand, India, Australia, South Africa, and Hong Kong.</p>
+                    <p class="ml-4">books4all has opened online stores in 50+ countries, which include New Zealand, India, Australia, South Africa, and Hong Kong.</p>
                     </div>
                 </div>
                 <div class="points">
                     <div class="content col-6">
-                    <p class="mr-4">Ubuy has improved the shopping experience of customers by expanding its reach to 90+ countries along with a vast category of authentic &amp; genuine products.</p>
+                    <p class="mr-4">books4all has improved the shopping experience of customers by expanding its reach to 90+ countries along with a vast category of authentic &amp; genuine products.</p>
                     </div>
                     <div class="image col-6 number-2">
                     <img src="https://d3ulwu8fab47va.cloudfront.net/skin/frontend/default/ubuycom-v1/images/about-us/mv-number-4.svg">
@@ -209,7 +209,7 @@
         <section class="global-presence mt-100">
             <div class="container">
             <h3 class="h1 position-relative text-center">Global Presence</h3>
-            <p class="text-center">Add an international punch to your abroad shopping spree with Ubuy. We have already laid our steps in the international market and are growing to be a globally renowned marketplace in different continents such as:</p>
+            <p class="text-center">Add an international punch to your abroad shopping spree with books4all. We have already laid our steps in the international market and are growing to be a globally renowned marketplace in different continents such as:</p>
             <div class="global-presence-img text-center">
                 <img alt="Map" src="https://d3ulwu8fab47va.cloudfront.net/skin/frontend/default/ubuycom-v1/images/about-us/global-map.svg">
             </div>
@@ -226,7 +226,7 @@
                 <div class="col-xxl-10 col-12  our-core-values ">
                 <h2 class="h1 position-relative">Our Growth</h2>
                 <p>It's been an amazing journey that we are still planning to go on with. Most asked how we've grown so quickly; It is quite a simple question to answer. We have always put our customers as our first priority. Focus on ensuring that customers get the finest and perhaps most affordable products on the market. We take care of it by utilising our comprehensive logistics networks. Another important factor behind our success is our after-sale support team that takes care of customers' needs and demands are met. Internally, we call this our supercalifragilisticexpialidocious philosophy.</p>
-                <p>As a new uprising global shopping platform Ubuy is always looking forward to gaining a new perspective while keeping its core values intact.</p>
+                <p>As a new uprising global shopping platform books4all is always looking forward to gaining a new perspective while keeping its core values intact.</p>
                 </div>
             </div>
             </div>
@@ -273,7 +273,7 @@
                     </div>
                 </div>
                 </div>
-                <p class="text-center">These values are what have defined us in past and will reflect us well in the future. Still looking forward to being a global shopping platform. Ubuy is aiming to offer superior quality, eccentric globally renowned products to customers worldwide. Our success is nothing more than the consistent support offered to us by our loyal customers who have helped us clear all the obstacles coming in our path.</p>
+                <p class="text-center">These values are what have defined us in past and will reflect us well in the future. Still looking forward to being a global shopping platform. books4all is aiming to offer superior quality, eccentric globally renowned products to customers worldwide. Our success is nothing more than the consistent support offered to us by our loyal customers who have helped us clear all the obstacles coming in our path.</p>
             </div>
             </div>
             <h3 class="h1 text-center last-heading mt-5 mb-5">Customers are the Whole &amp; Soul and we respect them.</h3>

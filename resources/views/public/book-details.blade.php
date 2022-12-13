@@ -286,7 +286,7 @@
         }
 
         function selectPurchasingMethod() {
-            window.location.assign("https://whmcs.books4all.it/whmcs/index.php/store/ebooks");
+            window.location.assign("https://whmcs.havefun.fun/whmcs/index.php/store/ebooks");
         }
 
         function buy_by_time() {

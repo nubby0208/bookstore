@@ -187,8 +187,6 @@ class BookshopHomeController extends Controller
                 }
             }
 
-            $readstate = 1;
-
             $temp = ReadState::where('user_id', Auth::user()->id)->where('book_id', $bookid)->get();
             // var_dump($temp);
             if(count($temp) == 0){

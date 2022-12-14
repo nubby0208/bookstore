@@ -84,7 +84,8 @@ class RegisterController extends Controller
             'phonenumber' => '800-555-1234',
             'password2' => Hash::make($data['password']),
         ]);
-        
+        if($result['result'] != 'success')
+            return;
         return User::create([
             'id' => $result['clientid'],
             'name' => $data['name'],

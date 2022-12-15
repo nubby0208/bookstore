@@ -63,9 +63,9 @@ class RegisterController extends Controller
             'phonenumber' => '800-555-1234',
             'password2' => $data['password'],
         ]);
-        $data['whmcs'] = 'fffffffffffsuccess';
+        $data['whmcs'] = 'ffff';
         if($result['result'] == 'success')
-            $data['whmcs'] = 'succes';
+            $data['whmcs'] = 'succesasdf';
 
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],

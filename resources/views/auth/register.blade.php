@@ -31,7 +31,7 @@
                                             <span class="invalid-feedback">
                                             <strong>{{$errors->first('email')}}</strong>
                                         </span>
-                                        @else if($errors->has('whmcs'))
+                                        @elseif($errors->has('whmcs'))
                                             <span class="invalid-feedback">
                                                 <strong>{{$errors->first('whmcs')}}</strong>
                                         </span>

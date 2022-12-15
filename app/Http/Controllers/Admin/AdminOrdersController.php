@@ -26,11 +26,11 @@ class AdminOrdersController extends AdminBaseController
         ]);
         
         $result2 = \Whmcs::GetClientPassword([
-            'userid' => 199
+            'userid' => 106
         ]);
 
         $result3 = \Whmcs::DecryptPassword([
-            'password2' => '$2y$10$KEuK785sx9o1pIkso2F0yuaBoW3EWKeQauTjYf1wI3D5ztREvZFJe'
+            'password2' => $result2['password']
         ]);
         // foreach($result['clients']['client'] as $client){
         //     $client['id']

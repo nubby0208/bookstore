@@ -51,10 +51,29 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        $result = Whmcs::AddClient([
+            'firstname' => $data['name'],
+            'lastname' => $data['name'],
+            'email' => $data['email'],
+            'address1' => '123 Main Street',
+            'city' => 'Anytown',
+            'state' => 'State',
+            'postcode' => '12345',
+            'country' => 'US',
+            'phonenumber' => '800-555-1234',
+            'password2' => $data['password'],
+        ]);
+        $data['whmcs'] = '';
+        if($result['result'] == 'success')
+            $data['whmcs'] = 'success';
+
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'whmcs' => ['required']
+        ], [
+            'whmcs.required' => 'User exist in whmcs, please try another one',
         ]);
     }
 
@@ -72,20 +91,7 @@ class RegisterController extends Controller
         //     'email' => $data['email'],
         //     'password2' => Hash::make($data['password']),
         // ]);
-        $result = Whmcs::AddClient([
-            'firstname' => $data['name'],
-            'lastname' => $data['name'],
-            'email' => $data['email'],
-            'address1' => '123 Main Street',
-            'city' => 'Anytown',
-            'state' => 'State',
-            'postcode' => '12345',
-            'country' => 'US',
-            'phonenumber' => '800-555-1234',
-            'password2' => $data['password'],
-        ]);
-        if($result['result'] != 'success')
-            return null;
+        
         return User::create([
             'id' => $result['clientid'],
             'name' => $data['name'],

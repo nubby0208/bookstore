@@ -27,14 +27,9 @@
                                         <label for="email">{{ __('Email') }}</label>
                                         <input type="email" name="email" value="{{old('email')}}" class="form-control {{$errors->has('email')? 'is-invalid': ''}}">
 
-                                        <!-- @if($errors->has('email'))
+                                        @if($errors->has('email'))
                                             <span class="invalid-feedback">
                                             <strong>{{$errors->first('email')}}</strong>
-                                        </span>
-                                        @endif -->
-                                        @if($errors->has('whmcs'))
-                                            <span class="invalid-feedback">
-                                                <strong>{{$errors->first('whmcs')}}</strong>
                                         </span>
                                         @endif
                                     </div>

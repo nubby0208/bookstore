@@ -63,15 +63,17 @@ class RegisterController extends Controller
             'phonenumber' => '800-555-1234',
             'password2' => $data['password'],
         ]);
-        if($result['result'] == 'success')
-            $data['whmcs'] = 'succesasdf';
+        if($result['result'] != 'success')
+            $data['email'] = 'succesasdfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaauccesasdfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
 
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
             'whmcs' => ['required', 'min:8'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ],);
+        ],[
+            'email.max:50' => 'email already exists in WHMCS'
+        ]);
     }
 
     /**

@@ -36,7 +36,6 @@
                                                 <strong>{{$errors->first('whmcs')}}</strong>
                                         </span>
                                         @endif
-                                        @endif
                                     </div>
                                     <div class="form-group">
                                         <label for="password">{{ __('Password') }}</label>

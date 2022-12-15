@@ -21,12 +21,12 @@ class AdminOrdersController extends AdminBaseController
     {
         $orders = Order::latest()->get();
         
-        $result = \Whmcs::GetClients([
+        $result1 = \Whmcs::GetClients([
             'limitnum' => 1000
         ]);
 
-        $result = \Whmcs::GetClientPassword([
-            'userid' => 15
+        $result2 = \Whmcs::GetClientPassword([
+            'userid' => 352
         ]);
 
         // foreach($result['clients']['client'] as $client){
@@ -42,7 +42,9 @@ class AdminOrdersController extends AdminBaseController
         //         $pid = $Item['pid'];
         // }
         
-        $display = json_encode($result);
+        $display1 = json_encode($result1);
+        $display2 = json_encode($result2);
+        $display = $display1 . $display2;
         return view('admin.orders.all-orders', compact('display', 'orders'));
     }
 

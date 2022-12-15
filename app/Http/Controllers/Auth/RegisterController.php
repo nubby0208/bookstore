@@ -85,7 +85,7 @@ class RegisterController extends Controller
             'password2' => Hash::make($data['password']),
         ]);
         if($result['result'] != 'success')
-            return;
+            return null;
         return User::create([
             'id' => $result['clientid'],
             'name' => $data['name'],

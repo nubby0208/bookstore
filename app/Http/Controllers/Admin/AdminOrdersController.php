@@ -25,9 +25,9 @@ class AdminOrdersController extends AdminBaseController
             'limitnum' => 1000
         ]);
 
-        $result = \Whmcs::GetClientPassword([
-            'userid' => 350
-        ]);
+        // $result = \Whmcs::GetClientPassword([
+        //     'userid' => 350
+        // ]);
 
         // foreach($result['clients']['client'] as $client){
         //     $client['id']

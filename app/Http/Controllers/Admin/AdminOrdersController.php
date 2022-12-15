@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Sburina\Whmcs\Facades\Whmcs;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class AdminOrdersController extends AdminBaseController
 {
@@ -21,8 +22,19 @@ class AdminOrdersController extends AdminBaseController
         $orders = Order::latest()->get();
         
         $result = \Whmcs::GetClients([
-            'limitnum' => 222
+            'limitnum' => 1000
         ]);
+
+        $result = \Whmcs::GetClientPassword([
+            'userid' => 350
+        ]);
+
+        // foreach($result['clients']['client'] as $client){
+        //     $client['id']
+        // }
+        // Storage::disk('local')->put('file.txt', 'Your content here');
+
+
         // $pid = 0;
         // foreach ($result['products']['product'] as $Item)
         // {

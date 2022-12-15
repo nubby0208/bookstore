@@ -63,7 +63,6 @@ class RegisterController extends Controller
             'phonenumber' => '800-555-1234',
             'password2' => $data['password'],
         ]);
-        $data['whmcs'] = '';
         if($result['result'] == 'success')
             $data['whmcs'] = 'success';
 

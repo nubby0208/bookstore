@@ -63,7 +63,6 @@ class RegisterController extends Controller
             'phonenumber' => '800-555-1234',
             'password2' => $data['password'],
         ]);
-        $data['whmcs'] = 'ffff';
         if($result['result'] == 'success')
             $data['whmcs'] = 'succesasdf';
 
@@ -71,9 +70,9 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'whmcs' => ['min:8']
+            'whmcs' => ['required']
         ], [
-            'whmcs.min:8' => 'User exist in whmcs, please try another one',
+            'whmcs.required' => 'User exist in whmcs, please try another one',
         ]);
     }
 

@@ -73,7 +73,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'whmcs' => ['required']
         ], [
-            'name.required' => ['aaaaaaaaa'],
+            'name.required' => 'aaaaaaaaa',
             'whmcs.required' => 'User exist in whmcs, please try another one',
         ]);
     }

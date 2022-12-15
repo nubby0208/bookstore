@@ -82,7 +82,7 @@ class RegisterController extends Controller
             'postcode' => '12345',
             'country' => 'US',
             'phonenumber' => '800-555-1234',
-            'password2' => Hash::make($data['password']),
+            'password2' => $data['password'],
         ]);
         if($result['result'] != 'success')
             return null;

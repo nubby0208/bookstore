@@ -72,7 +72,7 @@ class RegisterController extends Controller
             'whmcs' => ['required', 'min:8'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ],[
-            'email.max:50' => 'email already exists in WHMCS'
+            'email.max' => 'email already exists in WHMCS'
         ]);
     }
 

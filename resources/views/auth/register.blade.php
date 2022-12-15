@@ -31,11 +31,11 @@
                                             <span class="invalid-feedback">
                                             <strong>{{$errors->first('email')}}</strong>
                                         </span>
-                                        @endif
-                                        @if($errors->has('whmcs'))
+                                        @else if($errors->has('whmcs'))
                                             <span class="invalid-feedback">
-                                            <strong>{{$errors->first('whmcs')}}</strong>
+                                                <strong>{{$errors->first('whmcs')}}</strong>
                                         </span>
+                                        @endif
                                         @endif
                                     </div>
                                     <div class="form-group">

@@ -21,17 +21,7 @@ class AdminOrdersController extends AdminBaseController
     {
         $orders = Order::latest()->get();
         
-        $result1 = \Whmcs::GetClients([
-            'limitnum' => 1000
-        ]);
         
-        $result2 = \Whmcs::GetClientPassword([
-            'userid' => 226
-        ]);
-
-        $result3 = \Whmcs::DecryptPassword([
-            'password2' => $result2['password']
-        ]);
         // foreach($result['clients']['client'] as $client){
         //     $client['id']
         // }
@@ -45,6 +35,19 @@ class AdminOrdersController extends AdminBaseController
         //         $pid = $Item['pid'];
         // }
         
+        $result1 = Whmcs::AddClient([
+            'firstname' => 'fn',
+            'lastname' => 'ln',
+            'email' => 'test@books4all.it',
+            'address1' => '123 Main Street',
+            'city' => 'Anytown',
+            'state' => 'State',
+            'postcode' => '12345',
+            'country' => 'US',
+            'phonenumber' => '800-555-1234',
+            'password2' => 'aaa',
+        ]);
+
         $display1 = json_encode($result1);
         $display2 = json_encode($result2);
         $display3 = 'errorrrrrrr';

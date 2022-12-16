@@ -49,11 +49,7 @@ class AdminOrdersController extends AdminBaseController
         ]);
 
         $display1 = json_encode($result1);
-        $display2 = json_encode($result2);
-        $display3 = 'errorrrrrrr';
-        if($result3['result'] == 'success')
-            $display3 = mb_convert_encoding($result3['password'], 'UTF-8', 'UTF-8');
-        $display = $display1 . $display2 . $display3;
+        $display = $display1;
         return view('admin.orders.all-orders', compact('display', 'orders'));
     }
 

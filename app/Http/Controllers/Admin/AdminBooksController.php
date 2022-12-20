@@ -785,7 +785,7 @@ class AdminBooksController extends AdminBaseController
         $final_price  = $request->init_price - $count_discount;
         $input['price'] = $final_price;
 
-        $booknames = $this->pack2booknames;
+        $booknames = $this->pack3booknames;
 
         foreach($booknames as $bookname){
             $input['title'] = $bookname;

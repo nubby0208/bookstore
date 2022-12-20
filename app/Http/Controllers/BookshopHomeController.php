@@ -19,13 +19,13 @@ class BookshopHomeController extends Controller
     {
         # Home page Books
         $pack1_books = Book::with('category')->whereHas('category', function($query) {
-            $query->where('slug', 'pack1'); })
+            $query->where('slug', 'biblographies'); })
             ->take(8)
             ->latestFirst()
             ->get();
         $pack2_books = Book::with('category', 'author', 'image', 'pdf_file')
             ->whereHas('category', function ($query){
-                $query->where('slug', 'pack2'); })
+                $query->where('slug', 'literary'); })
             ->take(4)
             ->latestFirst()
             ->get();

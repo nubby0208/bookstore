@@ -45,7 +45,7 @@
                     <div class="content-area">
                         <div class="card my-4">
                             <div class="card-header blue-dark">
-                                <h4><a href="{{route('category', 'engineering')}}" class="text-white">{{ __('Pack1 Books') }}</a></h4>
+                                <h4><a href="{{route('category', 'engineering')}}" class="text-white">{{ __('Biblographies Books') }}</a></h4>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -85,7 +85,7 @@
                         </div>
                         <div class="card my-4">
                             <div class="card-header blue-dark">
-                                <h4><a href="{{route('category', 'literature')}}" class="text-white">{{ __('Pack2 Books') }}</a></h4>
+                                <h4><a href="{{route('category', 'literature')}}" class="text-white">{{ __('Literary Books') }}</a></h4>
                             </div>
                             <div class="card-body">
                                 <div class="row">

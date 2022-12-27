@@ -778,7 +778,7 @@ class AdminBooksController extends AdminBaseController
         
     ];
 
-    public function store(BooksCreateRequest $request)
+    public function store1(BooksCreateRequest $request)
     {
         $input = $request->all();
         $count_discount = (($request->init_price * $request->discount_rate)/100);
@@ -836,7 +836,7 @@ class AdminBooksController extends AdminBaseController
 
     }
 
-    public function store1(BooksCreateRequest $request)
+    public function store(BooksCreateRequest $request)
     {
         $input = $request->all();
         $count_discount = (($request->init_price * $request->discount_rate)/100);
